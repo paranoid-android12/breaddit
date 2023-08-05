@@ -6,4 +6,4 @@ created by Chris and Erlein
 
 ## Requirements
 
-React, Html/Css, Node.js
+React, Html/Css, Node.js (and coffee)
