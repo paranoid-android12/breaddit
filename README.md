@@ -1,5 +1,8 @@
 # upwork-clone-ish
-the upwork website, but it's not actually upwork.
+
+A work marketplace website
+
+created by Chris and Erlein
 
 ## Requirements
 
