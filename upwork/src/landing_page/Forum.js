@@ -41,6 +41,10 @@ function Forum(){
             axios.post(url, fData)
             .then(response => alert(response.data))
             .catch(error => alert(error.message));
+
+            setName('');
+            setTitle('');
+            setContent('');
         }
     }
 
@@ -57,7 +61,7 @@ function Forum(){
                                 <Col lg={6}>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Username</Form.Label>
-                                        <Form.Control className='inputStuffs' placeholder="Enter username" onChange={handleNameChange}/> 
+                                        <Form.Control value={name}className='inputStuffs' placeholder="Enter username" onChange={handleNameChange}/> 
                                     </Form.Group>
 
                                 </Col>                    
@@ -66,7 +70,7 @@ function Forum(){
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Title</Form.Label>
-                                        <Form.Control className='inputStuffs' placeholder="Enter post title" onChange={handleTitleChange}/> 
+                                        <Form.Control value={title}className='inputStuffs' placeholder="Enter post title" onChange={handleTitleChange}/> 
                                     </Form.Group>
 
                                 </Col>                    
@@ -75,7 +79,7 @@ function Forum(){
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Post</Form.Label>
-                                        <Form.Control as="textarea" className='inputStuffs' placeholder="Enter content" rows={4} onChange={handleContentChange}/> 
+                                        <Form.Control value={content}as="textarea" className='inputStuffs' placeholder="Enter content" rows={4} onChange={handleContentChange}/> 
                                     </Form.Group>
 
                                 </Col>                    

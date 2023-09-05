@@ -1,0 +1,25 @@
+h1, p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-size: 1.1rem;
+}
+
+p{
+    font-size: .9rem;
+}
+
+.postBorder{
+    background-color: rgb(26, 26, 27);
+    width: 40vw;
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(52, 53, 54);
+}
+
+.upvoteCol{
+    background-color: white;
+    width: 10px !important;
+}
