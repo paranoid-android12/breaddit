@@ -1,0 +1,53 @@
+body{
+    color: white;
+}
+
+#basic-nav-dropdown{
+    color: white;
+}
+
+.mainNav{
+    border-bottom: rgb(48, 48, 48);
+    border-bottom-style: solid;
+    border-width: 0.1rem;
+}
+
+.titleNav{
+    color: #38F494 !important;
+    font-weight: 600;
+}
+
+.topNav{
+    margin-left: 1rem;
+    margin-right: 2rem;
+}
+
+.mainWordTitle{
+    font-family:'Mirza';
+    font-size: 6rem;
+    margin-top: 2rem;
+    line-height: 0.8;
+    color: #38F494;
+}
+
+.underMainWordTitle{
+    font-size: 1.3rem;
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+.mainNav{
+    background-color: rgb(#0A0A0A);
+    background: #0A0A0A;
+}
+
+.getStartedButton{
+    background-color: #38F494;
+    color: #0A0A0A;
+    border-color: #38F494;
+}
+
+.moyaiImage{
+    scale: 0.9;
+}
+

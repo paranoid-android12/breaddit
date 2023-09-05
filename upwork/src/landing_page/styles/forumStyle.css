@@ -1,0 +1,13 @@
+.contentStyle{
+    height: 10rem;
+}
+
+.formBox{
+    width: 40rem;
+    margin-top: 3rem;
+}
+
+.containerForm{
+    display: flex;
+    justify-content: center;
+}
