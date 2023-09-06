@@ -3,8 +3,18 @@
 }
 
 .formBox{
-    width: 40rem;
-    margin-top: 3rem;
+    width: 20rem;
+}
+
+.inputStuffs{
+    background-color: rgb(26, 26, 27);
+    color: white;
+    border-color: rgb(74, 74, 77);
+}
+
+.inputStuffs:focus{
+    background-color: rgb(49, 49, 51);
+    color: white;
 }
 
 .containerForm{

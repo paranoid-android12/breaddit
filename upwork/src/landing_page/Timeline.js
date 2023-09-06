@@ -1,16 +1,15 @@
-import {Container} from 'react-bootstrap';
+import { Stack } from 'react-bootstrap';
 import TopNav from './components/NavbarTop';
 import Post from './components/Post';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 function Timeline(){
-    const url = 'http://localhost:8080/upwork_server/connection.php'
+    const url = 'https://wafflesaucer.alwaysdata.net'
     const [post, setPost] = useState([]);
 
 
     const hook = () => {
-        console.log('effect')
         axios.get(url)
         .then(response => setPost(response.data));
     }
@@ -21,10 +20,10 @@ function Timeline(){
     return(
         <div>
             <TopNav />
-
-            <Container>
+            <Stack>
                 <Post post={post}/>
-            </Container>
+            </Stack>
+
         </div>
     )
 }

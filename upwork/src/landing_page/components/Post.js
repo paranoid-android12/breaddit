@@ -1,19 +1,25 @@
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
+import * as React from "react";
 import '../styles/postStyle.css';
 
-function PostBlock(){
-    
-}
-
-function Post({post}) {
-    console.log("aga", post)
+function PostBlock({username, title, content, date}){
+    console.log({username});
     return(
         <Container className='postBorder'>
-            <p style={{opacity: '50%'}}>Posted by u/yourmother90 3 hours ago</p>
-            <h1>Raisins are humanity's greatest sin</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style={{opacity: '50%'}}>Posted by u/{username} {date}</p>
+            <h1>{title}</h1>
+            <p>{content}</p>
         </Container>
     )
+}
+
+
+function Post({ post }) {
+    return (
+            post.map((x, index) => (
+                <PostBlock key={x[0]} username={x[1]} title={x[2]} content={x[3]} date={x[4]} />
+            ))
+    );
 }
 
 export default Post;

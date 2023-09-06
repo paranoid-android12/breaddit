@@ -1,7 +1,6 @@
 import { useState } from 'react';
+import {Container, Button, Form, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
-import Container from 'react-bootstrap/Container';
-import {Nav, Navbar, NavDropdown, Button, Form, Row, Col} from 'react-bootstrap';
 import TopNav from './components/NavbarTop.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/forumStyle.css';
@@ -31,7 +30,7 @@ function Forum(){
             alert("Fill out all the required fields.");
         }
         else{
-            const url = 'http://localhost:8080/upwork_server/connection.php'
+            const url = 'https://wafflesaucer.alwaysdata.net'
 
             let fData = new FormData();
             fData.append('username', name);
@@ -52,16 +51,15 @@ function Forum(){
         <div>
             <TopNav />
             <Container>
-                {/* Top Navbar */}
-
                 <div className='formContainer'>
                     <Container className='containerForm'>
                         <Form className='formBox' onSubmit={handleSubmit}>
+                            <h1>Create a post</h1>
                             <Row>
-                                <Col lg={6}>
+                                <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Username</Form.Label>
-                                        <Form.Control value={name}className='inputStuffs' placeholder="Enter username" onChange={handleNameChange}/> 
+                                        <Form.Control maxLength={15} value={name}className='inputStuffs' placeholder="Enter username" onChange={handleNameChange}/> 
                                     </Form.Group>
 
                                 </Col>                    
@@ -70,7 +68,7 @@ function Forum(){
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Title</Form.Label>
-                                        <Form.Control value={title}className='inputStuffs' placeholder="Enter post title" onChange={handleTitleChange}/> 
+                                        <Form.Control maxLength={100} value={title}className='inputStuffs' placeholder="Enter post title" onChange={handleTitleChange}/> 
                                     </Form.Group>
 
                                 </Col>                    
@@ -79,7 +77,7 @@ function Forum(){
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Post</Form.Label>
-                                        <Form.Control value={content}as="textarea" className='inputStuffs' placeholder="Enter content" rows={4} onChange={handleContentChange}/> 
+                                        <Form.Control maxLength={3000} value={content}as="textarea" className='inputStuffs' placeholder="Enter content" rows={4} onChange={handleContentChange}/> 
                                     </Form.Group>
 
                                 </Col>                    
