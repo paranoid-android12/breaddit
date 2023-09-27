@@ -30,7 +30,8 @@ function Forum(){
             alert("Fill out all the required fields.");
         }
         else{
-            const url = 'https://wafflesaucer.alwaysdata.net'
+            // const url = 'https://wafflesaucer.alwaysdata.net'
+            const url = 'http://localhost:8080/upwork_server/connection.php'
 
             let fData = new FormData();
             fData.append('username', name);

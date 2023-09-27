@@ -12,7 +12,7 @@ function Landing(){
         <Container>
             <Row>
                 <Col lg={7} xs={12}>
-                    <h1 className="mainWordTitle">How work<br/>should work</h1>
+                    <h1 className="mainWordTitle">Post some<br/>stuffs!</h1>
                     <p className='underMainWordTitle'>Forget the old rules. You can have the best people.<br/>Right now. Right here.</p>
                     <Button className='getStartedButton' href='./Forum.js'>Get Started</Button>
                 </Col>

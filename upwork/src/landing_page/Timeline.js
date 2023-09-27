@@ -5,7 +5,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 function Timeline(){
-    const url = 'https://wafflesaucer.alwaysdata.net'
+    // const url = 'https://wafflesaucer.alwaysdata.net'
+    const url = 'http://localhost:8080/upwork_server/connection.php'
     const [post, setPost] = useState([]);
 
 
