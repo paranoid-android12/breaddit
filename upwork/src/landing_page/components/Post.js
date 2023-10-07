@@ -6,9 +6,12 @@ function PostBlock({username, title, content, date}){
     console.log({username});
     return(
         <Container className='postBorder'>
-            <p style={{opacity: '50%'}}>Posted by u/{username} {date}</p>
-            <h1>{title}</h1>
-            <p>{content}</p>
+            <Container className='rightBorder'>
+                <p class='userInfoPost'>Posted by u/{username} {date}</p>
+                <h1 class='titlePost'>{title}</h1>
+                <p class='contentPost'>{content}</p>
+
+            </Container>
         </Container>
     )
 }

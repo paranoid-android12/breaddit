@@ -1,0 +1,4 @@
+    // $servername = 'mysql-wafflesaucer.alwaysdata.net';
+    // $username = '326024';
+    // $password = 'WaffleSaucer1337!';
+    // $db = 'wafflesaucer_upwork';

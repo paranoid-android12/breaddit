@@ -1,4 +1,4 @@
-import {Nav, Navbar, NavDropdown, Container} from 'react-bootstrap';
+import {Nav, Navbar, NavDropdown, Container, Row, Col} from 'react-bootstrap';
 
 function TopNav(){
     return(
@@ -8,9 +8,11 @@ function TopNav(){
                     <Navbar.Brand href="./" className='titleNav'>Breaddit</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    <Nav>
                         <NavDropdown className="homeBorder" title="Home" id="basic-nav-dropdown" ></NavDropdown>
-                        <Nav.Link className='text-light'>Enterprise</Nav.Link>
+                        <form>
+                            <input className="searchBar" type="search" placeholder='Search Breaddit'></input>
+                        </form>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>

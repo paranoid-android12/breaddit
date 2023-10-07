@@ -1,8 +1,10 @@
 import { Stack } from 'react-bootstrap';
 import TopNav from './components/NavbarTop';
+import {Col, Row, Image, Button, Container} from 'react-bootstrap';
 import Post from './components/Post';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import './styles/postStyle.css';
+import { Component, useEffect, useState } from 'react';
 
 function Timeline(){
     // const url = 'https://wafflesaucer.alwaysdata.net'
@@ -22,6 +24,14 @@ function Timeline(){
         <div>
             <TopNav />
             <Stack>
+                <Container className='filter'>
+                    <Row>
+                        <Col className='filButton'>Best</Col>
+                        <Col className='filButton'>Hot</Col>
+                        <Col className='filButton'>New</Col>
+                        <Col className='filButton'>Top</Col>
+                    </Row>
+                </Container>
                 <Post post={post}/>
             </Stack>
 

@@ -1,5 +1,5 @@
 h1, p{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1{
@@ -10,12 +10,47 @@ p{
     font-size: .9rem;
 }
 
-.postBorder{
-    background-color: rgb(26, 26, 27);
+.postBorder, .filter{
+    background-color: rgb(22,22,23);
     width: 40rem;
     border-radius: 2px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(52, 53, 54);
-    margin-bottom: 2rem;
+    margin-bottom: 0.7rem;
+    padding-right: 0%;
+    padding-left: 35px;
+}
+
+.filter{
+}
+
+.filButton{
+    background-color: aqua;
+
+}
+
+.rightBorder{
+    background-color: rgb(26,26,27);
+    float: right;
+}
+
+.userInfoPost{
+    font-size: 0.8rem;
+    color: rgb(129,131,132);
+    font-weight: 300;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.titlePost{
+    color: rgb(215,218,220);
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.contentPost{
+    color: rgb(215,218,220);
+    font-family: 'Noto Sans';
+    font-weight: 400;
 }
