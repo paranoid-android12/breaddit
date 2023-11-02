@@ -13,27 +13,22 @@ p{
 .postBorder, .filter{
     background-color: rgb(22,22,23);
     width: 40rem;
-    border-radius: 2px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(52, 53, 54);
+    border-radius: 10px;
     margin-bottom: 0.7rem;
     padding-right: 0%;
-    padding-left: 35px;
+    padding-left: 15px;
 }
 
-.filter{
+.statPill{
+    width: 100px;
 }
+
 
 .filButton{
     background-color: aqua;
 
 }
 
-.rightBorder{
-    background-color: rgb(26,26,27);
-    float: right;
-}
 
 .userInfoPost{
     font-size: 0.8rem;
@@ -45,7 +40,7 @@ p{
 .titlePost{
     color: rgb(215,218,220);
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 700;
     font-family: 'IBM Plex Sans', Arial, sans-serif;
 }
 
@@ -53,4 +48,32 @@ p{
     color: rgb(215,218,220);
     font-family: 'Noto Sans';
     font-weight: 400;
+}
+
+.sideContent{
+    background-color: rgb(3,3,3);
+    border-radius: 10px
+    
+}
+
+.sideContent:hover{
+    background-color: rgb(20,20,20);
+    border-radius: 10px
+    
+}
+
+.imageRow{
+    width: 19vw;
+    height: 24vh;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+.suggestCommunities{
+    width: 400px;
+    height: 200px;
+    color: antiquewhite;
+    background-color: aquamarine;
 }

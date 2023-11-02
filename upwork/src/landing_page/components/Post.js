@@ -6,11 +6,13 @@ function PostBlock({username, title, content, date}){
     console.log({username});
     return(
         <Container className='postBorder'>
-            <Container className='rightBorder'>
-                <p class='userInfoPost'>Posted by u/{username} {date}</p>
-                <h1 class='titlePost'>{title}</h1>
-                <p class='contentPost'>{content}</p>
-
+            <p class='userInfoPost'>Posted by u/{username} {date}</p>
+            <h1 class='titlePost'>{title}</h1>
+            <p class='contentPost'>{content}</p>
+            <Container className='d-flex flex-row'>
+                <div className='statPill'>Upv</div>
+                <div className='statPill'>Upv</div>
+                <div className='statPill'>Upv</div>
             </Container>
         </Container>
     )
