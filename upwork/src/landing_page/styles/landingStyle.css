@@ -7,12 +7,12 @@ body{
 }
 
 .mainNav{
-    background: rgb(3,3,3) !important;
+    background: rgb(11,20,22) !important;
     background-image: none;
     border-bottom: rgb(48, 48, 48);
     border-bottom-style: solid;
     border-width: 0.1rem;
-    height: 50px;
+    height: 55px;
 }
 
 .titleNav{
@@ -32,18 +32,24 @@ body{
 }
 
 .searchBar{
-    background-color: rgb(39,39,41);
+    background-color: rgb(26,40,45);
     width: 45vw;
-    height: 100%;
+    height: 40px;
     border-style: solid;
-    border-color: rgb(80,80,80);
-    border-width: 0.5px;
+    border-width: 1px;
+    border-color: rgb(26,40,45);
     border-radius: 6vh;
+}
+
+::placeholder{
+    color: rgb(130,149,155);
+    font-size: 1rem;
 }
 
 .topNav{
     margin-left: 1rem;
     margin-right: 2rem;
+    height: 100%;
 }
 
 .mainWordTitle{

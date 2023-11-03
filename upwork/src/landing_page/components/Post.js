@@ -1,20 +1,24 @@
-import {Container} from 'react-bootstrap';
+import {Container, Row} from 'react-bootstrap';
 import * as React from "react";
 import '../styles/postStyle.css';
 
 function PostBlock({username, title, content, date}){
     console.log({username});
     return(
-        <Container className='postBorder'>
-            <p class='userInfoPost'>Posted by u/{username} {date}</p>
-            <h1 class='titlePost'>{title}</h1>
-            <p class='contentPost'>{content}</p>
-            <Container className='d-flex flex-row'>
-                <div className='statPill'>Upv</div>
-                <div className='statPill'>Upv</div>
-                <div className='statPill'>Upv</div>
+        <div>
+            <Container className='postBorder'>
+                <div className='postMargin'>
+                    <p class='userInfoPost'>Posted by u/{username} {date}</p>
+                    <h1 class='titlePost'>{title}</h1>
+                    <p class='contentPost'>{content}</p>
+                    <Container className='d-flex flex-row' style={{padding: '0px'}}>
+                        <div className='statPill'></div>
+                        <div className='statPill'></div>
+                    </Container>
+                </div>
             </Container>
-        </Container>
+            <hr></hr>
+        </div>
     )
 }
 

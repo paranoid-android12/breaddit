@@ -11,30 +11,40 @@ p{
 }
 
 .postBorder, .filter{
-    background-color: rgb(22,22,23);
-    width: 40rem;
+    max-width: 100%;
     border-radius: 10px;
     margin-bottom: 0.7rem;
     padding-right: 0%;
     padding-left: 15px;
 }
 
+.postBorder:hover{
+    background-color: rgb(19,31,35);
+    transition: 0.2s;
+}
+
+.postMargin{
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
 .statPill{
-    width: 100px;
+    width: 85px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: rgb(26,40,45);
+    margin-right: 10px;
 }
-
-
-.filButton{
-    background-color: aqua;
-
-}
-
 
 .userInfoPost{
     font-size: 0.8rem;
     color: rgb(129,131,132);
     font-weight: 300;
     font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.timelineCont{
+    padding-left: 27px;
 }
 
 .titlePost{
@@ -50,30 +60,54 @@ p{
     font-weight: 400;
 }
 
+.createButton{
+    width: 120px;
+    height: 40px;
+    border-radius: 100px;
+    border-style: solid;
+    border-color: rgb(72,79,80);
+    border-width: 1px;
+    background-color: rgb(11,20,22);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+    font-weight: 700;
+    letter-spacing: 0.03rem;
+}
+
+.createButton:hover{
+    cursor: pointer;
+    background-color: rgb(34,50,55);
+    transition: 0.2s;
+}
+
+.sideBar{
+    border-right: 1px;
+    border-color: rgb(72,79,80);
+    border-right-style: solid;
+}
+
 .sideContent{
-    background-color: rgb(3,3,3);
-    border-radius: 10px
-    
+    border-radius: 10px;
+    width: 100%;
 }
 
 .sideContent:hover{
-    background-color: rgb(20,20,20);
-    border-radius: 10px
-    
+    cursor: pointer;
+    background-color: rgb(34,50,55);
+    border-radius: 10px;
+    transition: 0.3s;
 }
 
 .imageRow{
-    width: 19vw;
-    height: 24vh;
-    border-width: 10px;
-    border-style: solid;
+    width: 330px;
+    height: 220px;
     border-radius: 10px;
-    background-color: aliceblue;
+    background-color: rgb(34,50,55);
 }
 
 .suggestCommunities{
-    width: 400px;
     height: 200px;
-    color: antiquewhite;
-    background-color: aquamarine;
+    background-color: rgb(4,9,10);
+    border-radius: 10px;
 }

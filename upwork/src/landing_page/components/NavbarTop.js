@@ -4,20 +4,17 @@ function TopNav(){
     return(
         <div>
             <Navbar expand="lg" className='mainNav'>
-                <Container className='topNav'>
+                <Container className='container-fluid'>
                     <Navbar.Brand href="./" className='titleNav'>Breaddit</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav>
-                        <NavDropdown className="homeBorder" title="Home" id="basic-nav-dropdown" ></NavDropdown>
-                        <form>
-                            <input className="searchBar" type="search" placeholder='Search Breaddit'></input>
-                        </form>
-                    </Nav>
-                    </Navbar.Collapse>
+                    {/* <Navbar.Collapse id="basic-navbar-nav"> */}
+                    <form className='searchForm d-flex'>
+                        <input className="searchBar" type="search" placeholder='Search Breaddit'></input>
+                    </form>
+                    {/* </Navbar.Collapse> */}
                 </Container>
             </Navbar>
-            <Navbar expand="lg" className='subNav'>
+            {/* <Navbar expand="lg" className='subNav'>
                 <Container className='topNav'>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -27,7 +24,7 @@ function TopNav(){
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
-            </Navbar>
+            </Navbar> */}
         </div>
 
     )
