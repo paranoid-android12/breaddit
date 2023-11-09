@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import {Container, Button, Form, Row, Col} from 'react-bootstrap';
+import {Container, Button, Form, Row, Col, Tabs, Tab} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TopNav from './components/NavbarTop.js';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -50,46 +51,63 @@ function Forum(){
 
     return(
         <div>
-            <TopNav />
-            <Container>
-                <div className='formContainer'>
-                    <Container className='containerForm'>
-                        <Form className='formBox' onSubmit={handleSubmit}>
-                            <h1>Create a post</h1>
-                            <Row>
-                                <Col>
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Username</Form.Label>
-                                        <Form.Control maxLength={15} value={name}className='inputStuffs' placeholder="Enter username" onChange={handleNameChange}/> 
-                                    </Form.Group>
+            <TopNav/>
+            <br></br>
+            <Container className='mainCont'>
+                <h3>Create a post</h3>
+                <hr></hr>
+                <Tabs
+                defaultActiveKey="post"
+                id="uncontrolled-tab-example"
+                className="custom-tabs"
+                fill
+                >
+                    <Tab className='tabOneCont' eventKey="post" title="Post">
+                        <Container>
+                            <br></br>
+                            <Form>
+                            <Form.Group className="mb-3" controlId="formBasicTitle">
+                                <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicContent">
+                                <Form.Control as='textarea' className='contentInput' type="content" placeholder="Text (Optional)"/>
+                            </Form.Group>
+                            </Form>
+                            <hr></hr>
+                            <Container>
+                                <Row>
+                                    <Link className='createPost' to='../Forum.js'>Post</Link>
+                                </Row>
+                            </Container>
+                            <br></br>
+                        </Container>
+                    </Tab>
+                    <Tab className='tabOneCont' eventKey="image" title="Image">
+                        <Container>
+                            <br></br>
+                            <Form>
+                            <Form.Group className="mb-3" controlId="formBasicTitle">
+                                <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
+                            </Form.Group>
+                            <Form.Group className="formUpload mb-3" controlId="formBasicImage">
+                                <label for="file-upload" class="custom-file-upload">
+                                    <i class="fa fa-cloud-upload"></i> Upload Images
+                                </label>
+                                <input id="file-upload" type="file"/>
+                            </Form.Group>
+                            </Form>
+                            <hr></hr>
+                            <Container>
+                                <Row>
+                                    <Link className='createPost' to='../Forum.js'>Post</Link>
+                                </Row>
+                            </Container>
+                            <br></br>
+                        </Container>
+                    </Tab>
 
-                                </Col>                    
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Title</Form.Label>
-                                        <Form.Control maxLength={100} value={title}className='inputStuffs' placeholder="Enter post title" onChange={handleTitleChange}/> 
-                                    </Form.Group>
-
-                                </Col>                    
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Post</Form.Label>
-                                        <Form.Control maxLength={3000} value={content}as="textarea" className='inputStuffs' placeholder="Enter content" rows={4} onChange={handleContentChange}/> 
-                                    </Form.Group>
-
-                                </Col>                    
-                            </Row>
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
-                        </Form>
-                    </Container>
-
-                </div>
+                </Tabs>
+                {/* <p><small>Please be mindful of breaddit's content policy and practice good breaddiquette.</small></p> */}
             </Container>
         </div>
     )

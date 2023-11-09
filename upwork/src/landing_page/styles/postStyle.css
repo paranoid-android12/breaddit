@@ -60,6 +60,10 @@ p{
     font-weight: 400;
 }
 
+.contentImage{
+    
+}
+
 .createButton{
     width: 120px;
     height: 40px;
@@ -73,12 +77,16 @@ p{
     line-height: 35px;
     font-weight: 700;
     letter-spacing: 0.03rem;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .createButton:hover{
     cursor: pointer;
     background-color: rgb(34,50,55);
     transition: 0.2s;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .sideBar{

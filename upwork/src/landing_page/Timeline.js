@@ -5,6 +5,8 @@ import Post from './components/Post';
 import axios from 'axios';
 import './styles/postStyle.css';
 import { Component, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function Timeline(){
     const url = 'http://localhost:8080/upwork_server/connection.php'
@@ -52,9 +54,9 @@ function Timeline(){
                         <Row>
                             <Col className='col-8'>
                                 <br></br>
-                                <Container className='createPost'>
+                                <Container>
                                     <Row>
-                                        <div className='createButton'>Create Post</div>
+                                        <Link className='createButton' to='../Forum.js'>Create Post</Link>
                                     </Row>
                                 </Container>
                                 <br></br>

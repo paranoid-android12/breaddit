@@ -1,23 +1,131 @@
-.contentStyle{
-    height: 10rem;
+h3{
+    font-size: 1.4rem;
 }
 
-.formBox{
-    width: 20rem;
+.mainCont{
+    width: 40%;
 }
 
-.inputStuffs{
-    background-color: rgb(26, 26, 27);
+.custom-tabs .nav-link {
+    border-radius: 0;
+    background-color: rgb(19,31,35);
+    border: none;
+    border-bottom: 4px;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(72,79,80);
+    color: rgb(129,131,132);
+}
+
+.custom-tabs .nav-link:hover{
+    border-radius: 0;
+    background-color: rgb(34,50,55);
+    border: none;
+    border-bottom: 4px;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(72,79,80);
+    color: rgb(129,131,132);
+}
+.custom-tabs .nav-link.active{
+    border-radius: 0;
+    background-color: rgb(34,50,55);
+    border-bottom-width: 4px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
     color: white;
-    border-color: rgb(74, 74, 77);
+    font-weight: 400;
+    transition: .2s;
 }
 
-.inputStuffs:focus{
-    background-color: rgb(49, 49, 51);
-    color: white;
+
+.custom-tabs .nav-item:first-child .nav-link {
+border-top-left-radius: 0.25rem;
 }
 
-.containerForm{
+.custom-tabs .nav-item:last-child .nav-link {
+border-top-right-radius: 0.25rem;
+}
+  
+.titleInput, .contentInput{
+    width: 100%;
+    background-color: rgb(19,31,35);
+    border-color: rgb(72,79,80);
+    overflow: hidden;
+    white-space: pre-line;
+}
+
+.titleInput:focus, .contentInput:focus{
+    width: 100%;
+    background-color: rgb(19,31,35);
+    border-color: rgb(72,79,80);
+    border-style: solid;
+    overflow: hidden;
+    white-space: pre-line;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    background-color: rgb(19,31,35);
+    border: 1px solid white;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-upload:hover{
+    background-color: rgb(34,50,55);
+    transition: .2s;
+    border: 1px solid white;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.formUpload{
+    border: 1px dashed rgb(72,79,80);
+    border-radius: 10px;
+    background-color: rgb(19,31,35);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    height: 200px;
+}
+
+.createPost{
+    width: 75px;
+    height: 31px;
+    border-radius: 100px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 1px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.03rem;
+    color: rgb(19,31,35);
+    text-decoration: none;
+}
+
+.createPost:hover{
+    cursor: pointer;
+    background-color: rgb(34,50,55);
+    transition: 0.2s;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.tabOneCont{
+    background-color: rgb(19,31,35);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
