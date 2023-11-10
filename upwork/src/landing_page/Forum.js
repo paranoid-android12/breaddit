@@ -49,6 +49,31 @@ function Forum(){
         }
     }
 
+    function previewImage(event){
+        const fileInput = event.target;
+        const file = fileInput.files[0];
+        const imagePreview = document.getElementById('image-preview')
+        const imageToUploadContainer = document.getElementById('imageToUploadContainer');
+        const imageUploadedContainer = document.getElementById('imageUploadedContainer');
+        const formUpload = document.getElementById('formUpload')
+
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(event){
+                imagePreview.src = event.target.result;
+                imagePreview.style.maxWidth = '100%';
+                imageToUploadContainer.style.display = 'none';
+                imageUploadedContainer.style.display = 'block';
+                formUpload.style.height = '100%';
+            };
+            reader.readAsDataURL(file);
+        }
+        else{
+            imagePreview.src = '';
+            imagePreview.style.display = 'none';
+        }
+    }
+
     return(
         <div>
             <TopNav/>
@@ -66,42 +91,44 @@ function Forum(){
                         <Container>
                             <br></br>
                             <Form>
-                            <Form.Group className="mb-3" controlId="formBasicTitle">
-                                <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicContent">
-                                <Form.Control as='textarea' className='contentInput' type="content" placeholder="Text (Optional)"/>
-                            </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicTitle">
+                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicContent">
+                                    <Form.Control as='textarea' className='contentInput' type="content" placeholder="Text (Optional)"/>
+                                </Form.Group>
                             </Form>
                             <hr></hr>
                             <Container>
-                                <Row>
-                                    <Link className='createPost' to='../Forum.js'>Post</Link>
-                                </Row>
+                                <Button type='submit' className='createPost'>Post</Button>
                             </Container>
                             <br></br>
                         </Container>
                     </Tab>
+                    
                     <Tab className='tabOneCont' eventKey="image" title="Image">
                         <Container>
                             <br></br>
                             <Form>
-                            <Form.Group className="mb-3" controlId="formBasicTitle">
-                                <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
-                            </Form.Group>
-                            <Form.Group className="formUpload mb-3" controlId="formBasicImage">
-                                <label for="file-upload" class="custom-file-upload">
-                                    <i class="fa fa-cloud-upload"></i> Upload Images
-                                </label>
-                                <input id="file-upload" type="file"/>
-                            </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicTitle">
+                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
+                                </Form.Group>
+                                <Form.Group className="formUpload mb-3" controlId="formBasicImage" id='formUpload'>
+                                    <div id='imageToUploadContainer'> 
+                                        <label for="file-upload" class="custom-file-upload">
+                                            <i class="fa fa-cloud-upload"></i> Upload Images
+                                        </label>
+                                        <input id="file-upload" type="file" onChange={event => previewImage(event)}/>
+                                    </div>
+                                    <div id='imageUploadedContainer' style={{display: 'none'}}>
+                                        <img id='image-preview' src='' alt='Uploaded Image'></img>
+                                    </div>
+                                </Form.Group>
+                                <hr></hr>
+                                <Container>
+                                    <Button type='submit' className='createPost'>Post</Button>
+                                </Container>
                             </Form>
-                            <hr></hr>
-                            <Container>
-                                <Row>
-                                    <Link className='createPost' to='../Forum.js'>Post</Link>
-                                </Row>
-                            </Container>
                             <br></br>
                         </Container>
                     </Tab>

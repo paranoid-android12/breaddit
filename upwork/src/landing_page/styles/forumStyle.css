@@ -53,6 +53,7 @@ border-top-right-radius: 0.25rem;
     border-color: rgb(72,79,80);
     overflow: hidden;
     white-space: pre-line;
+    color: white;
 }
 
 .titleInput:focus, .contentInput:focus{
@@ -62,6 +63,7 @@ border-top-right-radius: 0.25rem;
     border-style: solid;
     overflow: hidden;
     white-space: pre-line;
+    color: white;
 }
 
 input[type="file"] {
@@ -101,14 +103,11 @@ input[type="file"] {
     width: 75px;
     height: 31px;
     border-radius: 100px;
-    border-style: solid;
-    border-color: rgb(255, 255, 255);
-    border-width: 1px;
+    border: 1px solid white;
     background-color: rgb(255, 255, 255);
     text-align: center;
     vertical-align: middle;
     justify-content: center;
-    line-height: 30px;
     font-weight: 700;
     font-size: 0.95rem;
     letter-spacing: 0.03rem;
