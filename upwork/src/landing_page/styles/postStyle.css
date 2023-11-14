@@ -36,6 +36,17 @@ p{
     margin-right: 10px;
 }
 
+.statPillCont{
+    max-height: 100%;
+    width: 18px;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.statPillImage{
+    max-width: 100%;
+}
+
 .userInfoPost{
     font-size: 0.8rem;
     color: rgb(129,131,132);
@@ -58,10 +69,21 @@ p{
     color: rgb(215,218,220);
     font-family: 'Noto Sans';
     font-weight: 400;
+    max-width: 98%;
 }
 
 .contentImage{
-    
+    max-width: 100%;
+}
+
+.contentImageContainer{
+    border-radius: 15px;
+    border: 1px solid rgb(72,79,80);
+    max-width: 98%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .createButton{
@@ -95,6 +117,12 @@ p{
     border-right-style: solid;
 }
 
+.sideBarStick{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+}
+
 .sideContent{
     border-radius: 10px;
     width: 100%;
@@ -107,15 +135,59 @@ p{
     transition: 0.3s;
 }
 
-.imageRow{
-    width: 330px;
-    height: 220px;
-    border-radius: 10px;
-    background-color: rgb(34,50,55);
+.suggestMainBox{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+    height: 80vh;
 }
 
 .suggestCommunities{
-    height: 200px;
     background-color: rgb(4,9,10);
     border-radius: 10px;
+    height: 400px
 }
+
+
+.popularCommunities{
+    font-size: 1rem;
+    color: rgb(128, 128, 128);
+    margin-bottom: 19px;
+}
+
+.suggestionBox{
+    display: flex;
+}
+
+.suggestionBox:hover{
+    background-color: rgb(17, 17, 17);
+    transition: 0.2s;
+}
+
+.imageCircle{
+    background-color: blue;
+    margin-right: 9px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+.imageMain{
+    max-height: 100%;
+}
+
+.subredditName{
+    margin: 0;
+}
+.postCount{
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: rgb(128, 128, 128);
+}
+

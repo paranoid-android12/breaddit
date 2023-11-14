@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {Container, Button, Form, Row, Col, Tabs, Tab} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import TopNav from './components/NavbarTop.js';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,9 +8,10 @@ import './styles/forumStyle.css';
 
 
 function Forum(){
-    const [name, setName] = useState('');
+    const [name, setName] = useState('admin');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const navigate = useNavigate();
 
     function handleNameChange(event) {
         setName(event.target.value);
@@ -24,29 +25,63 @@ function Forum(){
         setContent(event.target.value);
     }  
 
-    function handleSubmit(event){
+    function imageProcess(content, name){
+        console.log(content, name)
+        const url = 'http://localhost:8080/upwork_server/image_parser.php'
+        let iData = new FormData();
+
+        iData.append('baseString', content);
+        iData.append('name', name);
+
+        //Converts base64 image data to image file via php API
+        return axios.post(url, iData)
+        .then(response => {return response.data})
+        .catch(error => alert(error.message))
+        
+    }
+
+    async function handleSubmit(event, imageType){
         event.preventDefault();
+        console.log("Type: ", imageType);
         console.log(name.length, title.length, content.length);
         if(name.length === 0 || title.length === 0 || content.length === 0){
             alert("Fill out all the required fields.");
+            return;
+        }
+
+        // const url = 'https://wafflesaucer.alwaysdata.net'
+        const url = 'http://localhost:8080/upwork_server/connection.php'
+        let fData = new FormData();
+        fData.append('username', name);
+        fData.append('title', title);
+        fData.append('isImage', imageType)
+        
+        if(imageType === '1'){
+            //Save uploaded image, and declare the post content as the image file path
+            try {
+                let fileLoc = await imageProcess(content, name);
+                fData.append('content', fileLoc);       
+            } catch (error) {
+                console.log('Image handling went wrong: ', error);
+                return;   
+            }
         }
         else{
-            // const url = 'https://wafflesaucer.alwaysdata.net'
-            const url = 'http://localhost:8080/upwork_server/connection.php'
-
-            let fData = new FormData();
-            fData.append('username', name);
-            fData.append('title', title);
+            //Append normal text content.
             fData.append('content', content);
-            
-            axios.post(url, fData)
-            .then(response => alert(response.data))
-            .catch(error => alert(error.message));
-
-            setName('');
-            setTitle('');
-            setContent('');
         }
+
+        //Upload post object to main sql api
+        console.log('then this last');
+        await axios.post(url, fData)
+        .then(response => alert(response.data))
+        .catch(error => alert(error.message));
+
+        setName('admin');
+        setTitle('');
+        setContent('');
+
+        navigate('../Timeline.js')
     }
 
     function previewImage(event){
@@ -61,6 +96,7 @@ function Forum(){
             const reader = new FileReader();
             reader.onload = function(event){
                 imagePreview.src = event.target.result;
+                setContent(event.target.result);
                 imagePreview.style.maxWidth = '100%';
                 imageToUploadContainer.style.display = 'none';
                 imageUploadedContainer.style.display = 'block';
@@ -72,6 +108,7 @@ function Forum(){
             imagePreview.src = '';
             imagePreview.style.display = 'none';
         }
+
     }
 
     return(
@@ -92,16 +129,16 @@ function Forum(){
                             <br></br>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formBasicTitle">
-                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
+                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title" onChange={handleTitleChange}/>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicContent">
-                                    <Form.Control as='textarea' className='contentInput' type="content" placeholder="Text (Optional)"/>
+                                    <Form.Control as='textarea' className='contentInput' type="content" placeholder="Text (Optional)" onChange={handleContentChange}/>
                                 </Form.Group>
+                                <hr></hr>
+                                <Container>
+                                    <Button id='0' type='submit' className='createPost'  onClick={(event) => handleSubmit(event, '0')}>Post</Button>
+                                </Container>
                             </Form>
-                            <hr></hr>
-                            <Container>
-                                <Button type='submit' className='createPost'>Post</Button>
-                            </Container>
                             <br></br>
                         </Container>
                     </Tab>
@@ -111,12 +148,12 @@ function Forum(){
                             <br></br>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formBasicTitle">
-                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title"/>
+                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title" onChange={handleTitleChange}/>
                                 </Form.Group>
                                 <Form.Group className="formUpload mb-3" controlId="formBasicImage" id='formUpload'>
                                     <div id='imageToUploadContainer'> 
-                                        <label for="file-upload" class="custom-file-upload">
-                                            <i class="fa fa-cloud-upload"></i> Upload Images
+                                        <label for="file-upload" className="custom-file-upload">
+                                            <i className="fa fa-cloud-upload"></i> Upload Images
                                         </label>
                                         <input id="file-upload" type="file" onChange={event => previewImage(event)}/>
                                     </div>
@@ -126,7 +163,7 @@ function Forum(){
                                 </Form.Group>
                                 <hr></hr>
                                 <Container>
-                                    <Button type='submit' className='createPost'>Post</Button>
+                                    <Button id='1' type='submit' className='createPost' onClick={(event) => handleSubmit(event, '1')}>Post</Button>
                                 </Container>
                             </Form>
                             <br></br>
