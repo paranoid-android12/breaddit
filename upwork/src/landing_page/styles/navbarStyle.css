@@ -56,6 +56,12 @@ body{
     font-weight: 600;
     letter-spacing: 0.01rem;
     font-size: 0.98rem;
+    cursor: pointer;
+}
+
+.loginButton:hover{
+    background-color: rgb(150,41,0);
+    transition: 0.2s;
 }
 
 .searchInput{

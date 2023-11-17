@@ -1,7 +1,10 @@
 import {Nav, Navbar, NavDropdown, Container, Row, Col} from 'react-bootstrap';
 import '../styles/navbarStyle.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 function TopNav(){
+    const navigate = useNavigate();
+
     return(
         <div className='navFollower'>
             <Navbar expand="lg" className='mainNav'>
@@ -13,7 +16,7 @@ function TopNav(){
                             <input className='searchInput' type="search" placeholder='Search Breaddit'></input>
                     </form>
 
-                    <div className='loginButton'>Log In</div>
+                    <div onClick={() => navigate('../Login.js')} className='loginButton'>Log In</div>
                 </Container>    
             </Navbar>
         </div>
