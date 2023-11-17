@@ -21,17 +21,28 @@ function Login() {
         setPassword(event.target.value);
     }
 
+
+
     async function handleSubmit(event){
         event.preventDefault();
         let accountData = new FormData();
         accountData.append('username', username);
         accountData.append('password', password);
 
-        await axios.post(url, accountData)
-        .then(response => alert(response.data))
-        .catch(error => alert(error.message));
+        await axios.post(url, accountData, {withCredentials: true})
+        .then(response => {
+            if(response.data == '200'){
+                navigate('../Timeline.js');
+            }
+            else{
+                alert('Something went wrong.');
+                setUsername('');
+                setPassword('');
+            }
+        })
+        .catch(error => console.log(error.message));
 
-        navigate('../Timeline.js');
+        
     }
     
     console.log(username, '     ', password);
@@ -46,11 +57,11 @@ function Login() {
                         <hr></hr>
                         <Form >
                             <Form.Group controlId="formUsername">
-                                <Form.Control as='input' className='usernameInput' type="username" placeholder="Username" onChange={handleUsernameChange}/>
+                                <Form.Control as='input' className='usernameInput' type="username" value={username} placeholder="Username" onChange={handleUsernameChange}/>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="formPassword">
-                                <Form.Control as='input' className='usernameInput' type="password" placeholder="Password" onChange={handlePasswordChange}/>
+                                <Form.Control as='input' className='usernameInput' type="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
                             </Form.Group>
                             <hr></hr>
                             <p><a className='blue'>Forgot</a> your username and password?</p>
