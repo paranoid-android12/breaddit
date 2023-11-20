@@ -84,3 +84,42 @@ body{
     background-color: rgb(#0A0A0A);
     background: #0A0A0A;
 }
+
+
+.userInfoBox{
+    border-radius: 5px;
+    border: 1px solid transparent;
+    height: 44px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.userInfoBox:hover{
+    border: 1px solid rgb(72,79,80);
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.userInfoMargin{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.username, .karmaCount{
+    margin: 0;
+    font-size: 0.71rem;
+}
+
+.karmaCount{
+    opacity: 80%;
+}
+
+.downArrow{
+    scale: 53%;
+    opacity: 50%;
+    float: right;
+}

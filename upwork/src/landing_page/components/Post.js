@@ -33,18 +33,21 @@ function PostBlock({username, title, content, date, type}){
                     {/* <p class='contentPost'>{content}</p> */}
                     <Content content={content} type={type}/>
                     <Container className='d-flex flex-row' style={{padding: '0px'}}>
-                        <div className='statPill d-flex'>
-                            <div className='statPillCont'>
-                                <img className='statPillImage' src='./timeline_assets/upvote.png'></img>
+                        <div className='statPillVote'>
+                            <div className='voteCont'>
+                                <img className='upvoteImage' src='./timeline_assets/arrowup.png'></img>
                             </div>
-                            <div className='statPillCont'>
-                                <img className='statPillImage' src='./timeline_assets/downvote.png'></img>
+                            <p className='voteCountDisplay'>12</p>
+                            <div className='downvoteCont'>
+                                <img className='downvoteImage' src='./timeline_assets/arrowdown.png'></img>
                             </div>
                         </div>
-                        <div className='statPill'>
-                            <div className='statPillCont'>
-                                <img className='statPillImage' src='./timeline_assets/comment.png'></img>
+
+                        <div className='statPillComment'>
+                            <div className='commentCont'>
+                                <img className='commentImage' src='./timeline_assets/comment.png'></img>
                             </div>
+                            <p className='commentCount'>57</p>
                         </div>
                     </Container>
                 </div>

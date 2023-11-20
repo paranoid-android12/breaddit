@@ -50,8 +50,9 @@ function Forum(){
         }
 
         // const url = 'https://wafflesaucer.alwaysdata.net'
-        const url = 'http://localhost:8080/upwork_server/connection.php'
+        const url = 'http://localhost:8080/upwork_server/root.php'
         let fData = new FormData();
+        fData.append('function', 'submitPost')
         fData.append('username', name);
         fData.append('title', title);
         fData.append('isImage', imageType)
@@ -72,16 +73,16 @@ function Forum(){
         }
 
         //Upload post object to main sql api
-        console.log('then this last');
         await axios.post(url, fData)
-        .then(response => alert(response.data))
+        .then(response => {
+            alert(response.data);
+            setName('admin');
+            setTitle('');
+            setContent('');
+            navigate('../Timeline.js');
+        })
         .catch(error => alert(error.message));
 
-        setName('admin');
-        setTitle('');
-        setContent('');
-
-        navigate('../Timeline.js')
     }
 
     function previewImage(event){

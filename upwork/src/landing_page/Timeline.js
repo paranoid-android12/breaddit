@@ -7,25 +7,29 @@ import ImageCard from './components/ImageCarousel';
 import axios from 'axios';
 import './styles/postStyle.css';
 import { Component, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Timeline(){
-    const url = 'http://localhost:8080/upwork_server/connection.php'
+    const navigate = useNavigate();
+    // if(document.cookie == ''){
+    //     navigate('../Login.js')
+    // }
+    const url = 'http://localhost:8080/upwork_server/root.php'
     const [post, setPost] = useState([]);
 
-
-    const hook = () => {
-        axios.get(url)
-        .then(response => setPost(response.data));
+    const postHook = () => {
+        axios.get(url, {params: {'function': 'fetchPost'}})
+        .then(response => {
+            setPost(response.data);
+        });
     }
       
-    useEffect(hook, [])
-
+    useEffect(postHook, [])
 
     return(
         <div>
-            <TopNav />
+            <TopNav/>
             <Container>
                 <Row>
                     <Col className='sideBar col-2 d-none d-lg-block'>

@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 function Login() {
-    const url = 'http://localhost:8080/upwork_server/login.php'
+    const url = 'http://localhost:8080/upwork_server/root.php'
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -26,6 +26,7 @@ function Login() {
     async function handleSubmit(event){
         event.preventDefault();
         let accountData = new FormData();
+        accountData.append('function', 'login');
         accountData.append('username', username);
         accountData.append('password', password);
 

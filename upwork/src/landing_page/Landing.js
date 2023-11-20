@@ -6,8 +6,6 @@ import './styles/landingStyle.css';
 function Landing(){
     return(
     <div>
-         {/* Top Navbar */}
-        <TopNav />
         <Container>
             <Row>
                 <Col lg={7} xs={12}>

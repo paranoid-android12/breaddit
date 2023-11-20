@@ -32,23 +32,75 @@ p{
     padding-bottom: 13px;
 }
 
-.statPill{
+
+
+.statPillComment{
+    width: 75px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: rgb(26,40,45);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.commentCont{
+    margin-left: 10px;
+}
+
+.statPillComment:hover{
+    background-color: rgb(41, 63, 71);
+    transition: 0.2s
+}
+
+.commentCount, .voteCountDisplay{
+    margin: 0;
+    font-size: 0.70rem;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.commentImage{
+    scale: 55%;
+}
+
+.statPillVote{
     width: 85px;
     height: 30px;
     border-radius: 50px;
     background-color: rgb(26,40,45);
     margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.statPillCont{
-    max-height: 100%;
-    width: 18px;
-    margin-left: 10px;
+.voteCont:hover, .downvoteCont:hover{
+    background-color: rgb(41, 63, 71);
+    transition: 0.2s;
+}
+
+.voteCont:hover .upvoteImage{
+    filter: opacity(0.5) drop-shadow(0 0 0 rgb(255, 68, 0));
+    transition: 0.2s;
+}
+
+.downvoteCont:hover .downvoteImage{
+    filter: opacity(0.5) drop-shadow(0 0 0 blue);
+    transition: 0.2s;
+}
+
+.voteCont, .downvoteCont{
+    /* background-color: aliceblue; */
+    height: 100%;
+    border-radius: 50%;
     overflow: hidden;
 }
 
-.statPillImage{
+.upvoteImage, .downvoteImage{
     max-width: 100%;
+    scale: 65%;
 }
 
 .userInfoPost{
