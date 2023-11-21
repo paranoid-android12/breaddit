@@ -2,20 +2,22 @@ import * as React from "react";
 import {Routes, Route} from 'react-router-dom';
 
 import Landing from './Landing.js';
-import Forum from './Forum';
+import Forum from './Forum.js';
 import Timeline from './Timeline.js';
 import Login from './Login.js';
 import Register from './Register.js';
+import PostContent from './PostContent.js';
 
 export default function App() {
     return(
         <div className="App">
             <Routes>
-                <Route path='/' element={<Landing/>}></Route>
-                <Route path='/Forum.js' element={<Forum/>}></Route>
-                <Route path='/Timeline.js' element={<Timeline/>}></Route>
-                <Route path='/Login.js' element={<Login/>}></Route>
-                <Route path='/Register.js' element={<Register/>}></Route>
+                <Route path='/' element={<Landing />} />
+                <Route path='/timeline' element={<Timeline />} />
+                <Route path='/timeline/forum' element={<Forum />} />
+                <Route path='/timeline/postcontent' element={<PostContent />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
         </div>
     )

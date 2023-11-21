@@ -1,7 +1,7 @@
 import {Container, Row} from 'react-bootstrap';
 import * as React from "react";
 import '../styles/postStyle.css';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 function Content({content, type}){
     if(type == 0){
@@ -23,12 +23,22 @@ function Content({content, type}){
     }
 }
 
-function PostBlock({username, title, content, date, type}){
+function PostBlock({subreddit, subredditImage, username, title, content, date, type}){
+    const navigate = useNavigate();
+
     return(
         <div>
-            <Container className='postBorder'>
+            <Container className='postBorder' onClick={() => navigate('../Timeline/PostContent')}>
                 <div className='postMargin'>
-                    <p class='userInfoPost'>Posted by u/{username} {date}</p>
+                    <Container className='postDetails d-flex column'>
+                        <div className='d-flex column align-items-center'>
+                            <div className='subredditImageCont'>
+                                <img className='subredditImage' src={subredditImage}></img>
+                            </div>
+                            <p className='subredditName'>r/{subreddit}</p>
+                        </div>
+                        <p class='userInfoPost'>Posted by u/{username} {date}</p>
+                    </Container>
                     <h1 class='titlePost'>{title}</h1>
                     {/* <p class='contentPost'>{content}</p> */}
                     <Content content={content} type={type}/>
@@ -61,7 +71,7 @@ function PostBlock({username, title, content, date, type}){
 function Post({ post }) {
     return (
             post.map((x, index) => (
-                <PostBlock key={x[0]} username={x[1]} title={x[2]} content={x[3]} date={x[4]} type={x[5]}/>
+                <PostBlock key={x[0]} subreddit={x[4]} subredditImage={x[5]} username={x[2]} title={x[6]} content={x[7]} date={x[8]} type={x[9]}/>
             ))
     );
 }

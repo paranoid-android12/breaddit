@@ -26,7 +26,7 @@ function TopNav({username, karma}){
                     <Navbar.Brand href="./" className='titleNav'>Breaddit</Navbar.Brand>
 
                     <form className='searchBar'>
-                            <img style={{scale: '45%'}} src='./timeline_assets/search_min.png'></img>
+                            <img style={{scale: '45%'}} src='/timeline_assets/search_min.png'></img>
                             <input className='searchInput' type="search" placeholder='Search Breaddit'></input>
                     </form>
 
@@ -35,7 +35,7 @@ function TopNav({username, karma}){
                             <p className='username'>{username}</p>
                             <p className='karmaCount'>{karma} Karma</p>
                         </div>
-                        <img src='./timeline_assets/down_arrow_min.png' className='downArrow'></img>
+                        <img src='/timeline_assets/down_arrow_min.png' className='downArrow'></img>
                     </div>
 
                     {/* <UserComp/> */}
