@@ -27,9 +27,9 @@ function Forum(){
 
     function imageProcess(content, name){
         console.log(content, name)
-        const url = 'http://localhost:8080/upwork_server/image_parser.php'
+        const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
         let iData = new FormData();
-
+        iData.append('function', 'image_parser');
         iData.append('baseString', content);
         iData.append('name', name);
 
@@ -50,7 +50,7 @@ function Forum(){
         }
 
         // const url = 'https://wafflesaucer.alwaysdata.net'
-        const url = 'http://localhost:8080/upwork_server/root.php'
+        const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
         let fData = new FormData();
         fData.append('function', 'submitPost')
         fData.append('username', name);
@@ -73,13 +73,13 @@ function Forum(){
         }
 
         //Upload post object to main sql api
-        await axios.post(url, fData)
+        await axios.post(url, fData, {withCredentials: true})
         .then(response => {
-            alert(response.data);
+            console.log(response.data);
             setName('admin');
             setTitle('');
             setContent('');
-            navigate('../Timeline.js');
+            navigate('../timeline');
         })
         .catch(error => alert(error.message));
 
@@ -119,6 +119,20 @@ function Forum(){
             <Container className='mainCont'>
                 <h3>Create a post</h3>
                 <hr></hr>
+                <Container className='subredditSelect'>
+                    <Row className='align-items-center'>
+                        <Col className='col-2'>
+                            <div className='subredditImagePlc'>
+                                <img src=''></img>
+                            </div>
+                        </Col>
+                        <Col className='col-10  d-none d-lg-block'>
+                            <p className='subredditText'>Choose a Subreddit</p>
+                        </Col>
+                    </Row>
+                    <img src='/timeline_assets/down_arrow_min.png' className='downImageSubreddit'></img>
+                </Container>
+                <br></br>
                 <Tabs
                 defaultActiveKey="post"
                 id="uncontrolled-tab-example"

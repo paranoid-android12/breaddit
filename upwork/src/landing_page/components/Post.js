@@ -28,14 +28,14 @@ function PostBlock({subreddit, subredditImage, username, title, content, date, t
 
     return(
         <div>
-            <Container className='postBorder' onClick={() => navigate('../Timeline/PostContent')}>
+            <Container className='postBorder' onClick={() => navigate('../timeline/postcontent')}>
                 <div className='postMargin'>
                     <Container className='postDetails d-flex column'>
                         <div className='d-flex column align-items-center'>
                             <div className='subredditImageCont'>
                                 <img className='subredditImage' src={subredditImage}></img>
                             </div>
-                            <p className='subredditName'>r/{subreddit}</p>
+                            <p className='subredditName' onClick={() => navigate('../login')}>r/{subreddit}</p>
                         </div>
                         <p class='userInfoPost'>Posted by u/{username} {date}</p>
                     </Container>
@@ -45,17 +45,17 @@ function PostBlock({subreddit, subredditImage, username, title, content, date, t
                     <Container className='d-flex flex-row' style={{padding: '0px'}}>
                         <div className='statPillVote'>
                             <div className='voteCont'>
-                                <img className='upvoteImage' src='./timeline_assets/arrowup.png'></img>
+                                <img className='upvoteImage' src='/timeline_assets/arrowup.png'></img>
                             </div>
                             <p className='voteCountDisplay'>12</p>
                             <div className='downvoteCont'>
-                                <img className='downvoteImage' src='./timeline_assets/arrowdown.png'></img>
+                                <img className='downvoteImage' src='/timeline_assets/arrowdown.png'></img>
                             </div>
                         </div>
 
                         <div className='statPillComment'>
                             <div className='commentCont'>
-                                <img className='commentImage' src='./timeline_assets/comment.png'></img>
+                                <img className='commentImage' src='/timeline_assets/comment.png'></img>
                             </div>
                             <p className='commentCount'>57</p>
                         </div>

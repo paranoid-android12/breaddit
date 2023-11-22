@@ -7,14 +7,14 @@ import axios from 'axios';
 
 
 function Login() {
-    const url = 'http://localhost:8080/upwork_server/root.php'
-    const [username, setUsername] = useState('');
+    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
     
-    function handleUsernameChange(event){
-        setUsername(event.target.value);
+    function handleEmailChange(event){
+        setEmail(event.target.value);
     }
 
     function handlePasswordChange(event){
@@ -27,17 +27,18 @@ function Login() {
         event.preventDefault();
         let accountData = new FormData();
         accountData.append('function', 'login');
-        accountData.append('username', username);
+        accountData.append('email', email);
         accountData.append('password', password);
 
         await axios.post(url, accountData, {withCredentials: true})
         .then(response => {
+            console.log(response.data);
             if(response.data == '200'){
-                navigate('../Timeline.js');
+                navigate('../timeline');
             }
             else{
                 alert('Something went wrong.');
-                setUsername('');
+                setEmail('');
                 setPassword('');
             }
         })
@@ -46,7 +47,7 @@ function Login() {
         
     }
     
-    console.log(username, '     ', password);
+    console.log(email, '     ', password);
     return (
         <div>
             <TopNav/>
@@ -58,14 +59,14 @@ function Login() {
                         <hr></hr>
                         <Form >
                             <Form.Group controlId="formUsername">
-                                <Form.Control as='input' className='usernameInput' type="username" value={username} placeholder="Username" onChange={handleUsernameChange}/>
+                                <Form.Control as='input' className='usernameInput' type="email" value={email} placeholder="Email" onChange={handleEmailChange}/>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="formPassword">
                                 <Form.Control as='input' className='usernameInput' type="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
                             </Form.Group>
                             <hr></hr>
-                            <p><a className='blue'>Forgot</a> your username and password?</p>
+                            <p><a className='blue'>Forgot</a> your email and password?</p>
                             <p>New to Breaddit? <a className='blue'>Sign up.</a></p>
                             <br></br>
                             <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Log In</button>

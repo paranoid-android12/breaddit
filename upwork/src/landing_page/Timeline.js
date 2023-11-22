@@ -1,13 +1,15 @@
 import TopNav from './components/NavbarTop';
-import {Col, Row, Image, Button, Container, Sidebar} from 'react-bootstrap';
 import Post from './components/Post';
 import Suggest from './components/SubredditSuggestion';
 import ImageCard from './components/ImageCarousel';
 import Side from './components/SideBar';
+
+import {Col, Row, Image, Button, Container, Sidebar} from 'react-bootstrap';
+import {useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 import './styles/postStyle.css';
-import { Component, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 
 
 function Timeline(){
@@ -15,7 +17,7 @@ function Timeline(){
     // if(document.cookie == ''){
     //     navigate('../Login')
     // }
-    const url = 'http://localhost:8080/upwork_server/root.php'
+    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
     const [post, setPost] = useState([]);
 
     const postHook = () => {
@@ -30,7 +32,7 @@ function Timeline(){
     return(
         <div>
             <TopNav/>
-            <Container>
+            <Container className='absoluteTimelineContainer'>
                 <Row>
                     <Side/>
                     <Col className='timelineCont flex-row col-12 col-lg-10'>
@@ -43,7 +45,7 @@ function Timeline(){
                                 <br></br>
                                 <Container>
                                     <Row>
-                                        <Link className='createButton' to='../Timeline/Forum'>Create Post</Link>
+                                        <Link className='createButton' to='../timeline/forum'>Create Post</Link>
                                     </Row>
                                 </Container>
                                 <br></br>

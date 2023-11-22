@@ -128,3 +128,37 @@ input[type="file"] {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+.subredditImagePlc{
+    min-width: 26px;
+    min-height: 26px;    
+    max-width: 26px;
+    max-height: 26px;
+    border: 1px dashed rgb(72,79,80);
+    border-radius: 50%;
+}
+
+.downImageSubreddit{
+    opacity: 60%;
+    scale: 70%;
+}
+
+.subredditSelect{
+    border: 1px solid rgb(72,79,80);
+    border-radius: 5px;
+    background-color: rgb(19,31,35);
+    width: 100%;
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}   
+
+.subredditSelect:hover{
+    background-color: rgb(29, 42, 46);
+    transition: 0.2s;
+}
+
+.subredditText{
+    margin: 0;
+}

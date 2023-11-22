@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 function Register() {
-    const url = 'http://localhost:8080/upwork_server/register.php'
+    const url = 'http://localhost:8080/upwork_server/root.php'
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,6 +27,7 @@ function Register() {
 
     async function handleSubmit(event){
         let accountData = new FormData();
+        accountData.append('function', 'register');
         accountData.append('username', username);
         accountData.append('email', email);
         accountData.append('password', password);
