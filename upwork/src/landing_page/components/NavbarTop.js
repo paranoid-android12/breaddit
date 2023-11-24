@@ -23,7 +23,7 @@ function TopNav({username, karma}){
         <div className='navFollower'>
             <Navbar expand="lg" className='mainNav'>
                 <Container>
-                    <Navbar.Brand href="./" className='titleNav'>Breaddit</Navbar.Brand>
+                    <Navbar.Brand href="/timeline" className='titleNav'>Breaddit</Navbar.Brand>
 
                     <form className='searchBar'>
                             <img style={{scale: '45%'}} src='/timeline_assets/search_min.png'></img>

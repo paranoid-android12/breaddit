@@ -1,17 +1,51 @@
-import { useState } from 'react';
-import {Container, Button, Form, Row, Col, Tabs, Tab} from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import {Container, Button, Form, Row, Col, Tabs, Tab, Dropdown} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import TopNav from './components/NavbarTop.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/forumStyle.css';
 
+function SubredditForum({id, name, src, change}){
+    return(
+        <div className='subredditDropMargin d-flex col' onClick={() => change(id)}>
+            <div className='subredditImagePlc'>
+                <img className='subredditImageForum' src={src}></img>
+            </div>
+            <p className='subredditDropName'>r/{name}</p>
+        </div>
+    )
+}
+
+function SubredditIter({subredditList, change}){
+    return(
+        subredditList.map((x, index) => (
+            <SubredditForum id={x[0]} name={x[1]} src={x[5]} change={change}/>
+        ))
+    );
+}
 
 function Forum(){
     const [name, setName] = useState('admin');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [selectedSubreddit, setSelectedSubreddit] = useState('');
+    const [subredditList, setSubredditList] = useState('');
     const navigate = useNavigate();
+
+    const [subreddit, setSubreddit] = useState([]);
+    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+
+    const postHook = () => {
+        axios.get(url, {params: {'function': 'fetchSubreddit'}})
+        .then(response => {
+            console.log(response.data)
+            setSubredditList(response.data);
+        });
+    }
+    useEffect(postHook, [])
+    
 
     function handleNameChange(event) {
         setName(event.target.value);
@@ -23,7 +57,13 @@ function Forum(){
 
     function handleContentChange(event) {
         setContent(event.target.value);
-    }  
+    } 
+
+    function handleSubredditChange(id) {
+        setSelectedSubreddit(id);
+        console.log("Selected: ", id);
+    }
+
 
     function imageProcess(content, name){
         console.log(content, name)
@@ -56,6 +96,7 @@ function Forum(){
         fData.append('username', name);
         fData.append('title', title);
         fData.append('isImage', imageType)
+        fData.append('subreddit', selectedSubreddit);
         
         if(imageType === '1'){
             //Save uploaded image, and declare the post content as the image file path
@@ -119,7 +160,27 @@ function Forum(){
             <Container className='mainCont'>
                 <h3>Create a post</h3>
                 <hr></hr>
-                <Container className='subredditSelect'>
+                <Dropdown className='subredditSelectInvBorder'>
+                    <Dropdown.Toggle className='subredditSelectCont d-flex align-items-center' variant="success" id="dropdown-basic">
+                        <Row className='align-items-center'>
+                            <Col className='col-2'>
+                                <div className='subredditImagePlc'>
+                                    <img src=''></img>
+                                </div>
+                            </Col>
+                            <Col className='col-10  d-none d-lg-block'>
+                                <p className='subredditText'>Choose a Subreddit</p>
+                            </Col>
+                        </Row>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className='dropdownPadding'>
+                        <Dropdown.Item href="#/action-1" className='subredditListContainerForm'>
+                            <SubredditIter subredditList={subredditList} change={handleSubredditChange}></SubredditIter>
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                {/* <Container className='subredditSelect'>
                     <Row className='align-items-center'>
                         <Col className='col-2'>
                             <div className='subredditImagePlc'>
@@ -131,7 +192,7 @@ function Forum(){
                         </Col>
                     </Row>
                     <img src='/timeline_assets/down_arrow_min.png' className='downImageSubreddit'></img>
-                </Container>
+                </Container> */}
                 <br></br>
                 <Tabs
                 defaultActiveKey="post"

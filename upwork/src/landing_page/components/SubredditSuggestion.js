@@ -6,8 +6,9 @@ import * as React from "react";
 import '../styles/postStyle.css';
 
 function SuggestIter({id, name, uploads, src}){
+    let url = '../timeline/r/' + name;
     return(
-        <Link to='../timeline/r/subreddit'  style={{color: 'inherit', textDecoration: 'inherit' }}>
+        <Link to={url}  style={{color: 'inherit', textDecoration: 'inherit' }}>
             <Container className='suggestionBox'>
                 <div className='imageCircle'>
                     <img className='imageMain' src={src}></img>

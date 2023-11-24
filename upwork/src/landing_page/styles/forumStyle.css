@@ -17,6 +17,42 @@ h3{
     color: rgb(129,131,132);
 }
 
+.subredditListContainerForm{
+    background-color: rgb(19,31,35);
+    padding: 0;
+}
+
+.dropdownPadding{
+    background-color: rgb(19,31,35);
+    padding-left: 15px;
+    padding-right: 10px;
+    width: 50%;
+}
+
+.subredditListContainerForm:hover{
+    background-color: rgb(19,31,35);
+    padding: 0;
+}
+
+.subredditDropMargin{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.subredditDropMargin:hover{
+    background-color: rgb(34,50,55);
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.subredditDropName{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    margin-left: 10px;
+    font-size: 0.8rem;
+}
+
 .custom-tabs .nav-link:hover{
     border-radius: 0;
     background-color: rgb(34,50,55);
@@ -27,6 +63,7 @@ h3{
     border-bottom-color: rgb(72,79,80);
     color: rgb(129,131,132);
 }
+
 .custom-tabs .nav-link.active{
     border-radius: 0;
     background-color: rgb(34,50,55);
@@ -134,8 +171,19 @@ input[type="file"] {
     min-height: 26px;    
     max-width: 26px;
     max-height: 26px;
+    margin-left: 10px;
     border: 1px dashed rgb(72,79,80);
     border-radius: 50%;
+    overflow: hidden;
+}
+
+.subredditImageForum{
+    width: 100%;
+    height: 100%;
+    opacity: 80%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
 }
 
 .downImageSubreddit{
@@ -143,21 +191,31 @@ input[type="file"] {
     scale: 70%;
 }
 
-.subredditSelect{
+.subredditSelectInvBorder{
+    width:100%
+}
+
+.subredditSelectCont{
+    width: 50%;
+    background-color: rgb(19,31,35);
     border: 1px solid rgb(72,79,80);
     border-radius: 5px;
-    background-color: rgb(19,31,35);
-    width: 100%;
-    height: 43px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}   
-
-.subredditSelect:hover{
-    background-color: rgb(29, 42, 46);
-    transition: 0.2s;
 }
+
+.dropdown-toggle:hover, .dropdown-toggle:focus{
+    width: 50%;
+    background-color: rgb(31, 51, 57) !important;
+    border: 1px solid rgb(72,79,80) !important;
+    box-shadow: none !important;
+    border-radius: 5px;
+}
+
+
+
+
 
 .subredditText{
     margin: 0;
