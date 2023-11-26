@@ -1,11 +1,11 @@
 import {Container, Row} from 'react-bootstrap';
-import {useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {useEffect, useState } from 'react';
 import axios from 'axios';
 import * as React from "react";
 import '../styles/postStyle.css';
 
-function SuggestIter({id, name, uploads, src}){
+function SuggestIter({name, uploads, src}){
     let url = '../timeline/r/' + name;
     return(
         <Link to={url}  style={{color: 'inherit', textDecoration: 'inherit' }}>
@@ -26,19 +26,19 @@ function SuggestIter({id, name, uploads, src}){
 function SubIterate({subreddit}){
     return(
         subreddit.map((x, index) => (
-            <SuggestIter id={x[0]} name={x[1]} uploads={26} src={x[5]}/>
+            <SuggestIter key={x[0]} name={x[1]} uploads={26} src={x[5]}/>
         ))
     );
 }
 
 function Suggest() {
+    const navigate = useNavigate();
     const [subreddit, setSubreddit] = useState([]);
-    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
 
     const postHook = () => {
         axios.get(url, {params: {'function': 'fetchSubreddit'}})
         .then(response => {
-            console.log(response.data)
             setSubreddit(response.data);
         });
     }

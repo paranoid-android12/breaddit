@@ -7,7 +7,7 @@ function Content({content, type}){
     if(type == 0){
         return(
             <div>
-                <p class='contentPost'>{content}</p>
+                <p className='contentPost'>{content}</p>
             </div>
         )
     }
@@ -37,10 +37,9 @@ function PostBlock({subreddit, subredditImage, username, title, content, date, t
                             </div>
                             <p className='subredditName' onClick={() => navigate('../login')}>r/{subreddit}</p>
                         </div>
-                        <p class='userInfoPost'>Posted by u/{username} {date}</p>
+                        <p className='userInfoPost'>Posted by u/{username} {date}</p>
                     </Container>
-                    <h1 class='titlePost'>{title}</h1>
-                    {/* <p class='contentPost'>{content}</p> */}
+                    <h1 className='titlePost'>{title}</h1>
                     <Content content={content} type={type}/>
                     <Container className='d-flex flex-row' style={{padding: '0px'}}>
                         <div className='statPillVote'>

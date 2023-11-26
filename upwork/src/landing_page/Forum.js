@@ -35,7 +35,7 @@ function Forum(){
     const navigate = useNavigate();
 
     const [subreddit, setSubreddit] = useState([]);
-    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
 
     const postHook = () => {
         axios.get(url, {params: {'function': 'fetchSubreddit'}})
@@ -67,7 +67,7 @@ function Forum(){
 
     function imageProcess(content, name){
         console.log(content, name)
-        const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+        const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
         let iData = new FormData();
         iData.append('function', 'image_parser');
         iData.append('baseString', content);
@@ -90,7 +90,7 @@ function Forum(){
         }
 
         // const url = 'https://wafflesaucer.alwaysdata.net'
-        const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+        const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
         let fData = new FormData();
         fData.append('function', 'submitPost')
         fData.append('username', name);
@@ -105,7 +105,6 @@ function Forum(){
                 fData.append('content', fileLoc);       
             } catch (error) {
                 console.log('Image handling went wrong: ', error);
-                return;   
             }
         }
         else{
@@ -180,19 +179,6 @@ function Forum(){
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                {/* <Container className='subredditSelect'>
-                    <Row className='align-items-center'>
-                        <Col className='col-2'>
-                            <div className='subredditImagePlc'>
-                                <img src=''></img>
-                            </div>
-                        </Col>
-                        <Col className='col-10  d-none d-lg-block'>
-                            <p className='subredditText'>Choose a Subreddit</p>
-                        </Col>
-                    </Row>
-                    <img src='/timeline_assets/down_arrow_min.png' className='downImageSubreddit'></img>
-                </Container> */}
                 <br></br>
                 <Tabs
                 defaultActiveKey="post"

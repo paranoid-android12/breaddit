@@ -14,7 +14,7 @@ import './styles/subreddit.css';
 function PostContent(){
 
     const {subreddit} = useParams();
-    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [post, setPost] = useState([]);
     const [profile, setProfile] = useState('');
     console.log("Subreddit Name: ", subreddit);

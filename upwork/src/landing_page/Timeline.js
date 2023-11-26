@@ -17,12 +17,13 @@ function Timeline(){
     // if(document.cookie == ''){
     //     navigate('../Login')
     // }
-    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [post, setPost] = useState([]);
 
     const postHook = () => {
         axios.get(url, {params: {'function': 'fetchPost'}})
         .then(response => {
+            console.log(response.data);
             setPost(response.data);
         });
     }

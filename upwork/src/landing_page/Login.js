@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 function Login() {
-    const url = 'http://localhost:8080/upwork_server/api/tunnel.php'
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -47,7 +47,6 @@ function Login() {
         
     }
     
-    console.log(email, '     ', password);
     return (
         <div>
             <TopNav/>
