@@ -1,0 +1,68 @@
+.pc_postImageCont{
+    min-height: 40px;
+    min-width: 40px;
+    max-height: 40px;
+    max-width: 40px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.pc_userInf{
+    padding: 0;
+}
+
+.pc_postImageContainer{
+    border-radius: 15px;
+    border: 1px solid rgb(72,79,80);
+    /* max-width: 98%; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.pc_postImage{
+    width: 100%;
+}
+
+.pc_subredditName, .pc_username{
+    font-size: 0.7rem;
+    margin: 0;
+}
+
+.pc_subredditName{
+    color: white;
+    font-weight: 700;
+}
+
+.pc_username{
+    color: white;
+    opacity: 80%;
+}
+
+.pc_title{
+    font-size: 1.8rem;
+}
+
+.pc_content{
+    opacity: 90%;
+}
+
+.pc_submitComment{
+    border-radius: 50px;
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+.pc_submitComment:hover{
+    border: 1px solid white;
+    background-color: rgb(34,50,55);
+    transition: 0.2s;
+}
+
+
+
+.pc_container{
+    padding-left: 25px;
+}

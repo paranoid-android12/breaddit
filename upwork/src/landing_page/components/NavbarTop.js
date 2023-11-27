@@ -1,23 +1,30 @@
 import {Nav, Navbar, NavDropdown, Container, Row, Col} from 'react-bootstrap';
 import '../styles/navbarStyle.css';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect,useState } from 'react';
+import Timeline from '../Timeline';
 
-// function UserComp(){
-//     const navigate = useNavigate();
-//     if(){
-//         return(
-//             <div>asdfasdf</div>
-//         )
-//     }
-//     else{
-//         return(
-//             <div onClick={() => navigate('../Login.js')} className='loginButton'>Log In</div>
-//         )
-//     }
-// }
+function TopNav(){
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
+    let fData = new FormData();
+    fData.append('function', 'fetchUserData')
 
-function TopNav({username, karma}){
-    
+    const [username, setUsername] = useState('');
+    const [karma, setKarma] = useState();
+
+    //Upload post object to main sql api
+    const fetchUserdata = () => {
+
+        axios.post(url, fData, {withCredentials: true})
+        .then(response => {
+                setUsername(response.data.username);
+                setKarma(response.data.karma);
+        })
+        .catch(error => alert(error.message));
+    }
+
+    useEffect(fetchUserdata, []);
 
     return(
         <div className='navFollower'>
@@ -32,13 +39,11 @@ function TopNav({username, karma}){
 
                     <div className='userInfoBox'>
                         <div className='userInfoMargin'>
-                            <p className='username'>{username}</p>
+                            <p className='username'>u/{username}</p>
                             <p className='karmaCount'>{karma} Karma</p>
                         </div>
                         <img src='/timeline_assets/down_arrow_min.png' className='downArrow'></img>
                     </div>
-
-                    {/* <UserComp/> */}
                 </Container>    
             </Navbar>
         </div>

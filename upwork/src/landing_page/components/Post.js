@@ -23,12 +23,14 @@ function Content({content, type}){
     }
 }
 
-function PostBlock({subreddit, subredditImage, username, title, content, date, type}){
+function PostBlock({id, subreddit, subredditImage, username, title, content, date, type}){
     const navigate = useNavigate();
 
+    let url = '../timeline/comments/' + id;
+
     return(
-        <div>
-            <Container className='postBorder' onClick={() => navigate('../timeline/postcontent')}>
+        <Link to={url} style={{color: 'inherit', textDecoration: 'inherit' }}>
+            <Container className='postBorder'>
                 <div className='postMargin'>
                     <Container className='postDetails d-flex column'>
                         <div className='d-flex column align-items-center'>
@@ -62,7 +64,7 @@ function PostBlock({subreddit, subredditImage, username, title, content, date, t
                 </div>
             </Container>
             <hr></hr>
-        </div>
+        </Link>
     )
 }
 
@@ -70,7 +72,7 @@ function PostBlock({subreddit, subredditImage, username, title, content, date, t
 function Post({ post }) {
     return (
             post.map((x, index) => (
-                <PostBlock key={x[0]} subreddit={x[4]} subredditImage={x[5]} username={x[2]} title={x[6]} content={x[7]} date={x[8]} type={x[9]}/>
+                <PostBlock key={x[0]} id={x[0]} subreddit={x[4]} subredditImage={x[5]} username={x[2]} title={x[6]} content={x[7]} date={x[8]} type={x[9]}/>
             ))
     );
 }

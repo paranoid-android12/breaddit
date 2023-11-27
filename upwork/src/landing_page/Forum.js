@@ -27,13 +27,13 @@ function SubredditIter({subredditList, change}){
 }
 
 function Forum(){
+
     const [name, setName] = useState('admin');
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedSubreddit, setSelectedSubreddit] = useState('');
     const [subredditList, setSubredditList] = useState('');
     const navigate = useNavigate();
-
     const [subreddit, setSubreddit] = useState([]);
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
 
@@ -65,32 +65,32 @@ function Forum(){
     }
 
 
-    function imageProcess(content, name){
+    async function imageProcess(event, content, name){
+        event.preventDefault();
         console.log(content, name)
-        const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
         let iData = new FormData();
         iData.append('function', 'image_parser');
         iData.append('baseString', content);
         iData.append('name', name);
 
         //Converts base64 image data to image file via php API
-        return axios.post(url, iData)
-        .then(response => {return response.data})
+        return await axios.post(url, iData)
+        .then(response => {
+            event.preventDefault();
+            return response.data;
+        })
         .catch(error => alert(error.message))
         
     }
 
     async function handleSubmit(event, imageType){
         event.preventDefault();
-        console.log("Type: ", imageType);
-        console.log(name.length, title.length, content.length);
         if(name.length === 0 || title.length === 0 || content.length === 0){
             alert("Fill out all the required fields.");
             return;
         }
 
         // const url = 'https://wafflesaucer.alwaysdata.net'
-        const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
         let fData = new FormData();
         fData.append('function', 'submitPost')
         fData.append('username', name);
@@ -99,13 +99,10 @@ function Forum(){
         fData.append('subreddit', selectedSubreddit);
         
         if(imageType === '1'){
-            //Save uploaded image, and declare the post content as the image file path
-            try {
-                let fileLoc = await imageProcess(content, name);
-                fData.append('content', fileLoc);       
-            } catch (error) {
-                console.log('Image handling went wrong: ', error);
-            }
+            // Save uploaded image, and declare the post content as the image file path
+            let fileLoc = await imageProcess(event, content, name);
+            event.preventDefault();
+            fData.append('content', fileLoc);   
         }
         else{
             //Append normal text content.
@@ -115,15 +112,18 @@ function Forum(){
         //Upload post object to main sql api
         await axios.post(url, fData, {withCredentials: true})
         .then(response => {
-            console.log(response.data);
-            setName('admin');
+            event.preventDefault();
+            setName('');
             setTitle('');
             setContent('');
-            navigate('../timeline');
+            alert('Post has been successfully submitted!');
         })
         .catch(error => alert(error.message));
-
     }
+
+
+
+
 
     function previewImage(event){
         const fileInput = event.target;
@@ -151,7 +151,6 @@ function Forum(){
         }
 
     }
-
     return(
         <div>
             <TopNav/>
@@ -174,7 +173,7 @@ function Forum(){
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className='dropdownPadding'>
-                        <Dropdown.Item href="#/action-1" className='subredditListContainerForm'>
+                        <Dropdown.Item className='subredditListContainerForm'>
                             <SubredditIter subredditList={subredditList} change={handleSubredditChange}></SubredditIter>
                         </Dropdown.Item>
                     </Dropdown.Menu>
@@ -225,7 +224,7 @@ function Forum(){
                                 </Form.Group>
                                 <hr></hr>
                                 <Container>
-                                    <Button id='1' type='submit' className='createPost' onClick={(event) => handleSubmit(event, '1')}>Post</Button>
+                                    <Button id='0' type='submit' className='createPost' onClick={(event) => handleSubmit(event, '1')}>Post</Button>
                                 </Container>
                             </Form>
                             <br></br>
@@ -233,7 +232,6 @@ function Forum(){
                     </Tab>
 
                 </Tabs>
-                {/* <p><small>Please be mindful of breaddit's content policy and practice good breaddiquette.</small></p> */}
             </Container>
         </div>
     )

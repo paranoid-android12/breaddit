@@ -42,7 +42,7 @@ export default function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/timeline' element={<Timeline />} />
         <Route path='/timeline/forum' element={<Forum />} />
-        <Route path='/timeline/postcontent' element={<PostContent />} />
+        <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent />} />
         <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

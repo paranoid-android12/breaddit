@@ -112,6 +112,7 @@ body{
 .username, .karmaCount{
     margin: 0;
     font-size: 0.71rem;
+    color: white;
 }
 
 .karmaCount{
