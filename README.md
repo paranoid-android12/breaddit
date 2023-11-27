@@ -1,9 +1,9 @@
-# upwork-clone-ish
+# Breaddit
 
-A work marketplace website
+A social media clone of Reddit, the front page of the internet.
 
-created by Chris and Erlein
+created by Chris
 
 ## Requirements
 
-React, Html/Css, PHP (and coffee)
+Stack: [React, React-Bootstrap]
