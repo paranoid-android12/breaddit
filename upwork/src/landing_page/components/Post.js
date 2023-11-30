@@ -38,8 +38,34 @@ function UpvoteImage({upvoted}){
     }
 }
 
+function MenuDropdown({username, user}){
+    if(username === user.username){
+        return(
+            <div>
+                <Dropdown>
+                    <Dropdown.Toggle className='statPillMore' >
+                        <img className='moreImage' src='/timeline_assets/more.png'></img>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1">Edit Post</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Delete Post</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+        )
+    }
+    else{
+        return(
+            <div>
+                
+            </div>
+        )
+    }
 
-function PostBlock({id, subreddit, subredditImage, username, title, content, date, type, vote, upvoted, user}){
+}
+
+
+function PostBlock({id, subreddit, subredditImage, username, title, content, date, type, vote, upvoted, user, post}){
     const navigate = useNavigate();
     const [isUpvoted, setIsUpvoted] = useState(upvoted);
     const [liveVote, setLiveVote] = useState(vote);
@@ -109,17 +135,7 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
                             </div>
                             
                         </div>
-                        <Dropdown>
-                            <Dropdown.Toggle className='statPillMore' >
-                                <img className='moreImage' src='/timeline_assets/more.png'></img>
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        <MenuDropdown username={username} user={user}/>
                     </Container>
                     <h1 className='titlePost'>{title}</h1>
                     <Content content={content} type={type}/>
@@ -154,11 +170,15 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
 
 
 function Post({ user, post }) {
-    return (
+    try {
+        return (
             post.map((x, index) => (
-                <PostBlock key={x[0]} id={x[0]} subreddit={x[4]} subredditImage={x[5]} username={x[2]} title={x[6]} content={x[7]} date={x[8]} type={x[9]} vote={x[10]} upvoted={x[12]} user={user}/>
+                <PostBlock key={x[0]} id={x[0]} subreddit={x[4]} subredditImage={x[5]} username={x[2]} title={x[6]} content={x[7]} date={x[8]} type={x[9]} vote={x[10]} upvoted={x[12]} user={user} post={post}/>
             ))
-    );
+        );
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export default Post;

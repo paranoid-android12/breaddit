@@ -31,7 +31,7 @@ function PostContent({user}){
 
     return(
         <div>
-            <TopNav user={user}/>
+            <TopNav/>
             <Container>
                 <Row>
                     <Side/>

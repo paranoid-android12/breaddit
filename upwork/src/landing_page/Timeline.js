@@ -16,7 +16,7 @@ function Timeline({user, post}){
     const navigate = useNavigate();
     return(
         <div>
-            <TopNav user={user}/>
+            <TopNav/>
             <Container className='absoluteTimelineContainer'>
                 <Row>
                     <Side/>

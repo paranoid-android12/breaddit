@@ -3,8 +3,23 @@ import '../styles/navbarStyle.css';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 
-function TopNav({user}){
-    const [tempUser, setTempUser] = useState(user);
+function TopNav(){
+    const [user, setUser] = useState([]);
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php';
+    let mainSessionPackage = new FormData();
+    mainSessionPackage.append('function', 'fetchUserData')
+    
+    
+    const UserSesh = () => {
+        axios.post(url, mainSessionPackage, {withCredentials: true})
+        .then(response => {
+            setUser(response.data);
+        })
+        .catch(error => alert(error.message));
+    }
+
+    useEffect(UserSesh, []);
+
     return(
         <div className='navFollower'>
             <Navbar expand="lg" className='mainNav'>
@@ -18,8 +33,8 @@ function TopNav({user}){
 
                     <div className='userInfoBox'>
                         <div className='userInfoMargin'>
-                            <p className='username'>u/{tempUser.username}</p>
-                            <p className='karmaCount'>{tempUser.karma} Karma</p>
+                            <p className='username'>u/{user.username}</p>
+                            <p className='karmaCount'>{user.karma} Karma</p>
                         </div>
                         <img src='/timeline_assets/down_arrow_min.png' className='downArrow'></img>
                     </div>

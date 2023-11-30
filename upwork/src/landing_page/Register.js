@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 function Register() {
-    const url = 'http://localhost:8080/upwork_server/root.php'
+    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,6 +26,7 @@ function Register() {
     }
 
     async function handleSubmit(event){
+        event.preventDefault();
         let accountData = new FormData();
         accountData.append('function', 'register');
         accountData.append('username', username);
@@ -38,7 +39,7 @@ function Register() {
             setUsername('');
             setEmail('');
             setPassword('');
-            alert('Post has been successfully submitted!');
+            console.log(response.data);
         })
         .catch(error => alert(error.message));
     }

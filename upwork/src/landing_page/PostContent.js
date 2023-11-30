@@ -2,6 +2,7 @@ import TopNav from './components/NavbarTop.js';
 import Side from './components/SideBar.js';
 import Suggest from './components/SubredditSuggestion.js';
 import Comments from './components/Comments.js';
+import Post from './components/Post.js';
 import {Col, Row, Image, Button, Container, Sidebar, Form} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import {useEffect, useState } from 'react';
@@ -19,50 +20,32 @@ function Content({isImage, content}){
                 <div className='pc_postImageContainer'>
                     <img className='pc_postImage' src={content}></img>
                 </div>
+                <br></br>
             </div>
         )
     }
 }
 
-function PostComponent({post}){
-    return(
-        <div>
-            <br></br>
-            <Container className='pc_userInf d-flex'>
-                <div className='pc_postImageCont'>
-                    <img className='pc_postImage' src={post[0][5]}></img>
-                </div>
-                <Row style={{marginLeft: '0px', alignContent: 'center'}}>
-                    <p className='pc_subredditName'>r/{post[0][4]}</p>
-                    <p className='pc_username'>{post[0][2]}</p>
-                </Row>
-            </Container>
-            <br></br>
-            <h1 className='pc_title'>{post[0][6]}</h1>
-            <Content isImage={post[0][9]} content={post[0][7]}/>
-        </div>
-    )
-}
-
-
-function PostContent(){
+function PostContent({user, post}){
     const {id} = useParams();
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [sinPost, setSinPost] = useState([[]]);
     const [comment, setComment] = useState('');
 
+
+
     let singlePostPackage = new FormData();
     singlePostPackage.append('function', 'fetchPostSingle');
     singlePostPackage.append('id', id);
 
-    const getPostData = () => {
-        axios.get(url, {params: {'function': 'fetchPostSingle', 'id': id}})
+    async function getPostData(){
+        await axios.get(url, {params: {'function': 'fetchPostSingle', 'id': id}, withCredentials: true})
         .then(response => {
             setSinPost(response.data);
         });
     }
 
-    useEffect(getPostData, [])
+    useEffect(() => {getPostData()}, []);
 
     function handleCommentChange(event){
         setComment(event.target.value);
@@ -94,27 +77,9 @@ function PostContent(){
                     <Col className='flex-row col-12 col-lg-10'>
                         <Row>
                             <Col className='pc_container col-12 col-lg-8'>
-                                <PostComponent post={sinPost}/>
-                                <Container className='d-flex flex-row' style={{padding: '0px'}}>
-                                    <div className='statPillVote'>
-                                        <div className='voteCont'>
-                                            <img className='upvoteImage' src='/timeline_assets/arrowup.png'></img>
-                                        </div>
-                                        <p className='voteCountDisplay'>12</p>
-                                        <div className='downvoteCont'>
-                                            <img className='downvoteImage' src='/timeline_assets/arrowdown.png'></img>
-                                        </div>
-                                    </div>
-
-                                    <div className='statPillComment'>
-                                        <div className='commentCont'>
-                                            <img className='commentImage' src='/timeline_assets/comment.png'></img>
-                                        </div>
-                                        <p className='commentCount'>57</p>
-                                    </div>
-                                </Container>
-                                <hr></hr>
-                                <p>Comment as u/{sinPost[0][4]}</p>
+                                <br></br>
+                                <Post user={user} post={sinPost}/>
+                                <p>Comment as u/{sinPost[4]}</p>
                                 <p style={{opacity: '60%', marginBottom: '5px'}}>{comment.length}/300</p>
                                 <Form>
                                     <Form.Group className='mb-3'>

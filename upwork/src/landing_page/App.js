@@ -68,7 +68,7 @@ export default function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/timeline' element={<Timeline user={user} post={post}/>}/>
         <Route path='/timeline/forum' element={<Forum />} />
-        <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent />} />
+        <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent user={user} post={post}/>} />
         <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit user={user} />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
