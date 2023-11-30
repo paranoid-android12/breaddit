@@ -1,6 +1,7 @@
 import TopNav from './components/NavbarTop.js';
 import Side from './components/SideBar.js';
 import Suggest from './components/SubredditSuggestion.js';
+import Comments from './components/Comments.js';
 import {Col, Row, Image, Button, Container, Sidebar, Form} from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import {useEffect, useState } from 'react';
@@ -67,9 +68,7 @@ function PostContent(){
         setComment(event.target.value);
     }
 
-    function handleCommentSubmit(event){
-        event.preventDefault();
-        
+    function handleCommentSubmit(event){        
         let commentData = new FormData();
         commentData.append('function', 'submitComment')
         commentData.append('comment', comment);
@@ -123,6 +122,8 @@ function PostContent(){
                                     </Form.Group>
                                     <Button className='pc_submitComment' type='submit' onClick={(event) => handleCommentSubmit(event)}>Submit Comment</Button>
                                 </Form>
+                                <br></br>
+                                <Comments id={id}/>
                             </Col>
                             <Col className='suggestMainBox col-4 d-none d-lg-block'>
                                 <br></br>

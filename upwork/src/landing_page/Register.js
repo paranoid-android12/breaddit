@@ -33,12 +33,16 @@ function Register() {
         accountData.append('password', password);
 
         await axios.post(url, accountData)
-        .then(response => alert(response.data))
+        .then(response => {
+            event.preventDefault();
+            setUsername('');
+            setEmail('');
+            setPassword('');
+            alert('Post has been successfully submitted!');
+        })
         .catch(error => alert(error.message));
-
     }
-    
-    console.log(username, '  ', email, '  ', password);
+
     return (
         <div>
             <TopNav/>
@@ -50,15 +54,15 @@ function Register() {
                         <hr></hr>
                         <Form >
                             <Form.Group controlId="formUsername">
-                                <Form.Control as='input' className='usernameInput' type="username" placeholder="Username" onChange={handleUsernameChange}/>
+                                <Form.Control as='input' className='usernameInput' type="username" placeholder="Username" onChange={handleUsernameChange} value={username}/>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="formPassword">
-                                <Form.Control as='input' className='usernameInput' type="email" placeholder="Email" onChange={handleEmailChange}/>
+                                <Form.Control as='input' className='usernameInput' type="email" placeholder="Email" onChange={handleEmailChange} value={email}/>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="formUsername">
-                                <Form.Control as='input' className='usernameInput' type="password" placeholder="Password" onChange={handlePasswordChange}/>
+                                <Form.Control as='input' className='usernameInput' type="password" placeholder="Password" onChange={handlePasswordChange} value={password}/>
                             </Form.Group>
                             <hr></hr>
                             <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Log In</button>

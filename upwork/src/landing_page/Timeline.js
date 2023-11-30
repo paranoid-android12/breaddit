@@ -7,32 +7,16 @@ import Side from './components/SideBar';
 import {Col, Row, Image, Button, Container, Sidebar} from 'react-bootstrap';
 import {useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
 import './styles/postStyle.css';
+import Login from './Login.js';
 
 
-function Timeline(){
+function Timeline({user, post}){
     const navigate = useNavigate();
-    // if(document.cookie == ''){
-    //     navigate('../Login')
-    // }
-    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
-    const [post, setPost] = useState([]);
-
-    const postHook = () => {
-        axios.get(url, {params: {'function': 'fetchPost'}})
-        .then(response => {
-            console.log(response.data);
-            setPost(response.data);
-        });
-    }
-      
-    useEffect(postHook, [])
-
     return(
         <div>
-            <TopNav/>
+            <TopNav user={user}/>
             <Container className='absoluteTimelineContainer'>
                 <Row>
                     <Side/>
@@ -50,7 +34,7 @@ function Timeline(){
                                     </Row>
                                 </Container>
                                 <br></br>
-                                <Post post={post}/>
+                                <Post user={user} post={post}/>
                             </Col>
                             <Col className='suggestMainBox col-4 d-none d-lg-block'>
                                 <br></br>

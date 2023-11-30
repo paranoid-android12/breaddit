@@ -9,7 +9,7 @@ import './styles/forumStyle.css';
 
 function SubredditForum({id, name, src, change}){
     return(
-        <div className='subredditDropMargin d-flex col' onClick={() => change(id)}>
+        <div className='subredditDropMargin d-flex col' onClick={() => change(id, name, src)}>
             <div className='subredditImagePlc'>
                 <img className='subredditImageForum' src={src}></img>
             </div>
@@ -21,7 +21,7 @@ function SubredditForum({id, name, src, change}){
 function SubredditIter({subredditList, change}){
     return(
         subredditList.map((x, index) => (
-            <SubredditForum id={x[0]} name={x[1]} src={x[5]} change={change}/>
+            <SubredditForum key={x[0]} id={x[0]} name={x[1]} src={x[5]} change={change}/>
         ))
     );
 }
@@ -33,8 +33,9 @@ function Forum(){
     const [content, setContent] = useState('');
     const [selectedSubreddit, setSelectedSubreddit] = useState('');
     const [subredditList, setSubredditList] = useState('');
+    const [subreddit, setSubreddit] = useState('Choose a Subreddit');
+    const [src, setSrc] = useState('/subreaddit_image_assets/black.png');
     const navigate = useNavigate();
-    const [subreddit, setSubreddit] = useState([]);
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
 
     const postHook = () => {
@@ -59,9 +60,10 @@ function Forum(){
         setContent(event.target.value);
     } 
 
-    function handleSubredditChange(id) {
+    function handleSubredditChange(id, name, src) {
         setSelectedSubreddit(id);
-        console.log("Selected: ", id);
+        setSubreddit(name);
+        setSrc(src);
     }
 
 
@@ -160,16 +162,13 @@ function Forum(){
                 <hr></hr>
                 <Dropdown className='subredditSelectInvBorder'>
                     <Dropdown.Toggle className='subredditSelectCont d-flex align-items-center' variant="success" id="dropdown-basic">
-                        <Row className='align-items-center'>
-                            <Col className='col-2'>
+                        <div className='d-flex col align-items-center'>
                                 <div className='subredditImagePlc'>
-                                    <img src=''></img>
+                                    <img className='form_subredditImage' src={src}></img>
                                 </div>
-                            </Col>
-                            <Col className='col-10  d-none d-lg-block'>
-                                <p className='subredditText'>Choose a Subreddit</p>
-                            </Col>
-                        </Row>
+
+                                <p className='subredditText'>r/{subreddit}</p>
+                        </div>
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className='dropdownPadding'>

@@ -79,26 +79,69 @@ p{
     font-family: 'IBM Plex Sans', Arial, sans-serif;
 }
 
-
-
-.statPillComment{
-    width: 75px;
+.statPillVote{
+    width: 85px;
     height: 30px;
     border-radius: 50px;
     border: 1px solid rgb(72,79,80);
+    margin-right: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
-.commentCont{
-    margin-left: 10px;
+.statPillComment{
+    width: 55px;
+    height: 30px;
+    border-radius: 50px;
+    /* margin-right: 10px; */
+    border: 1px solid rgb(72,79,80);
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
 }
 
 .statPillComment:hover{
     background-color: rgb(41, 63, 71);
     transition: 0.2s
 }
+
+.statPillMore{
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.statPillMore:after{
+    display: none !important;
+}
+
+.statPillMore:hover, .statPillMore:active, .statPillMore:focus{
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgb(41, 63, 71);
+    transition: 0.2s
+}
+
+.moreImage{
+    scale: 45%;
+}
+
 
 .commentCount, .voteCountDisplay{
     margin: 0;
@@ -111,17 +154,6 @@ p{
     scale: 55%;
 }
 
-.statPillVote{
-    width: 85px;
-    height: 30px;
-    border-radius: 50px;
-    border: 1px solid rgb(72,79,80);
-    margin-right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .voteCont:hover, .downvoteCont:hover{
     background-color: rgb(41, 63, 71);
@@ -143,6 +175,18 @@ p{
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
+}
+
+.upvoteImageClicked{
+    filter: opacity(0.5) drop-shadow(0 0 0 rgb(255, 68, 0));
+    max-width: 100%;
+    scale: 65%;
+}
+
+.downvoteImageClicked{
+    filter: opacity(0.5) drop-shadow(0 0 0 blue);
+    max-width: 100%;
+    scale: 65%;
 }
 
 .upvoteImage, .downvoteImage{
@@ -224,6 +268,8 @@ p{
 .sideContent{
     border-radius: 10px;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .sideContent:hover{
@@ -231,6 +277,17 @@ p{
     background-color: rgb(34,50,55);
     border-radius: 10px;
     transition: 0.3s;
+}
+
+.sideContentText{
+    margin: 0;
+    padding: 0;
+}
+
+.sideIcon{
+    width: 22px;
+    height: 22px;
+    margin-left: 10px;
 }
 
 .suggestMainBox{
@@ -285,3 +342,6 @@ p{
     font-weight: 100;
     color: rgb(128, 128, 128);
 }
+
+
+

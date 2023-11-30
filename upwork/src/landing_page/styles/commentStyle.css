@@ -1,0 +1,55 @@
+.com_username, .com_content{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.com_username{
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+
+.com_content{
+    font-size: 0.8rem;
+}
+
+.com_statPillVote{
+    width: 70px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.com_voteCountDisplay{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.com_voteCont:hover, .com_downvoteCont:hover{
+    background-color: rgb(41, 63, 71);
+    transition: 0.2s;
+}
+
+.com_voteCont:hover .com_upvoteImage{
+    filter: opacity(0.5) drop-shadow(0 0 0 rgb(255, 68, 0));
+    transition: 0.2s;
+}
+
+.com_downvoteCont:hover .com_downvoteImage{
+    filter: opacity(0.5) drop-shadow(0 0 0 blue);
+    transition: 0.2s;
+}
+
+.com_voteCont, .com_downvoteCont{
+    /* background-color: aliceblue; */
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.com_upvoteImage, .com_downvoteImage{
+    max-width: 100%;
+    scale: 65%;
+}

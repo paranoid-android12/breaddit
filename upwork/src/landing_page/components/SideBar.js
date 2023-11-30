@@ -1,4 +1,5 @@
 import {Col} from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/postStyle.css';
 
 function Side(){
@@ -7,11 +8,13 @@ function Side(){
             <div className='sideBarStick'>
                 <br></br>
                 <ul className='nav nav-pills flex-column mb-auto'>
-                    <li className='sideContent nav-item'>
-                        <a className='nav-link text-white'>Home</a>
+                    <li className='sideContent nav-item d-flex col'>
+                        <img className='sideIcon' src='/timeline_assets/home.png'></img>
+                        <Link to='../timeline' className='nav-link text-white'>Home</Link>
                     </li>
-                    <li className='sideContent nav-item'>
-                        <a className='nav-link text-white'>Popular</a>
+                    <li className='sideContent nav-item d-flex col'>
+                        <img className='sideIcon' src='/timeline_assets/popular.png'></img>
+                        <Link className='nav-link text-white'>Popular</Link>
                     </li>
                     <hr></hr>
                     <li className='sideContent nav-item'>

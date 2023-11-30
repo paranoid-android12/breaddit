@@ -11,17 +11,17 @@ import './styles/postContentStyle.css';
 import './styles/subreddit.css';
 
 
-function PostContent(){
+function PostContent({user}){
 
     const {subreddit} = useParams();
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [post, setPost] = useState([]);
     const [profile, setProfile] = useState('');
-    console.log("Subreddit Name: ", subreddit);
 
     const postHook = () => {
-        axios.get(url, {params: {'function': 'fetchSubredditPost', 'name': subreddit}})
+        axios.get(url, {params: {'function': 'fetchSubredditPost', 'name': subreddit}, withCredentials: true})
         .then(response => {
+            console.log(response.data);
             setPost(response.data);
             setProfile(response.data[0][5]);
         });
@@ -31,7 +31,7 @@ function PostContent(){
 
     return(
         <div>
-            <TopNav/>
+            <TopNav user={user}/>
             <Container>
                 <Row>
                     <Side/>
@@ -53,7 +53,7 @@ function PostContent(){
                                         <Button className='joinSubreddit'>Join</Button>
                                     </div>
                                 </div>
-                                <Post post={post}/>
+                                <Post user={user} post={post}/>
                             </Col>
                             <Col className='suggestMainBox col-4 d-none d-lg-block'>
                                 <br></br>
