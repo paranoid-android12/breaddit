@@ -10,6 +10,24 @@ p{
     font-size: .9rem;
 }
 
+.mainTimelineContainer{
+    box-sizing: border-box;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.absoluteRow{
+    width: 100%;
+
+}
+
+.timelinePostCont{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
 .postBorder, .filter{
     max-width: 100%;
     border-radius: 10px;
@@ -73,11 +91,29 @@ p{
 
 .userInfoPost{
     margin: 0;
+    cursor: pointer;
     font-size: 0.8rem;
     color: rgb(129,131,132);
     font-weight: 300;
     font-family: 'IBM Plex Sans', Arial, sans-serif;
 }
+
+.userInfoPost:hover{
+    color: rgb(187, 193, 196);
+    transition: 0.2s;
+}
+
+.post_dateInfo{
+    margin: 0;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: rgb(129,131,132);
+    font-weight: 300;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+
 
 .statPillVote{
     width: 85px;
@@ -95,10 +131,8 @@ p{
     width: 55px;
     height: 30px;
     border-radius: 50px;
-    /* margin-right: 10px; */
     border: 1px solid rgb(72,79,80);
     display: flex;
-    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
 }
@@ -254,6 +288,7 @@ p{
 }
 
 .sideBar{
+    width: 12vw;
     border-right: 1px;
     border-color: rgb(72,79,80);
     border-right-style: solid;
@@ -265,11 +300,27 @@ p{
     top: 60px;
 }
 
+.sideBarText{
+    font-size: 0.8rem;
+    margin-left: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sideIcon{
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+
 .sideContent{
     border-radius: 10px;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-content: center;
 }
 
 .sideContent:hover{
@@ -284,11 +335,7 @@ p{
     padding: 0;
 }
 
-.sideIcon{
-    width: 22px;
-    height: 22px;
-    margin-left: 10px;
-}
+
 
 .suggestMainBox{
     position: -webkit-sticky;

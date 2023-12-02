@@ -1,0 +1,102 @@
+.user_profileMainCont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user_profileCont{
+    width: 80px;
+    height: 80px;
+    border: 5px solid white;
+    border-radius: 50%;
+    display: flex;
+    margin-right: 20px;
+}
+
+.user_bigUsername, .user_smallUsername{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.user_smallUsername{
+    opacity: 80%;
+    font-weight: 500;
+}
+
+.tab-underline-remove, .nav-link.active {
+    border-bottom: none !important;
+    border-color: none !important;
+    border-radius: 50px;
+    border: none !important;
+    color: white !important;
+}
+
+
+.tab-underline-remove, .nav-link:not(.active) {
+    color: white !important;
+    outline: none !important;
+  }
+
+.nav-link, .nav-link:focus, .nav-link:hover, .nav-link.active{
+    border: none !important;
+}
+
+
+.nav-link.active, .nav-link:focus{
+    background-color: rgb(51,70,76) !important;
+    transition: 0.2s;
+}
+
+.usercom_subredditName, .usercom_commentPostTitle, .usercom_userPoster, .usercom_userFrom{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    font-size: 0.7rem;
+}
+
+.usercom_userPoster, .usercom_userFrom{
+    font-weight: 900;
+}
+
+.usercom_userFrom{
+    margin-left: 5px;
+}
+
+.usercom_repliedto{
+    font-size: 0.7rem;
+    margin-left: 5px;
+    opacity: 60%;
+}
+
+.usercom_subredditName{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+.usercom_commentPostTitle{
+    margin: 0;
+    padding: 0;
+    margin-left: 15px;
+}
+
+.usercom_mainContent{
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.usercom_subredditImageCont{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
+    margin-right: 7px;
+}
+
+.usercom_subredditImage{
+    width: 100%;
+    object-fit: cover;
+}
+
+.usercom_mainCont{
+    align-items: center;
+}

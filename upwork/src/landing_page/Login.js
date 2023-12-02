@@ -65,7 +65,7 @@ function Login() {
                             </Form.Group>
                             <hr></hr>
                             <p><a className='blue'>Forgot</a> your email and password?</p>
-                            <p>New to Breaddit? <a className='blue'>Sign up.</a></p>
+                            <p>New to Breaddit? <a onClick={() => navigate('../register')} className='blue'>Sign up.</a></p>
                             <br></br>
                             <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Log In</button>
                         </Form>

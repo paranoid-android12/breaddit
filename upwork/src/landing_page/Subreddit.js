@@ -32,37 +32,39 @@ function PostContent({user}){
     return(
         <div>
             <TopNav/>
-            <Container>
-                <Row>
-                    <Side/>
-                    <Col className=' flex-row col-12 col-lg-10'>
-                        <Row>
-                            <Col className='mainStack col-12 col-lg-8'>
-                                <br></br>
-                                <div className='halfCircleCont'>
-                                    <div className='coverImageCont'>
-                                        <img className='coverImageActual'></img>
-                                    </div>
-                                    <div className='underCover d-flex'>
-                                        <div className='d-flex'>
-                                            <div className='circleHalfProfile'>
-                                                <img className='circleHalfActual' src={profile}></img>
-                                            </div>
-                                            <h1 className='mainSubredditName text-sm'>r/{subreddit}</h1>
+            <div className='d-flex justify-content-center'>
+                <div className='mainTimelineContainer'>
+                    <Row>
+                        <Side/>
+                        <Col className=' flex-row col-12 col-lg-10'>
+                            <Row>
+                                <Col className='mainStack col-12 col-lg-8'>
+                                    <br></br>
+                                    <div className='halfCircleCont'>
+                                        <div className='coverImageCont'>
+                                            <img className='coverImageActual'></img>
                                         </div>
-                                        <Button className='joinSubreddit'>Join</Button>
+                                        <div className='underCover d-flex'>
+                                            <div className='d-flex'>
+                                                <div className='circleHalfProfile'>
+                                                    <img className='circleHalfActual' src={profile}></img>
+                                                </div>
+                                                <h1 className='mainSubredditName text-sm'>r/{subreddit}</h1>
+                                            </div>
+                                            <Button className='joinSubreddit'>Join</Button>
+                                        </div>
                                     </div>
-                                </div>
-                                <Post user={user} post={post}/>
-                            </Col>
-                            <Col className='suggestMainBox col-4 d-none d-lg-block'>
-                                <br></br>
-                                <Suggest/>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-            </Container>
+                                    <Post user={user} post={post}/>
+                                </Col>
+                                <Col className='suggestMainBox col-4 d-none d-lg-block'>
+                                    <br></br>
+                                    <Suggest/>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
         </div>
     )
 }

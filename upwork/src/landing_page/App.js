@@ -7,6 +7,7 @@ import Login from './Login.js';
 import Register from './Register.js';
 import PostContent from './PostContent.js';
 import Subreddit from './Subreddit.js';
+import User from './User.js';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
@@ -31,7 +32,6 @@ export default function App() {
     await axios.post(url, rData, {withCredentials: true})
     .then(response => {
         if(response.data != "found"){
-          alert("Login session cannot be found.");
           navigate('../Login')
         }
     })
@@ -56,7 +56,7 @@ export default function App() {
 
   //Caller for all async processes
   useEffect(() => {
-    if (location.pathname !== '/Login') {
+    if (location.pathname !== '/Login' && location.pathname !== '/register') {
       Authen();
       UserSesh();
       PostFetch();
@@ -70,6 +70,7 @@ export default function App() {
         <Route path='/timeline/forum' element={<Forum />} />
         <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent user={user} post={post}/>} />
         <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit user={user} />} />
+        <Route path='/timeline/u/:user' component={User} element={<User/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>

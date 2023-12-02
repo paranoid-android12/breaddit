@@ -17,33 +17,35 @@ function Timeline({user, post}){
     return(
         <div>
             <TopNav/>
-            <Container className='absoluteTimelineContainer'>
-                <Row>
-                    <Side/>
-                    <Col className='timelineCont flex-row col-12 col-lg-10'>
-                        <br></br>
-                        <div className="overflow-container">
-                            <ImageCard/>
-                        </div>
-                        <Row>
-                            <Col className='col-12 col-lg-8'>
-                                <br></br>
-                                <Container>
-                                    <Row>
-                                        <Link className='createButton' to='../timeline/forum'>Create Post</Link>
-                                    </Row>
-                                </Container>
-                                <br></br>
-                                <Post user={user} post={post}/>
-                            </Col>
-                            <Col className='suggestMainBox col-4 d-none d-lg-block'>
-                                <br></br>
-                                <Suggest/>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-            </Container>
+            <div className='d-flex justify-content-center'>
+                <div className='mainTimelineContainer'>
+                    <Row className='absoluteRow'>
+                        <Side/>
+                        <Col className='timelineCont flex-row col-12 col-lg-10'>
+                            <br></br>
+                            <div className="overflow-container">
+                                <ImageCard/>
+                            </div>
+                            <Row>
+                                <Col className='timelinePostCont col-9'>
+                                    <br></br>
+                                    <Container>
+                                        <Row>
+                                            <Link className='createButton' to='../timeline/forum'>Create Post</Link>
+                                        </Row>
+                                    </Container>
+                                    <br></br>
+                                    <Post user={user} post={post}/>
+                                </Col>
+                                <Col className='suggestMainBox col-3 d-none d-lg-block'>
+                                    <br></br>
+                                    <Suggest/>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
         </div>
     )
 }

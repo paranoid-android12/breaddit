@@ -69,6 +69,7 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
     const navigate = useNavigate();
     const [isUpvoted, setIsUpvoted] = useState(upvoted);
     const [liveVote, setLiveVote] = useState(vote);
+    const userUrl = '../timeline/u/' + username;
     let url = '../timeline/comments/' + id;
     const surl = 'http://localhost:8080/upwork_server/api/controller/tunnel.php';
     let upData = new FormData();
@@ -131,7 +132,10 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
                             </div>
                             <div>
                                 <p className='subredditName'>r/{subreddit}</p>
-                                <p className='userInfoPost'>u/{username}   {date}</p>
+                                <div className='d-flex col'>
+                                    <p className='userInfoPost'  onClick={() => navigate(userUrl, {state:{userData: user}})}>u/{username}</p>
+                                    <p className='post_dateInfo'>{date}</p>
+                                </div>
                             </div>
                             
                         </div>
@@ -156,7 +160,6 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
                             <div className='commentCont'>
                                 <img className='commentImage' src='/timeline_assets/comment.png'></img>
                             </div>
-                            {/* <p className='commentCount'>57</p> */}
                         </div>
 
 

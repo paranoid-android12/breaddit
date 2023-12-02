@@ -87,10 +87,11 @@ body{
 
 
 .userInfoBox{
+    cursor: pointer;
     border-radius: 5px;
     border: 1px solid transparent;
     height: 44px;
-    width: 200px;
+    width: 250px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -104,15 +105,50 @@ body{
 
 .userInfoMargin{
     margin-left: 15px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.nav_dropdownBox{
+    background-color: rgb(11, 20, 22) !important;
+    border: 1px solid rgb(72,79,80) !important;
+    width: 250px;
+}
+
+.nav_dropItem{
+    color: white !important;
+    padding-left: 55px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.nav_myStuffs{
+    color: rgb(151, 151, 151) !important;
+    padding-left: 55px;
+    padding-top: 3px;
+    padding-bottom: 15px;
+}
+
+.nav_dropItem:hover{
+    background-color: rgb(34,50,55);
+    transition: 0.2s;
+}
+
+
+
+
 .username, .karmaCount{
     margin: 0;
     font-size: 0.71rem;
     color: white;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .karmaCount{
