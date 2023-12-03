@@ -26,7 +26,7 @@ function User(){
         });
     }
 
-    useEffect(uniqHook, [])
+    useEffect(uniqHook, [user])
 
 
 
@@ -41,9 +41,9 @@ function User(){
             });
         }
     
-        useEffect(postHook, [])
+        useEffect(postHook, [user])
         return(
-            <Post user={user} post={post}/>
+            <Post user={userData} post={post}/>
         )
     }
  
@@ -104,7 +104,7 @@ function User(){
             });
         }
     
-        useEffect(uppostHook, [uniqUser.username])
+        useEffect(uppostHook, [uniqUser.username, user])
         return(
             <Post user={userData} post={upPost}/>
         )
