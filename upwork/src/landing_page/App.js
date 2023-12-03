@@ -25,6 +25,7 @@ export default function App() {
 
   const [user, setUser] = useState([]);
   const [post, setPost] = useState([]);
+  
 
 
   //Find login session
@@ -66,7 +67,7 @@ export default function App() {
   return (
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/timeline' element={<Timeline user={user} post={post}/>}/>
+        <Route path='/timeline' element={<Timeline user={user} post={post} url={url}/>}/>
         <Route path='/timeline/forum' element={<Forum />} />
         <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent user={user} post={post}/>} />
         <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit user={user} />} />

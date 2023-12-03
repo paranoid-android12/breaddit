@@ -100,3 +100,64 @@
 .usercom_mainCont{
     align-items: center;
 }
+
+.user_sideBar{
+    width: 90%;
+    height: 100%;
+    background-color: rgb(4, 9, 10);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_inviBorder{
+    width: 88%;
+    height: 95%;
+}
+
+.user_upperBar{
+    margin-top: 5px;
+}
+
+.user_followBar{
+
+}
+
+.user_followButton{
+    height: 30px;
+    width: 70px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 69, 172);
+}
+
+.user_mainUsername{
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.user_followText{
+    font-family: sans-serif;
+    margin: 0;
+    font-weight: 600;
+}
+
+.user_count, .user_label{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.user_count{
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.user_label{
+    opacity: 70%;
+    font-weight: 100;
+    font-size: 0.75rem;
+}

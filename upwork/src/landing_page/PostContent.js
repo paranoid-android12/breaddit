@@ -71,33 +71,35 @@ function PostContent({user, post}){
     return(
         <div>
             <TopNav/>
-            <Container>
-                <Row>
-                    <Side/>
-                    <Col className='flex-row col-12 col-lg-10'>
-                        <Row>
-                            <Col className='pc_container col-12 col-lg-8'>
-                                <br></br>
-                                <Post user={user} post={sinPost}/>
-                                <p>Comment as u/{sinPost[4]}</p>
-                                <p style={{opacity: '60%', marginBottom: '5px'}}>{comment.length}/300</p>
-                                <Form>
-                                    <Form.Group className='mb-3'>
-                                        <Form.Control maxLength={300} as="textarea" type="content" className='contentInput' placeholder="What are your thoughts?" onChange={handleCommentChange}/>
-                                    </Form.Group>
-                                    <Button className='pc_submitComment' type='submit' onClick={(event) => handleCommentSubmit(event)}>Submit Comment</Button>
-                                </Form>
-                                <br></br>
-                                <Comments id={id}/>
-                            </Col>
-                            <Col className='suggestMainBox col-4 d-none d-lg-block'>
-                                <br></br>
-                                <Suggest/>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-            </Container>
+            <div className='d-flex justify-content-center'>
+                <div className='mainTimelineContainer'>
+                    <Row>
+                        <Side/>
+                        <Col className='flex-row col-12 col-lg-10'>
+                            <Row>
+                                <Col className='pc_container col-12 col-lg-8'>
+                                    <br></br>
+                                    <Post user={user} post={sinPost}/>
+                                    <p>Comment as u/{sinPost[4]}</p>
+                                    <p style={{opacity: '60%', marginBottom: '5px'}}>{comment.length}/300</p>
+                                    <Form>
+                                        <Form.Group className='mb-3'>
+                                            <Form.Control maxLength={300} as="textarea" type="content" className='contentInput' placeholder="What are your thoughts?" onChange={handleCommentChange}/>
+                                        </Form.Group>
+                                        <Button className='pc_submitComment' type='submit' onClick={(event) => handleCommentSubmit(event)}>Submit Comment</Button>
+                                    </Form>
+                                    <br></br>
+                                    <Comments id={id}/>
+                                </Col>
+                                <Col className='suggestMainBox col-4 d-none d-lg-block'>
+                                    <br></br>
+                                    <Suggest/>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
         </div>
     )
 }

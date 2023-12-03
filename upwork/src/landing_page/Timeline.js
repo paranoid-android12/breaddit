@@ -12,8 +12,9 @@ import './styles/postStyle.css';
 import Login from './Login.js';
 
 
-function Timeline({user, post}){
+function Timeline({user, post, url}){
     const navigate = useNavigate();
+
     return(
         <div>
             <TopNav/>
