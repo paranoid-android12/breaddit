@@ -93,7 +93,7 @@ function PostContent({user}){
                                     <br></br>
                                     <div className='halfCircleCont'>
                                         <div className='coverImageCont'>
-                                            <img className='coverImageActual'></img>
+                                            <img src={subredditInfo.subreddit_cover} className='coverImageActual'></img>
                                         </div>
                                         <div className='underCover d-flex'>
                                             <div className='d-flex'>

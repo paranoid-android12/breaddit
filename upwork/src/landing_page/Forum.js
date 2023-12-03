@@ -71,6 +71,7 @@ function Forum(){
         event.preventDefault();
         console.log(content, name)
         let iData = new FormData();
+        iData.append('from', 'post')
         iData.append('function', 'image_parser');
         iData.append('baseString', content);
         iData.append('name', name);

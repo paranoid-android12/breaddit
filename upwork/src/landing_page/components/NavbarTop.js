@@ -124,9 +124,48 @@ function TopNav(){
     
         }
 
-        function handleSubmit(event){
+        async function imageProcess(event, content, name, from){
             event.preventDefault();
-            console.log(subName, "   ", subDesc, "   ", subCover, "   ", subImg)
+            let iData = new FormData();
+            iData.append('from', from)
+            iData.append('function', 'image_parser');
+            iData.append('baseString', content);
+            iData.append('name', name);
+    
+            //Converts base64 image data to image file via php API
+            return await axios.post(url, iData)
+            .then(response => {
+                console.log(response.data);
+                return response.data;
+            })
+            .catch(error => alert(error.message))
+            
+        }
+
+        async function handleSubmit(event){
+            event.preventDefault();
+            let sData = new FormData();
+            sData.append('function', 'submitSubreddit');
+            sData.append('subName', subName);
+            sData.append('subDesc', subDesc);
+
+            if(subCover != ''){
+                console.log('Has Cover');
+                let coverLoc = await imageProcess(event, subCover, subName, 'cover');
+                sData.append('cover', coverLoc);
+            }
+
+            if(subImg != ''){
+                console.log('Has Profile')
+                let profLoc = await imageProcess(event, subImg, subName, 'subProfile');
+                sData.append('profile', profLoc);
+            }
+
+            await axios.post(url, sData, {withCredentials: true})
+            .then(response => {
+                alert('Subreddit has been successfully created!');
+            })
+            .catch(error => alert(error.message));
         }
 
         if(createToggled){       
