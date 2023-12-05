@@ -189,7 +189,7 @@ function TopNav(){
                                                 <input id="file-upload" type="file" onChange={event => previewImage(event)}/>
                                             </div>
                                             <div className='cs_formImageCont' id='imageUploadedContainer' style={{display: 'none'}}>
-                                                <img id='image-preview' className='cs_formImage' src='' alt='Uploaded Image'></img>
+                                                <img className='cs_formImage' id='image-preview'  src='' alt='Uploaded Image'></img>
                                             </div>
                                         </Form.Group>
                                     </Col>

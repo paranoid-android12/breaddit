@@ -13,6 +13,8 @@
     margin-right: 20px;
 }
 
+
+
 .user_bigUsername, .user_smallUsername{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -45,6 +47,12 @@
     background-color: rgb(51,70,76) !important;
     transition: 0.2s;
 }
+
+.user_timelineLeftCont{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
 
 .usercom_subredditName, .usercom_commentPostTitle, .usercom_userPoster, .usercom_userFrom{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -102,9 +110,9 @@
 }
 
 .user_sideBar{
-    width: 90%;
-    height: 100%;
+    width: 305px;
     background-color: rgb(4, 9, 10);
+    padding-top: 10px;
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -126,7 +134,7 @@
 
 .user_followButton{
     height: 30px;
-    width: 70px;
+    width: 85px;
     border-radius: 50px;
     display: flex;
     justify-content: center;
@@ -136,13 +144,19 @@
 
 .user_mainUsername{
     font-family: sans-serif;
-    font-size: 1rem;
-    font-weight: 900;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02rem;
+}
+
+.user_followPlus{
+    scale: 55%;
 }
 
 .user_followText{
     font-family: sans-serif;
     margin: 0;
+    padding-right: 10px;
     font-weight: 600;
 }
 
@@ -152,12 +166,55 @@
 }
 
 .user_count{
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.8rem;
 }
 
 .user_label{
     opacity: 70%;
     font-weight: 100;
+    font-size: 0.72rem;
+    letter-spacing: 0.02rem;
+}
+
+.ss_border{
+    background-color: rgb(4, 9, 10);
+    border-radius: 10px;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+}
+
+.ss_border:hover{
+    background-color: rgb(11, 20, 22);
+    transition: 0.2s;
+}
+
+.ss_imageCont{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.ss_image{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.ss_subName{
+    font-size: 0.88rem;
+    font-weight: 300;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.ss_subMemberCount{
+    margin: 0;
     font-size: 0.75rem;
+    opacity: 65%;
 }

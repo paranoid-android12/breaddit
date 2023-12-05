@@ -10,14 +10,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/userStyle.css';
 
 
+
+
 function User(){
     const {user} = useParams();
     const location = useLocation();
     const userData = location.state.userData;
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
-
     const [uniqUser, setUniqUser] = useState([]);
-
+    
+    //Fetch user data
     const uniqHook = () => {
         axios.get(url, {params: {'function': 'fetchUniqueUser', 'username': user}, withCredentials: true})
         .then(response => {
@@ -28,9 +30,7 @@ function User(){
 
     useEffect(uniqHook, [user])
 
-
-
-    
+    //Fetch post of user
     function UserPost(){
         const [post, setPost] = useState([]);
     
@@ -47,6 +47,7 @@ function User(){
         )
     }
  
+    //Fetch comment of user
     function CommentBlock({comment}){
         return(
             <Container>
@@ -92,6 +93,7 @@ function User(){
         }
     }
 
+    //Fetch upvoted post of user
     function UpvotedPost(){
         const [upPost, setUpPost] = useState([]);
         console.log(userData.user_ID, uniqUser.username)
@@ -110,6 +112,48 @@ function User(){
         )
     }
 
+    function SubComp({sub}){
+        return(
+            <div>
+                <div className='ss_border'>
+                    <div className='d-flex col align-items-center'>
+                        <div className='ss_imageCont'>
+                            <img className='ss_image' src={sub.subreddit_picture}></img>
+                        </div>
+                        <div>
+                            <h3 className='ss_subName'>r/{sub.name}</h3>
+                            <p className='ss_subMemberCount'>12 Members</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    function SubredditSubscribed(){
+        const [subscribedSub, setSubscribedSub] = useState([]);
+    
+        const subHook = () => {
+            axios.get(url, {params: {'function': 'fetchUserSubscription', 'user_ID': uniqUser.user_ID}, withCredentials: true})
+            .then(response => {
+                console.log(response.data);
+                setSubscribedSub(response.data);
+            });
+        }
+    
+        useEffect(subHook, [user])
+    
+        try {
+            return (
+                subscribedSub.map((x, index) => (
+                    <SubComp sub={x}/>
+                ))
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     return(
         <div>
@@ -120,11 +164,11 @@ function User(){
                         <Side/>
                         <Col className='col-12 col-lg-10'>
                             <Row>
-                                <Col className='mainStack col-8'>
+                                <Col className='user_timelineLeftCont col-8'>
                                     <br></br>
                                     <div className='user_profileMainCont'>
                                         <div className='user_profileCont'>
-                                            <img></img>
+                                            <img src={uniqUser.profile_image}></img>
                                         </div>
                                         <div>
                                             <h1 className='user_bigUsername'>{uniqUser.username}</h1>
@@ -161,6 +205,7 @@ function User(){
                                             </div>
                                             <div className='user_followBar'>
                                                 <div className='user_followButton'>
+                                                    <img className='user_followPlus' src='/timeline_assets/plus.png'></img>
                                                     <p className='user_followText'>Follow</p>
                                                 </div>
                                             </div>
@@ -178,6 +223,7 @@ function User(){
                                             </div>
                                             <hr style={{opacity: '15%'}}></hr>
                                             <p style={{opacity: '50%', fontFamily: 'sans-serif'}}>SUBREDDIT SUBSCRIPTIONS</p>
+                                            <SubredditSubscribed/>
                                         </div>
                                     </div>
                                 </Col>

@@ -89,7 +89,7 @@ function PostContent({user, post}){
                                         <Button className='pc_submitComment' type='submit' onClick={(event) => handleCommentSubmit(event)}>Submit Comment</Button>
                                     </Form>
                                     <br></br>
-                                    <Comments id={id}/>
+                                    <Comments id={id} user={user}/>
                                 </Col>
                                 <Col className='suggestMainBox col-4 d-none d-lg-block'>
                                     <br></br>

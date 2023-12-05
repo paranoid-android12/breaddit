@@ -5,6 +5,7 @@ import Post from './components/Post';
 import Suggest from './components/SubredditSuggestion';
 import {useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';  // Add this line
+import { Link, useNavigate } from 'react-router-dom';
 import {Col, Row, Image, Button, Container, Sidebar} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/postContentStyle.css';
@@ -89,27 +90,32 @@ function PostContent({user}){
                         <Side/>
                         <Col className=' flex-row col-12 col-lg-10'>
                             <Row>
-                                <Col className='mainStack col-12 col-lg-8'>
-                                    <br></br>
-                                    <div className='halfCircleCont'>
-                                        <div className='coverImageCont'>
-                                            <img src={subredditInfo.subreddit_cover} className='coverImageActual'></img>
-                                        </div>
-                                        <div className='underCover d-flex'>
-                                            <div className='d-flex'>
-                                                <div className='circleHalfProfile'>
-                                                    <img className='circleHalfActual' src={subredditInfo.subreddit_picture}></img>
-                                                </div>
-                                                <h1 className='mainSubredditName text-sm'>r/{subreddit}</h1>
-                                            </div>
-                                            <JoinButton/>
-                                        </div>
+                                <div className='sb_halfCircleCont'>
+                                    <div className='coverImageCont'>
+                                        <img src={subredditInfo.subreddit_cover} className='coverImageActual'></img>
                                     </div>
+                                    <div className='underCover d-flex'>
+                                        <div className='d-flex'>
+                                            <div className='circleHalfProfile'>
+                                                <img className='circleHalfActual' src={subredditInfo.subreddit_picture}></img>
+                                            </div>
+                                            <h1 className='mainSubredditName text-sm'>r/{subreddit}</h1>
+                                        </div>
+                                        <JoinButton/>
+                                    </div>
+                                </div>
+                                <Col className='mainStack col-12 col-lg-8'>
+                                    <Row>
+                                        <Button className='sub_createButton'>Create Post</Button>
+                                    </Row>
                                     <Post user={user} post={post}/>
                                 </Col>
                                 <Col className='suggestMainBox col-4 d-none d-lg-block'>
                                     <br></br>
-                                    <Suggest/>
+                                    <div className='sub_sidebar'>
+                                        <p>{subreddit} - all about {subreddit}</p>
+                                        <p>{subredditInfo.description}</p>
+                                    </div>  
                                 </Col>
                             </Row>
                         </Col>
