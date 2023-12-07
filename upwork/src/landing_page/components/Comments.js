@@ -12,7 +12,7 @@ function CommentBlock({comment, user}){
             return(
                 <div>
                     <Dropdown>
-                        <Dropdown.Toggle className='statPillMore' >
+                        <Dropdown.Toggle className='statPillMore'>
                             <img className='moreImage' src='/timeline_assets/more.png'></img>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>

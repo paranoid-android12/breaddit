@@ -131,13 +131,13 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
                                 <img className='subredditImage' src={subredditImage}></img>
                             </div>
                             <div>
-                                <p className='subredditName'>r/{subreddit}</p>
                                 <div className='d-flex col'>
-                                    <p className='userInfoPost'  onClick={() => navigate(userUrl, {state:{userData: user}})}>u/{username}</p>
+                                    <p className='subredditName'>r/{subreddit}</p>
+                                    <p className='post_dot'>•</p>
                                     <p className='post_dateInfo'>{date}</p>
                                 </div>
+                                <p className='userInfoPost'  onClick={() => navigate(userUrl, {state:{userData: user}})}>u/{username}</p>
                             </div>
-                            
                         </div>
                         <MenuDropdown username={username} user={user}/>
                     </Container>

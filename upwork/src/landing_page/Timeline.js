@@ -4,7 +4,7 @@ import Suggest from './components/SubredditSuggestion';
 import ImageCard from './components/ImageCarousel';
 import Side from './components/SideBar';
 
-import {Col, Row, Image, Button, Container, Sidebar} from 'react-bootstrap';
+import {Col, Row, Image, Button, Container, Alert} from 'react-bootstrap';
 import {useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
