@@ -11,22 +11,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/postContentStyle.css';
 import './styles/subreddit.css';
 
-function PostContent({user}){
+function PostContent({user, url}){
     let id = user.user_ID;
-
     const {subreddit} = useParams();
-    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [post, setPost] = useState([]);
     const [subredditInfo, setSubredditInfo] = useState([]);
     const [profile, setProfile] = useState('');
     const [subscribed, setSubscribed] = useState();
+    const navigate = useNavigate();
     let joinData = new FormData();
 
     //Fetch subreddit Data
     const subredditHook = () => {
         axios.get(url, {params: {'function': 'fetchSubredditSingle', 'name': subreddit}, withCredentials: true})
         .then(response => { 
-            console.log(response.data[0]);
             setSubredditInfo(response.data[0]);
         })
         .catch(error => alert(error.message));
@@ -80,15 +78,15 @@ function PostContent({user}){
             )
         }
     }
-
+    
     return(
         <div>
             <TopNav/>
             <div className='d-flex justify-content-center'>
                 <div className='mainTimelineContainer'>
-                    <Row>
+                    <Row className='absoluteRow'>
                         <Side/>
-                        <Col className=' flex-row col-12 col-lg-10'>
+                        <Col className='d-flex row col-12 col-lg-10'>
                             <Row>
                                 <div className='sb_halfCircleCont'>
                                     <div className='coverImageCont'>
@@ -106,15 +104,29 @@ function PostContent({user}){
                                 </div>
                                 <Col className='mainStack col-12 col-lg-8'>
                                     <Row>
-                                        <Button className='sub_createButton'>Create Post</Button>
+                                        <Button onClick={() => navigate('../timeline/forum')} className='sub_createButton'>Create Post</Button>
                                     </Row>
-                                    <Post user={user} post={post}/>
+                                    <Post user={user} post={post} url={url}/>
                                 </Col>
                                 <Col className='suggestMainBox col-4 d-none d-lg-block'>
                                     <br></br>
                                     <div className='sub_sidebar'>
-                                        <p>{subreddit} - all about {subreddit}</p>
-                                        <p>{subredditInfo.description}</p>
+                                        <p className='sub_mainDesc'>{subreddit} - all about {subreddit}</p>
+                                        <p className='sub_minDesc'>{subredditInfo.description}</p>
+                                        <div className='d-flex col justify-content-around'>
+                                            <div>
+                                                <p>23412</p>
+                                                <p>Subscribers</p>
+                                            </div>
+                                            <div>
+                                                <p>23412</p>
+                                                <p>Subscribers</p>
+                                            </div>
+                                            <div>
+                                                <p>23412</p>
+                                                <p>Subscribers</p>
+                                            </div>
+                                        </div>
                                     </div>  
                                 </Col>
                             </Row>

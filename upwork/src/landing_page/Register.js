@@ -12,9 +12,14 @@ function Register() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [otp, setOtp] = useState('');
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
     const [validPassword, setValidPassword] = useState(false);
+
+    function handleOtpChange(event){
+        setOtp(event.target.value);
+    }
     
     function handleUsernameChange(event){
         setUsername(event.target.value);
@@ -83,6 +88,9 @@ function Register() {
         const emailExistText = document.getElementById('emailExistText');
         const userForm = document.getElementById('usernameForm');
         const emailForm = document.getElementById('emailForm');
+        const signUpForm = document.getElementById('signUpForm');
+        const otpForm = document.getElementById('otpForm');
+        const noEmail = document.getElementById('wrongOtp');
 
         if(response === 3){
             userExistText.style.display = 'block';
@@ -98,47 +106,63 @@ function Register() {
             userExistText.style.display = 'block';
             userForm.style.outline = '3px solid rgb(255, 110, 128)';
         }
+        else if(response === 4){
+            noEmail.style.display = 'block';
+            userForm.style.outline = '3px solid rgb(255, 110, 128)';
+        }
+        else if (response === 200){
+            signUpForm.style.display = 'none';
+            otpForm.style.display = 'flex';
+            console.log(username);
+            console.log(email);
+            console.log(password);
+        }
     }
 
     async function handleSubmit(event){
         event.preventDefault();
 
+        if(validUsername && validEmail && validPassword){
             let accountData = new FormData();
-            accountData.append('function', 'register');
+            accountData.append('function', 'validateRegister');
             accountData.append('username', username);
             accountData.append('email', email);
             accountData.append('password', password);
     
-            await axios.post(url, accountData)
+            await axios.post(url, accountData, {withCredentials: true})
             .then(response => {
-                event.preventDefault();
-                handleExist(response.data);
-                setUsername('');
-                setEmail('');
-                setPassword('');
                 console.log(response.data);
+                handleExist(response.data);
             })
             .catch(error => alert(error.message));
-            if(validUsername && validEmail && validPassword){
         }
         else{
             console.log("Invalid Parameters!");
         }
     }
 
-
-    const DisplayAlert = () => {
-        
-
+    async function handleOtp(event){
+        event.preventDefault();
+        let otpData = new FormData();
+        otpData.append('function', 'register');
+        otpData.append('username', username);
+        otpData.append('email', email);
+        otpData.append('password', password);
+        otpData.append('otpInp', otp);
+        await axios.post(url, otpData, {withCredentials: true})
+        .then(response => {
+            setOtp('');
+            handleExist(response.data);
+        })
+        .catch(error => alert(error.message));
     }
     
 
     return (
         <div>
             <TopNav/>
-            <div className='window d-flex row'>
-                <div>asdf</div>
-                <Container className='mainLogBox d-flex row'>
+            <div className='window'>
+                <Container id={'signUpForm'} className='mainLogBox'>
                     <h1>Sign Up</h1>
                     <p>By continuing, you agree to our <a className='blue'>User Agreement</a> and acknowledge that you understand the <a className='blue'>Privacy Policy.</a></p>
                     <hr></hr>
@@ -154,14 +178,31 @@ function Register() {
                             <Form.Control autoComplete='false' id={'emailForm'} as='input' className='usernameInput' type="email" placeholder="Email" onChange={handleEmailChange} value={email}/>
                         </Form.Group>
                         <p className='errorMess' id={'emailSyntaxErr'}>The given e-mail has invalid syntax.</p>
-                        <p className='errorMess' id={'emailExistText'}>This email already exists.</p>
+                        <p className='errorMess' id={'emailExistText'}>This email is already registered on Breaddit.</p>
+                        <p className='errorMess' id={'emailCantFind'}>The OTP can't be sent on the given email, make sure it exists.</p>
                         <br></br>
                         <Form.Group autoComplete='false' id="formUsername">
                             <Form.Control autoComplete='false' id={'passForm'} as='input' className='usernameInput' type="password" placeholder="Password" onChange={handlePasswordChange} value={password}/>
                         </Form.Group>
                         <p className='errorMess' id={'passLengthErr'}>The password length must be 8 characters min.</p>
                         <hr></hr>
-                        <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Log In</button>
+                        <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Submit</button>
+                    </Form>
+                </Container>
+
+                <br></br>
+
+                <Container id={'otpForm'} className='otpLogBox'>
+                <h1>OTP Verification</h1>
+                    <p>The code has been sent to the email you registered with. Please enter the code you had received below.</p>
+                    <hr></hr>
+                    <Form style={{padding: '0'}}>
+                        <Form.Group className='d-flex align-items-center' autoComplete='false'  id="formUsername">
+                            <Form.Control autoComplete='false' id={'otpForm'} as='input' className='usernameInput' type="otp" placeholder="Code" onChange={handleOtpChange} value={otp}/>
+                        </Form.Group>
+                        <p className='errorMess' id={'wrongOtp'}>The submitted code is incorrect.</p>
+                        <hr></hr>
+                        <button onClick={(event) => handleOtp(event)} className='mainLogin'>Submit</button>
                     </Form>
                 </Container>
             </div>

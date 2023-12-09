@@ -8,7 +8,7 @@ const root = createRoot(rootElement);
 
 root.render(
     <StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename='/breaddit'>
             <App />
         </BrowserRouter>
     </StrictMode>

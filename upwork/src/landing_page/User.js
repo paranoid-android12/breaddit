@@ -12,11 +12,10 @@ import './styles/userStyle.css';
 
 
 
-function User(){
+function User({url}){
     const {user} = useParams();
     const location = useLocation();
     const userData = location.state.userData;
-    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [uniqUser, setUniqUser] = useState([]);
     
     //Fetch user data
@@ -160,7 +159,7 @@ function User(){
             <TopNav/>
             <div className='d-flex justify-content-center'>
                 <div className='mainTimelineContainer'>
-                    <Row className='d-flex col'>
+                    <Row className='absoluteRow'>
                         <Side/>
                         <Col className='col-12 col-lg-10'>
                             <Row>
@@ -168,7 +167,7 @@ function User(){
                                     <br></br>
                                     <div className='user_profileMainCont'>
                                         <div className='user_profileCont'>
-                                            <img src={uniqUser.profile_image}></img>
+                                            <img className='user_profileImage' src={uniqUser.profile_image}></img>
                                         </div>
                                         <div>
                                             <h1 className='user_bigUsername'>{uniqUser.username}</h1>
@@ -205,7 +204,7 @@ function User(){
                                             </div>
                                             <div className='user_followBar'>
                                                 <div className='user_followButton'>
-                                                    <img className='user_followPlus' src='/timeline_assets/plus.png'></img>
+                                                    <img className='user_followPlus' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/plus.png'></img>
                                                     <p className='user_followText'>Follow</p>
                                                 </div>
                                             </div>

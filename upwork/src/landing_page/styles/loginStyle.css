@@ -2,13 +2,27 @@
     background-color: rgb(15,26,28);
     border-radius: 28px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 440px;
     padding-top: 25px;
     padding-bottom: 25px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+.otpLogBox{
+    background-color: rgb(15,26,28);
+    border-radius: 28px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 440px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0;
 }
 
 .mainContent{
@@ -22,6 +36,7 @@
     width: 100vw;
     height: 90vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

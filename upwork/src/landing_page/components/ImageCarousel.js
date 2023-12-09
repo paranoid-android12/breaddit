@@ -17,10 +17,10 @@ function ImageCar({src, title, content}){
 function ImageCard() {
     return (
         <Row className="d-flex flex-nowrap overflow-auto">
-            <ImageCar src={'./temp_carousel/amazon.png'} title={'Amazon Rainforest'} content={'The Amazon rainforest, covering much...'}/>
-            <ImageCar src={'./temp_carousel/burger.jpg'} title={'Hamburger Recipes'} content={'Normally, hamburgers are self-explan...'}/>
-            <ImageCar src={'./temp_carousel/steamdeck.jpg'} title={'Steam Deck'} content={'The OLED version had been released ju...'}/>
-            <ImageCar src={'./temp_carousel/worldcup.png'} title={'Upcoming World Cup'} content={'The tallying commission had already sta...'}/>
+            <ImageCar src={'http://localhost:8080/upwork_server/breaddit_assets/temp_carousel/amazon.png'} title={'Amazon Rainforest'} content={'The Amazon rainforest, covering much...'}/>
+            <ImageCar src={'http://localhost:8080/upwork_server/breaddit_assets/temp_carousel/burger.jpg'} title={'Hamburger Recipes'} content={'Normally, hamburgers are self-explan...'}/>
+            <ImageCar src={'http://localhost:8080/upwork_server/breaddit_assets/temp_carousel/steamdeck.jpg'} title={'Steam Deck'} content={'The OLED version had been released ju...'}/>
+            <ImageCar src={'http://localhost:8080/upwork_server/breaddit_assets/temp_carousel/worldcup.png'} title={'Upcoming World Cup'} content={'The tallying commission had already sta...'}/>
 
         </Row>
     );

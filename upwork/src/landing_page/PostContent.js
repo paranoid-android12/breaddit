@@ -73,7 +73,7 @@ function PostContent({user, post}){
             <TopNav/>
             <div className='d-flex justify-content-center'>
                 <div className='mainTimelineContainer'>
-                    <Row>
+                    <Row className='absoluteRow'>
                         <Side/>
                         <Col className='flex-row col-12 col-lg-10'>
                             <Row>

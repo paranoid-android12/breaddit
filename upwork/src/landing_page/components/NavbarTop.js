@@ -16,7 +16,6 @@ function TopNav(){
     
 
     const csToggle = () => {
-        console.log(createToggled);
         setCreateToggled(!createToggled);
     };
 
@@ -175,7 +174,7 @@ function TopNav(){
                     <div className='cs_mainWindow'>
                             <div className='d-flex col justify-content-between align-items-center'>
                                 <h1>Create a Community</h1>
-                                <img onClick={csToggle} className='cs_closeButton' src='/timeline_assets/close.png'></img>
+                                <img onClick={csToggle} className='cs_closeButton' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/close.png'></img>
                             </div>
                             <hr></hr>
                             <Form>
@@ -243,21 +242,24 @@ function TopNav(){
             <CreateSubreddit onToggle={csToggle}/>
             <Navbar expand="lg" className='mainNav'>
                 <Container>
-                    <Navbar.Brand href="/timeline" className='titleNav'>Breaddit</Navbar.Brand>
+                    <Navbar.Brand href="/breaddit/timeline" className='titleNav'>Breaddit</Navbar.Brand>
 
                     <form className='searchBar'>
-                            <img style={{scale: '45%'}} src='/timeline_assets/search_min.png'></img>
+                            <img style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
                             <input className='searchInput' type="search" placeholder='Search Breaddit'></input>
                     </form>
 
                     <Dropdown show={isDropdownOpen} onToggle={handleDropdownToggle}>
                         <div className='userInfoBox'>
-                            <div className='d-flex col' onClick={handleDropdownToggle}>
+                            <div className='d-flex col align-items-center' onClick={handleDropdownToggle}>
+                                <div className='nav_profileImageCont'>
+                                    <img src={user.profile_image} className='nav_profileImage'></img>
+                                </div>
                                 <div className='userInfoMargin'>
                                     <p className='username'>u/{user.username}</p>
                                     <p className='karmaCount'>{user.karma} Karma</p>
                                 </div>
-                                <img src='/timeline_assets/down_arrow_min.png' className='downArrow'></img>
+                                <img src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/down_arrow_min.png' className='downArrow'></img>
                             </div>
                             <Dropdown.Menu className='nav_dropdownBox'>
                                 <div className='nav_myStuffs'>My Stuff</div>

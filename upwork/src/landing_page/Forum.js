@@ -26,7 +26,7 @@ function SubredditIter({subredditList, change}){
     );
 }
 
-function Forum(){
+function Forum({url}){
 
     const [name, setName] = useState('admin');
     const [title, setTitle] = useState('');
@@ -34,9 +34,8 @@ function Forum(){
     const [selectedSubreddit, setSelectedSubreddit] = useState('');
     const [subredditList, setSubredditList] = useState('');
     const [subreddit, setSubreddit] = useState('Choose a Subreddit');
-    const [src, setSrc] = useState('/subreaddit_image_assets/black.png');
+    const [src, setSrc] = useState('http://localhost:8080/upwork_server/breaddit_assets/subreaddit_image_assets/black.png');
     const navigate = useNavigate();
-    const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
 
     const postHook = () => {
         axios.get(url, {params: {'function': 'fetchSubreddit'}})

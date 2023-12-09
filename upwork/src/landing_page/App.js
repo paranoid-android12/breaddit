@@ -8,6 +8,7 @@ import Register from './Register.js';
 import PostContent from './PostContent.js';
 import Subreddit from './Subreddit.js';
 import User from './User.js';
+import AdminView from './AdminView.js';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
@@ -68,10 +69,11 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/timeline' element={<Timeline user={user} post={post} url={url}/>}/>
-        <Route path='/timeline/forum' element={<Forum />} />
+        <Route path='/timeline/admin' element={<AdminView user={user} post={post} url={url}/>}/>
+        <Route path='/timeline/forum' element={<Forum url={url}/>} />
         <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent user={user} post={post}/>} />
-        <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit user={user} />} />
-        <Route path='/timeline/u/:user' component={User} element={<User/>} />
+        <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit user={user} url={url}/>} />
+        <Route path='/timeline/u/:user' component={User} element={<User url={url}/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
