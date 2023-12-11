@@ -13,11 +13,27 @@ function TopNav(){
     mainSessionPackage.append('function', 'fetchUserData')
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [createToggled, setCreateToggled] = useState(false);
+    const [userEditToggled, setUserEditToggled] = useState(false);
+    const [editUserToggled, setEditUserToggled] = useState(false);
+    const [search, setSearch] = useState('');
     
+    const editToggle = () => {
+        setUserEditToggled(!userEditToggled);
+    }
 
     const csToggle = () => {
         setCreateToggled(!createToggled);
     };
+
+    const editUserToggle = (event) => {
+        console.log(event.target.value);
+        setEditUserToggled(!editUserToggled);
+    }
+
+    function handleSearchChange(event){
+        console.log(event.target.value);
+        setSearch(event.target.value);
+    }
 
     const handleDropdownToggle = () => {
       setIsDropdownOpen(!isDropdownOpen);
@@ -233,8 +249,6 @@ function TopNav(){
         else{
             document.body.style.overflow = '';
         }
-
-
     }
 
     return(
@@ -246,7 +260,7 @@ function TopNav(){
 
                     <form className='searchBar'>
                             <img style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
-                            <input className='searchInput' type="search" placeholder='Search Breaddit'></input>
+                            <input onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Breaddit'></input>
                     </form>
 
                     <Dropdown show={isDropdownOpen} onToggle={handleDropdownToggle}>
@@ -264,7 +278,7 @@ function TopNav(){
                             <Dropdown.Menu className='nav_dropdownBox'>
                                 <div className='nav_myStuffs'>My Stuff</div>
                                 <div className='nav_dropItem' onClick={() => toUser()}>Profile</div>
-                                <div className='nav_dropItem' href="#/action-3">User Settings</div>
+                                <div className='nav_dropItem' onClick={(event) => }>User Settings</div>
                                 <div className='nav_dropItem' onClick={(event) => csToggle(event)}>Create a Community</div>
                                 <hr style={{opacity: '100%'}}></hr>
                                 <div className='nav_myStuffs'>View Settings</div>

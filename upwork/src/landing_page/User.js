@@ -4,7 +4,7 @@ import axios from 'axios';
 import Post from './components/Post';
 import Suggest from './components/SubredditSuggestion';
 import {useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';  // Add this line
+import { useParams, useLocation, useNavigate } from 'react-router-dom';  // Add this line
 import {Col, Row, Image, Button, Container, Tabs, Tab} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/userStyle.css';
@@ -12,17 +12,19 @@ import './styles/userStyle.css';
 
 
 
-function User({url}){
+function User({userData, url}){
     const {user} = useParams();
     const location = useLocation();
-    const userData = location.state.userData;
+    const navigate = useNavigate();
+    console.log(userData);
     const [uniqUser, setUniqUser] = useState([]);
+    const [followed, setFollowed] = useState();
+    let followData = new FormData();
     
     //Fetch user data
     const uniqHook = () => {
         axios.get(url, {params: {'function': 'fetchUniqueUser', 'username': user}, withCredentials: true})
         .then(response => {
-            console.log(response.data[0]);
             setUniqUser(response.data[0]);
         });
     }
@@ -84,7 +86,7 @@ function User({url}){
         try {
             return(
                 comment.map((x, index) => (
-                    <CommentBlock comment={x}/>
+                    <CommentBlock key={x[0]} comment={x}/>
                 ))
             );
         } catch (error) {
@@ -95,12 +97,9 @@ function User({url}){
     //Fetch upvoted post of user
     function UpvotedPost(){
         const [upPost, setUpPost] = useState([]);
-        console.log(userData.user_ID, uniqUser.username)
-    
         const uppostHook = () => {
             axios.get(url, {params: {'function': 'fetchUserUpvote', 'user_ID': userData.user_ID, 'username': uniqUser.username}, withCredentials: true})
             .then(response => {
-                console.log(response.data);
                 setUpPost(response.data);
             });
         }
@@ -109,6 +108,47 @@ function User({url}){
         return(
             <Post user={userData} post={upPost}/>
         )
+    }
+
+    function FollowBlock({follow}){
+        const userUrl = '../timeline/u/' + follow.username;
+        return(
+            <div className='follow_border d-flex col align-items-center'>
+                <div className='follow_profileBorder'>
+                    <img src='http://localhost:8080/upwork_server/breaddit_assets/user_profileimage/MichaelRibs.png' className='follow_profile'></img>
+                </div>
+                <div className='d-flex row'>
+                    <p className='follow_username' onClick={() => navigate(userUrl)}>{follow.username}</p>
+                    <p className='follow_karma'>Karma: {follow.karma}</p>
+                </div>
+            </div>
+        )
+    }
+
+    function FollowIter(){
+        const [follow, setFollow] = useState([]);
+
+        const followHook = () => {
+            axios.get(url, {params: {'function': 'fetchUserFollows', 'followed': uniqUser.user_ID}, withCredentials: true})
+            .then(response => {
+                console.log(response.data);
+                setFollow(response.data);
+            })
+            .catch(error => console.log(error.message));
+        }
+
+        useEffect(followHook, [])
+
+
+        try {
+            return(
+                follow.map((x, index) => (
+                    <FollowBlock key={x[0]} follow={x}/>
+                ))
+            );
+        } catch (error) {
+            
+        }
     }
 
     function SubComp({sub}){
@@ -135,7 +175,6 @@ function User({url}){
         const subHook = () => {
             axios.get(url, {params: {'function': 'fetchUserSubscription', 'user_ID': uniqUser.user_ID}, withCredentials: true})
             .then(response => {
-                console.log(response.data);
                 setSubscribedSub(response.data);
             });
         }
@@ -145,11 +184,56 @@ function User({url}){
         try {
             return (
                 subscribedSub.map((x, index) => (
-                    <SubComp sub={x}/>
+                    <SubComp key={x[0]} sub={x}/>
                 ))
             );
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    //Fetch instances of subscribtions
+    const FollowedFetch = () => {
+        console.log("herath");
+        axios.get(url, {params: {'function': 'fetchFollowed', 'id': userData.user_ID, 'followedUser': uniqUser.user_ID}, withCredentials: true})
+        .then(response => {
+            if(response.data[0] === undefined){
+                setFollowed(0);
+            }
+            else{
+                setFollowed(1);
+            }
+        })
+        .catch(error => console.log(error.message));
+    }
+    useEffect(FollowedFetch, [followed])
+
+    async function followUser(){
+        followData.append('follower', userData.user_ID);
+        followData.append('followed', uniqUser.user_ID);
+        await axios.post(url, followData, {withCredentials: true})
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => console.log(error.message));
+    }
+
+    function FollowButton(){
+        FollowedFetch();
+        if(userData.username === uniqUser.username){
+            return;
+        }
+        else if(followed == 0){
+            followData.append('function', 'followUser');
+            return(
+                <Button onClick={() => {followUser(); setFollowed(1);}} className='joinSubreddit'>Follow</Button>
+            )
+        }
+        else{
+            followData.append('function', 'unfollowUser');
+            return(
+                <Button onClick={() => {followUser(); setFollowed(0);}} className='joinSubreddit'>Unfollow</Button>
+            )
         }
     }
 
@@ -192,6 +276,10 @@ function User({url}){
                                             <hr></hr>
                                             <UpvotedPost/>
                                         </Tab>
+                                        <Tab eventKey="follows" title="Follows">
+                                            <hr></hr>
+                                            <FollowIter/>
+                                        </Tab>
                                     </Tabs>
 
                                 </Col>
@@ -203,20 +291,19 @@ function User({url}){
                                                 <p className='user_mainUsername'>{uniqUser.username}</p>
                                             </div>
                                             <div className='user_followBar'>
-                                                <div className='user_followButton'>
-                                                    <img className='user_followPlus' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/plus.png'></img>
-                                                    <p className='user_followText'>Follow</p>
-                                                </div>
+                                                {/* <img className='user_followPlus' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/plus.png'></img> */}
+                                                <FollowButton/>
+
                                             </div>
                                             <hr style={{opacity: '15%'}}></hr>
                                             <div className='d-flex col justify-content-around'>
                                                 <div>
-                                                    <p className='user_count'> 1231</p>
+                                                    <p className='user_count'>{uniqUser.karma}</p>
                                                     <p className='user_label'>Post Karma</p>
                                                 </div>
 
                                                 <div>
-                                                    <p className='user_count'> 1231</p>
+                                                    <p className='user_count'>{uniqUser.cakeday}</p>
                                                     <p className='user_label'>Cake Day</p>
                                                 </div>
                                             </div>

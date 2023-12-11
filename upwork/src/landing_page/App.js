@@ -18,16 +18,14 @@ export default function App() {
   const location = useLocation();
 
   const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php';
+  const [user, setUser] = useState([]);
+  const [post, setPost] = useState([]);
 
   let mainSessionPackage = new FormData();
   mainSessionPackage.append('function', 'fetchUserData')
+
   let rData = new FormData();
   rData.append('function', 'validateLogin');
-
-  const [user, setUser] = useState([]);
-  const [post, setPost] = useState([]);
-  
-
 
   //Find login session
   async function Authen() {
@@ -46,7 +44,6 @@ export default function App() {
       setUser(response.data);
     })
     .catch(error => alert(error.message));
-
   }
 
   async function PostFetch(){
@@ -56,12 +53,21 @@ export default function App() {
     });
   }
 
+  async function UpdateKarma(){
+    await axios.get(url, {params: {'function': 'updateKarma'}, withCredentials: true})
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => console.log("Karma warning!"));
+  }
+
   //Caller for all async processes
   useEffect(() => {
     if (location.pathname !== '/Login' && location.pathname !== '/register') {
       Authen();
       UserSesh();
       PostFetch();
+      UpdateKarma();
     }
   }, [location.pathname, navigate]);
 
@@ -73,7 +79,7 @@ export default function App() {
         <Route path='/timeline/forum' element={<Forum url={url}/>} />
         <Route path='/timeline/comments/:id' component={PostContent} element={<PostContent user={user} post={post}/>} />
         <Route path='/timeline/r/:subreddit' component={Subreddit} element={<Subreddit user={user} url={url}/>} />
-        <Route path='/timeline/u/:user' component={User} element={<User url={url}/>} />
+        <Route path='/timeline/u/:user' component={User} element={<User userData={user} url={url}/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>

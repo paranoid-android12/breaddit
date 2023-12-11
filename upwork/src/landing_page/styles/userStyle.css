@@ -60,6 +60,51 @@
     padding-right: 5%;
 }
 
+.follow_border{
+    width: 100%;
+    background-color: rgb(19, 31, 35);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.follow_profileBorder{
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 3px white solid;
+    margin-right: 15px;
+}
+
+.follow_profile{
+    width: 100%;
+    height: 100%;
+}
+
+.follow_username{
+    cursor: pointer;
+    color: rgb(228, 228, 228);
+    margin: 0;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.follow_username:hover{
+    color: white;
+    transition: 0.2s;
+}
+
+.follow_karma{
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 0.7rem;
+    opacity: 60%;
+    font-weight: 600;
+    margin: 0;
+}
+
 
 .usercom_subredditName, .usercom_commentPostTitle, .usercom_userPoster, .usercom_userFrom{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

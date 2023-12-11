@@ -25,6 +25,7 @@ function PostContent({user, url}){
     const subredditHook = () => {
         axios.get(url, {params: {'function': 'fetchSubredditSingle', 'name': subreddit}, withCredentials: true})
         .then(response => { 
+            console.log(response.data[0]);
             setSubredditInfo(response.data[0]);
         })
         .catch(error => alert(error.message));
@@ -65,6 +66,7 @@ function PostContent({user, url}){
     }
 
     function JoinButton(){
+        SubscribedFetch();
         if(subscribed == 0){
             joinData.append('function', 'joinSubreddit');
             return(

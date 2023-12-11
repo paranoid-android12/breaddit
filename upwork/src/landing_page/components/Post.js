@@ -46,6 +46,7 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
     const [deleteToggled, setDeleteToggled] = useState(false);
     const userUrl = '../timeline/u/' + username;
     let url = '../timeline/comments/' + id;
+    let subUrl = '../timeline/r/' + subreddit;
     let upData = new FormData();
     upData.append('user_ID', user.user_ID);
     upData.append('post_ID', id);
@@ -156,6 +157,7 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
                                 </div>
                                 <div>
                                     <div className='d-flex col'>
+                                        
                                         <p className='subredditName'>r/{subreddit}</p>
                                         <p className='post_dot'>•</p>
                                         <p className='post_dateInfo'>{date}</p>
@@ -260,11 +262,11 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
                     <Container className='postDetails d-flex column'>
                         <div className='d-flex column align-items-center'>
                             <div className='subredditImageCont'>
-                                <img className='subredditImage' src={subredditImage}></img>
+                                <img onClick={() => navigate(subUrl)} className='subredditImage' src={subredditImage}></img>
                             </div>
                             <div>
                                 <div className='d-flex col'>
-                                    <p className='subredditName'>r/{subreddit}</p>
+                                    <p onClick={() => navigate(subUrl)} className='subredditName'>r/{subreddit}</p>
                                     <p className='post_dot'>•</p>
                                     <p className='post_dateInfo'>{date}</p>
                                 </div>

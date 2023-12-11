@@ -14,7 +14,6 @@ function Side(){
     const UserSesh = () => {
         axios.post(url, sideBarPackage, {withCredentials: true})
         .then(response => {
-            console.log(response.data);
             setUser(response.data);
         })
         .catch(error => alert(error.message));
@@ -24,7 +23,7 @@ function Side(){
     function AdminTab(){
         if(user.user_ID === 4){
             return(
-                <li onClick={() => navigate('../timeline')} className='sideContent nav-item d-flex col'>
+                <li onClick={() => navigate('../timeline/admin')} className='sideContent nav-item d-flex col'>
                     <img className='sideIcon' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/admin.png'></img>
                     <p className='sideBarText text-white'>Admin View</p>
                 </li>
