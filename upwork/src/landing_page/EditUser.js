@@ -83,36 +83,26 @@ function EditUser({user, togg, toggler, url}){
         document.body.style.overflow = 'hidden';
         return(
             <div className='cs_graybg' id='createSubredditFrame'>
-                <div className='cs_mainWindow'>
+                <div className='edit_mainWindow'>
                         <div className='d-flex col justify-content-between align-items-center'>
-                            <h1>Edit User Profile</h1>
+                            <h1>Change Profile Image</h1>
                             <img onClick={toggler} className='cs_closeButton' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/close.png'></img>
                         </div>
                         <hr></hr>
-                        <Form>
-                            <Row>
-                                <Col className='col-12 col-sm-4'>
-                                    <Form.Group className="cs_formUpload mb-3" controlId="formBasicImage" id='formUpload'>
-                                        <div id='imageToUploadContainer'> 
-                                            <label for="file-upload" className="cs_custom-file-upload">
-                                                <i className="fa fa-cloud-upload"></i> +
-                                            </label>
-                                            <input id="file-upload" type="file" onChange={event => previewImage(event)}/>
-                                        </div>
-                                        <div className='cs_formImageCont' id='imageUploadedContainer' style={{display: 'none'}}>
-                                            <img className='cs_formImage' id='image-preview'  src='' alt='Uploaded Image'></img>
-                                        </div>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
-                                    <Form.Group className="mb-3" controlId="formBasicTitle">
-                                        <h6>Username</h6>
-                                        <Form.Control as='input' className='titleInput' type="title" title='asd' onChange={handleNameChange}/>
-                                    </Form.Group>
-                                </Col>
-                            </Row>
+                        <Form className='d-flex row justify-content-center'>
+                            <Form.Group className="edit_formUpload mb-3" controlId="formBasicImage" id='formUpload'>
+                                <div id='imageToUploadContainer'> 
+                                    <label for="file-upload" className="cs_custom-file-upload">
+                                        <i className="fa fa-cloud-upload"></i> +
+                                    </label>
+                                    <input id="file-upload" type="file" onChange={event => previewImage(event)}/>
+                                </div>
+                                <div className='cs_formImageCont' id='imageUploadedContainer' style={{display: 'none'}}>
+                                    <img className='cs_formImage' id='image-preview'  src='' alt='Uploaded Image'></img>
+                                </div>
+                            </Form.Group>
                             <hr></hr>
-                            <Button id='0' type='submit' onClick={(event) => handleSubmit(event)}>Post</Button>
+                            <button className='edit_userButton' id='0' type='submit' onClick={(event) => handleSubmit(event)}>Post</button>
                         </Form>
                 </div>
             </div>

@@ -95,7 +95,7 @@ p{
 
 .postBorder:hover{
     background-color: rgb(19,31,35);
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .overflow-container{
@@ -126,7 +126,7 @@ p{
 
 .subredditImageCont:hover{
     border-color: gray;
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .subredditImage{
@@ -145,7 +145,7 @@ p{
 
 .subredditName:hover{
     color: rgb(167, 204, 255);
-    transition: 0.2s;
+    transition: 0.35s;
     cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ p{
 
 .userInfoPost:hover{
     color: rgb(187, 193, 196);
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .post_dot{
@@ -210,7 +210,7 @@ p{
     background-color: rgb(15, 26, 28);
     color: white;
     border: 3px solid white;
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 
@@ -226,7 +226,7 @@ p{
 
 .statPillComment:hover{
     background-color: rgb(41, 63, 71);
-    transition: 0.2s
+    transition: 0.35s
 }
 
 .statPillMore{
@@ -256,7 +256,7 @@ p{
     justify-content: center;
     position: relative;
     background-color: rgb(41, 63, 71);
-    transition: 0.2s
+    transition: 0.35s
 }
 
 .moreImage{
@@ -278,17 +278,17 @@ p{
 
 .voteCont:hover, .downvoteCont:hover{
     background-color: rgb(41, 63, 71);
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .voteCont:hover .upvoteImage{
     filter: opacity(0.5) drop-shadow(0 0 0 rgb(255, 68, 0));
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .downvoteCont:hover .downvoteImage{
     filter: opacity(0.5) drop-shadow(0 0 0 blue);
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .voteCont, .downvoteCont{
@@ -372,7 +372,7 @@ p{
 .createButton:hover{
     cursor: pointer;
     background-color: rgb(34,50,55);
-    transition: 0.2s;
+    transition: 0.35s;
     color: #FFFFFF;
     text-decoration: none;
 }
@@ -453,7 +453,7 @@ p{
 
 .suggestionBox:hover{
     background-color: rgb(17, 17, 17);
-    transition: 0.2s;
+    transition: 0.35s;
 }
 
 .imageCircle{

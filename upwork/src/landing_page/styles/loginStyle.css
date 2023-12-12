@@ -5,10 +5,17 @@
     flex-direction: column;
     justify-content: center;
     width: 440px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-top: 10px;
+}
+
+.register_mainLogBox{
+    background-color: rgb(15,26,28);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 440px;
+    padding: 20px;
 }
 
 .otpLogBox{

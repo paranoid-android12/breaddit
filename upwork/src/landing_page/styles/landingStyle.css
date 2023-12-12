@@ -6,6 +6,94 @@ body{
     color: white;
 }
 
+.land_main{
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #0A0A0A;
+}
+
+.land_nav{
+    height: 13vh;
+    /* background-color: #0A0A0A; */
+}
+
+.land_logoCont{
+    height: 600px;
+    width: 600px;
+    transition: 0.5s;
+}
+
+.land_logoCont:hover{
+    height: 630px;
+    width: 630px;
+    transition: 0.5s;
+}
+
+.land_frontpage{
+    font-family: 'Verdana', 'IBM Plex Sans', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 4.5rem;
+    margin: 0;
+    margin-left: 20px;
+
+}
+
+.land_logo{
+    width: 100%;
+}
+
+.land_title{
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.land_mid{
+    padding-bottom: 110px;
+    height: 87vh;
+    /* background-color: blanchedalmond; */
+}
+
+.land_tag{
+    font-family: 'Verdana', 'IBM Plex Sans', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 4.5rem;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.land_reg{
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.land_reg, .land_tag, .land_title{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .mainNav{
     background: rgb(11,20,22) !important;
     background-image: none;

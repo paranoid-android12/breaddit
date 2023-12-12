@@ -10,18 +10,22 @@ function Login() {
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php'
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [test, setText] = useState("bigbone");
+
+    console.log(email, password);
+    const [test, setText] = useState();
+    const noFound = document.getElementById('errorText');
 
     const navigate = useNavigate();
     
     function handleEmailChange(event){
+        noFound.style.display = 'none';
         setEmail(event.target.value);
     }
 
     function handlePasswordChange(event){
+        noFound.style.display = 'none';
         setPassword(event.target.value);
     }
-
 
 
     async function handleSubmit(event){
@@ -38,7 +42,7 @@ function Login() {
                 navigate('../timeline');
             }
             else{
-                alert('Something went wrong.');
+                noFound.style.display = 'block';
                 setEmail('');
                 setPassword('');
             }
@@ -57,14 +61,14 @@ function Login() {
                         <hr></hr>
                         <Form >
                             <Form.Group controlId="formUsername">
-                                <Form.Control as='input' className='usernameInput' type="email" value={email} placeholder="Email" onChange={handleEmailChange}/>
+                                <Form.Control as='input' className='usernameInput' type="email" value={email} placeholder='asdf' onChange={handleEmailChange}/>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="formPassword">
-                                <Form.Control as='input' className='usernameInput' type="password" value={password} placeholder="Password" onChange={handlePasswordChange}/>
+                                <Form.Control as='input' className='usernameInput' type="password" value={password} onChange={handlePasswordChange}/>
                             </Form.Group>
+                            <p className='errorMess' id={'errorText'}>Invalid parameters, make sure the email and password is correct.</p>
                             <hr></hr>
-                            <p><a className='blue'>Forgot</a> your email and password?</p>
                             <p>New to Breaddit? <a onClick={() => navigate('../register')} className='blue'>Sign up.</a></p>
                             <br></br>
                             <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Log In</button>

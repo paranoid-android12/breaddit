@@ -59,7 +59,7 @@ export default function App() {
 
   //Caller for all async processes
   useEffect(() => {
-    if (location.pathname !== '/Login' && location.pathname !== '/register') {
+    if (location.pathname !== '/Login' && location.pathname !== '/register' && location.pathname !== '/') {
       Authen();
       PostFetch();
       UpdateKarma();

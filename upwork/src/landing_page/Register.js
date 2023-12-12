@@ -162,7 +162,7 @@ function Register() {
         <div>
             <TopNav/>
             <div className='window'>
-                <Container id={'signUpForm'} className='mainLogBox'>
+                <Container id={'signUpForm'} className='register_mainLogBox'>
                     <h1>Sign Up</h1>
                     <p>By continuing, you agree to our <a className='blue'>User Agreement</a> and acknowledge that you understand the <a className='blue'>Privacy Policy.</a></p>
                     <hr></hr>

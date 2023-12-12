@@ -3,11 +3,12 @@ import '../styles/navbarStyle.css';
 import EditUser from '../EditUser.js';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 function TopNav(){
     const [user, setUser] = useState([]);
+    const location = useLocation();
     const navigate = useNavigate();
     const url = 'http://localhost:8080/upwork_server/api/controller/tunnel.php';
     let mainSessionPackage = new FormData();
@@ -45,14 +46,12 @@ function TopNav(){
     useEffect(UserSesh, []);
 
     function logout(){
-
         const logoutPack = new FormData();
         logoutPack.append('function', 'logout');
 
         axios.post(url, logoutPack, {withCredentials: true})
         .then(response => {
-            alert("You are being logged out.");
-            navigate('../login');
+            navigate('../../');
         })
         .catch(error => alert(error.message));
     }
@@ -245,60 +244,81 @@ function TopNav(){
         }
     }
 
-    return(
-        <div className='navFollower'>
-            <CreateSubreddit onToggle={csToggle}/>
-            <EditUser user={user} togg={userEditToggled} toggler={editToggle} url={url} onToggle={editToggle}/>
-            <Navbar expand="lg" className='mainNav'>
-                <Container>
-                    <Navbar.Brand href="/breaddit/timeline" className='titleNav'>Breaddit</Navbar.Brand>
-
-                    <form className='searchBar'>
-                            <img style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
-                            <input onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Breaddit'></input>
-                    </form>
-
-                    <Dropdown show={isDropdownOpen} onToggle={handleDropdownToggle}>
-                        <div className='userInfoBox'>
-                            <div className='d-flex col align-items-center' onClick={handleDropdownToggle}>
-                                <div className='nav_profileImageCont'>
-                                    <img src={user.profile_image} className='nav_profileImage'></img>
+    if (location.pathname !== '/Login' && location.pathname !== '/register' && location.pathname !== '/') {
+        return(
+            <div className='navFollower'>
+                <CreateSubreddit onToggle={csToggle}/>
+                <EditUser user={user} togg={userEditToggled} toggler={editToggle} url={url} onToggle={editToggle}/>
+                <Navbar expand="lg" className='mainNav'>
+                    <Container>
+                        <Navbar.Brand href="/breaddit/timeline" className='titleNav'>
+                            <span style={{ color: 'white' }}>Breadd</span>
+                            <span style={{ color: 'rgb(255, 83, 20)' }}>it</span>
+                        </Navbar.Brand>
+    
+                        <form className='searchBar'>
+                                <img style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
+                                <input onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Breaddit'></input>
+                        </form>
+        
+                        <Dropdown show={isDropdownOpen} onToggle={handleDropdownToggle} className='d-none d-lg-block'>
+                            <div className='userInfoBox'>
+                                <div className='d-flex col align-items-center' onClick={handleDropdownToggle}>
+                                    <div className='nav_profileImageCont'>
+                                        <img src={user.profile_image} className='nav_profileImage'></img>
+                                    </div>
+                                    <div className='userInfoMargin'>
+                                        <p className='username'>u/{user.username}</p>
+                                        <p className='karmaCount'>{user.karma} Karma</p>
+                                    </div>
+                                    <img src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/down_arrow_min.png' className='downArrow'></img>
                                 </div>
-                                <div className='userInfoMargin'>
-                                    <p className='username'>u/{user.username}</p>
-                                    <p className='karmaCount'>{user.karma} Karma</p>
-                                </div>
-                                <img src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/down_arrow_min.png' className='downArrow'></img>
+                                <Dropdown.Menu className='nav_dropdownBox'>
+                                    <div className='nav_myStuffs'>My Stuff</div>
+                                    <div className='nav_dropItem' onClick={() => toUser()}>Profile</div>
+                                    <div className='nav_dropItem' onClick={(event) => editToggle(event)}>Change Profile Image</div>
+                                    <div className='nav_dropItem' onClick={(event) => csToggle(event)}>Create a Community</div>
+                                    <hr style={{opacity: '100%'}}></hr>
+                                    <div className='nav_myStuffs'>View Settings</div>
+                                    <div className='nav_dropItem'>
+                                        <Form className='d-flex col'>
+                                            Dark Mode
+                                            <Form.Check style={{marginLeft: '10px'}}
+                                                type="switch"
+                                                id="custom-switch"
+                                            />
+                                        </Form>
+                                    </div>
+                                    <hr style={{opacity: '100%'}}></hr>
+                                    <div className='nav_myStuffs'>Account Settings</div>
+                                    <div className='nav_dropItem' onClick={() => logout()}>Logout</div>
+                                </Dropdown.Menu>
                             </div>
-                            <Dropdown.Menu className='nav_dropdownBox'>
-                                <div className='nav_myStuffs'>My Stuff</div>
-                                <div className='nav_dropItem' onClick={() => toUser()}>Profile</div>
-                                <div className='nav_dropItem' onClick={(event) => editToggle(event)}>Change Profile Image</div>
-                                <div className='nav_dropItem' onClick={(event) => csToggle(event)}>Create a Community</div>
-                                <hr style={{opacity: '100%'}}></hr>
-                                <div className='nav_myStuffs'>View Settings</div>
-                                <div className='nav_dropItem'>
-                                    <Form className='d-flex col'>
-                                        Dark Mode
-                                        <Form.Check style={{marginLeft: '10px'}}
-                                            type="switch"
-                                            id="custom-switch"
-                                        />
-                                    </Form>
-                                </div>
-                                <hr style={{opacity: '100%'}}></hr>
-                                <div className='nav_myStuffs'>Account Settings</div>
-                                <div className='nav_dropItem' onClick={() => logout()}>Logout</div>
-                            </Dropdown.Menu>
-                        </div>
+        
+                        </Dropdown>
+                    </Container>    
+                </Navbar>
+            </div>
+        )
+    }
+    else{
+        return(
+            <div className='navFollower'>
+                <CreateSubreddit onToggle={csToggle}/>
+                <EditUser user={user} togg={userEditToggled} toggler={editToggle} url={url} onToggle={editToggle}/>
+                <Navbar expand="lg" className='mainNav'>
+                    <Container>
+                        <Navbar.Brand href="/breaddit/timeline" className='titleNav'>
+                            <span style={{ color: 'white' }}>Breadd</span>
+                            <span style={{ color: 'rgb(255, 83, 20)' }}>it</span>
+                        </Navbar.Brand>
+                    </Container>    
+                </Navbar>
+            </div>
+        )
+    }
+    
 
-                    </Dropdown>
-
-
-                </Container>    
-            </Navbar>
-        </div>
-    )
 }
 
 export default TopNav;
