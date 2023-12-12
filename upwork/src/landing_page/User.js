@@ -115,7 +115,7 @@ function User({userData, url}){
         return(
             <div className='follow_border d-flex col align-items-center'>
                 <div className='follow_profileBorder'>
-                    <img src='http://localhost:8080/upwork_server/breaddit_assets/user_profileimage/MichaelRibs.png' className='follow_profile'></img>
+                    <img src={follow.profile_image} className='follow_profile'></img>
                 </div>
                 <div className='d-flex row'>
                     <p className='follow_username' onClick={() => navigate(userUrl)}>{follow.username}</p>

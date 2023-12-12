@@ -31,17 +31,13 @@ export default function App() {
   async function Authen() {
     await axios.post(url, rData, {withCredentials: true})
     .then(response => {
-        if(response.data != "found"){
+        if(response.data == 404){
           navigate('../Login')
         }
-    })
-    .catch(error => alert(error.message));
-  }
-  //Get User session data
-  async function UserSesh(){
-    await axios.post(url, mainSessionPackage, {withCredentials: true})
-    .then(response => {
-      setUser(response.data);
+        else{
+          console.log(response.data);
+          setUser(response.data);
+        }
     })
     .catch(error => alert(error.message));
   }
@@ -56,7 +52,7 @@ export default function App() {
   async function UpdateKarma(){
     await axios.get(url, {params: {'function': 'updateKarma'}, withCredentials: true})
     .then(response => {
-      console.log(response.data);
+      console.log("Karma Updated");
     })
     .catch(error => console.log("Karma warning!"));
   }
@@ -65,7 +61,6 @@ export default function App() {
   useEffect(() => {
     if (location.pathname !== '/Login' && location.pathname !== '/register') {
       Authen();
-      UserSesh();
       PostFetch();
       UpdateKarma();
     }

@@ -23,11 +23,11 @@ function AdminView({user, post, url}){
 
     function FollowBlock({follow}){
         const userUrl = '../timeline/u/' + follow.username;
-        if(follow.username != 'admin_wizard'){
+        if(follow.user_ID != 4){
             return(
                 <div className='follow_border d-flex col align-items-center'>
                     <div className='follow_profileBorder'>
-                        <img src='http://localhost:8080/upwork_server/breaddit_assets/user_profileimage/MichaelRibs.png' className='follow_profile'></img>
+                        <img src={follow.profile_image} className='follow_profile'></img>
                     </div>
                     <div className='d-flex row'>
                         <p className='follow_username' onClick={() => navigate(userUrl)}>{follow.username}</p>

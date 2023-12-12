@@ -1,5 +1,6 @@
 import {Navbar, Container, Dropdown, Form, Button, Row, Col} from 'react-bootstrap';
 import '../styles/navbarStyle.css';
+import EditUser from '../EditUser.js';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,26 +15,19 @@ function TopNav(){
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [createToggled, setCreateToggled] = useState(false);
     const [userEditToggled, setUserEditToggled] = useState(false);
-    const [editUserToggled, setEditUserToggled] = useState(false);
     const [search, setSearch] = useState('');
     
     const editToggle = () => {
         setUserEditToggled(!userEditToggled);
-    }
+    };
 
     const csToggle = () => {
         setCreateToggled(!createToggled);
     };
 
-    const editUserToggle = (event) => {
-        console.log(event.target.value);
-        setEditUserToggled(!editUserToggled);
-    }
-
     function handleSearchChange(event){
-        console.log(event.target.value);
         setSearch(event.target.value);
-    }
+    };
 
     const handleDropdownToggle = () => {
       setIsDropdownOpen(!isDropdownOpen);
@@ -254,6 +248,7 @@ function TopNav(){
     return(
         <div className='navFollower'>
             <CreateSubreddit onToggle={csToggle}/>
+            <EditUser user={user} togg={userEditToggled} toggler={editToggle} url={url} onToggle={editToggle}/>
             <Navbar expand="lg" className='mainNav'>
                 <Container>
                     <Navbar.Brand href="/breaddit/timeline" className='titleNav'>Breaddit</Navbar.Brand>
@@ -278,7 +273,7 @@ function TopNav(){
                             <Dropdown.Menu className='nav_dropdownBox'>
                                 <div className='nav_myStuffs'>My Stuff</div>
                                 <div className='nav_dropItem' onClick={() => toUser()}>Profile</div>
-                                <div className='nav_dropItem' onClick={(event) => }>User Settings</div>
+                                <div className='nav_dropItem' onClick={(event) => editToggle(event)}>Change Profile Image</div>
                                 <div className='nav_dropItem' onClick={(event) => csToggle(event)}>Create a Community</div>
                                 <hr style={{opacity: '100%'}}></hr>
                                 <div className='nav_myStuffs'>View Settings</div>
