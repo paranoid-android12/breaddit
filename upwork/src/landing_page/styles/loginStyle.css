@@ -1,3 +1,16 @@
+input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.356) !important;
+}
+
+input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.356) !important;
+}
+
+body, html{
+    color: white; 
+    background-color: rgb(11,20,22);
+}
+
 .mainLogBox{
     background-color: rgb(15,26,28);
     border-radius: 28px;

@@ -1,3 +1,8 @@
+.contentInput::placeholder{
+    color: rgba(255, 255, 255, 0.356) !important;
+}
+
+
 .pc_postImageCont{
     min-height: 40px;
     min-width: 40px;

@@ -107,9 +107,13 @@
 
 
 .usercom_subredditName, .usercom_commentPostTitle, .usercom_userPoster, .usercom_userFrom{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
+}
+
+.usercom_layer2{
+    padding-left: 35px;
 }
 
 .usercom_userPoster, .usercom_userFrom{
@@ -139,8 +143,9 @@
 }
 
 .usercom_mainContent{
-    font-size: 1rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.93rem;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    padding-left: 35px;
 }
 
 .usercom_subredditImageCont{

@@ -2,14 +2,73 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.com_statPillMore{
+    background-color: transparent;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.com_statPillMore:after{
+    display: none !important;
+}
+
+.com_profileImageCont{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.com_profileImage{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.com_statPillMore:hover, .com_statPillMore:active, .com_statPillMore:focus{
+    background-color: transparent;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: rgb(41, 63, 71);
+    transition: 0.35s
+}
+
+.com_moreImage{
+    scale: 30%;
+}
+
 .com_username{
-    font-weight: 600;
-    font-size: 0.63rem;
+    font-weight: 900;
+    font-size: 0.85rem;
     margin: 0;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.com_commentContainer{
+    
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
 .com_content{
-    font-size: 0.8rem;
+    padding-left: 52px;
+    font-size: 0.9rem;
+    margin: 0;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
 }
 
 .com_statPillVote{

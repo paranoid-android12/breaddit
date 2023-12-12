@@ -257,8 +257,8 @@ function TopNav(){
                         </Navbar.Brand>
     
                         <form className='searchBar'>
-                                <img style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
-                                <input onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Breaddit'></input>
+                                <img onClick={() => navigate('/timeline/search/' + search)} style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
+                                <input onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Posts'></input>
                         </form>
         
                         <Dropdown show={isDropdownOpen} onToggle={handleDropdownToggle} className='d-none d-lg-block'>
@@ -278,7 +278,7 @@ function TopNav(){
                                     <div className='nav_dropItem' onClick={() => toUser()}>Profile</div>
                                     <div className='nav_dropItem' onClick={(event) => editToggle(event)}>Change Profile Image</div>
                                     <div className='nav_dropItem' onClick={(event) => csToggle(event)}>Create a Community</div>
-                                    <hr style={{opacity: '100%'}}></hr>
+                                    {/* <hr style={{opacity: '100%'}}></hr>
                                     <div className='nav_myStuffs'>View Settings</div>
                                     <div className='nav_dropItem'>
                                         <Form className='d-flex col'>
@@ -288,7 +288,7 @@ function TopNav(){
                                                 id="custom-switch"
                                             />
                                         </Form>
-                                    </div>
+                                    </div> */}
                                     <hr style={{opacity: '100%'}}></hr>
                                     <div className='nav_myStuffs'>Account Settings</div>
                                     <div className='nav_dropItem' onClick={() => logout()}>Logout</div>
@@ -308,7 +308,7 @@ function TopNav(){
                 <EditUser user={user} togg={userEditToggled} toggler={editToggle} url={url} onToggle={editToggle}/>
                 <Navbar expand="lg" className='mainNav'>
                     <Container>
-                        <Navbar.Brand href="/breaddit/timeline" className='titleNav'>
+                        <Navbar.Brand href="/breaddit" className='titleNav'>
                             <span style={{ color: 'white' }}>Breadd</span>
                             <span style={{ color: 'rgb(255, 83, 20)' }}>it</span>
                         </Navbar.Brand>

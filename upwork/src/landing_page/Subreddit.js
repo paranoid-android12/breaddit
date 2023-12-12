@@ -117,16 +117,16 @@ function PostContent({user, url}){
                                         <p className='sub_minDesc'>{subredditInfo.description}</p>
                                         <div className='d-flex col justify-content-around'>
                                             <div>
-                                                <p>23412</p>
-                                                <p>Subscribers</p>
+                                                <p className='sub_count'>23412</p>
+                                                <p className='sub_labelCount'>Subscribers</p>
                                             </div>
                                             <div>
-                                                <p>23412</p>
-                                                <p>Subscribers</p>
+                                                <p className='sub_count'>23412</p>
+                                                <p className='sub_labelCount'>Subscribers</p>
                                             </div>
                                             <div>
-                                                <p>23412</p>
-                                                <p>Subscribers</p>
+                                                <p className='sub_count'>23412</p>
+                                                <p className='sub_labelCount'>Subscribers</p>
                                             </div>
                                         </div>
                                     </div>  

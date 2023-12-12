@@ -7,6 +7,7 @@ import {Col, Row, Image, Button, Container, Sidebar, Form} from 'react-bootstrap
 import { useParams } from 'react-router-dom';
 import {useEffect, useState } from 'react';
 import axios from 'axios';
+import './styles/postContentStyle.css';
 
 function Content({isImage, content}){
     if(isImage == '0'){
@@ -79,7 +80,7 @@ function PostContent({user, post}){
                             <Row>
                                 <Col className='pc_container col-12 col-lg-8'>
                                     <br></br>
-                                    <Post user={user} post={sinPost}/>
+                                    <Post user={user} post={sinPost} url={url}/>
                                     <p>Comment as u/{sinPost[4]}</p>
                                     <p style={{opacity: '60%', marginBottom: '5px'}}>{comment.length}/300</p>
                                     <Form>

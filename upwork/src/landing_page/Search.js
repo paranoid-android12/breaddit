@@ -6,14 +6,31 @@ import Side from './components/SideBar';
 
 import {Col, Row, Image, Button, Container, Alert} from 'react-bootstrap';
 import {useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './styles/postStyle.css';
 import Login from './Login.js';
 
 
-function Timeline({user, post, url}){
+function Search({user, url}){
     const navigate = useNavigate();
+    const [post, setPost] = useState([]);
+    let {search} = useParams();
+
+    console.log(user.user_ID);
+
+    const GetSearch = () => {
+        axios.get(url, {params: {'function': 'fetchSearch', 'param': search, 'id': user.user_ID}, withCredentials: true})
+        .then(response => {
+            console.log(response.data);
+            setPost(response.data);
+        })
+        .catch(error => alert(error.message));
+    }
+
+    useEffect(GetSearch, []);
+
+
 
     return(
         <div>
@@ -21,24 +38,15 @@ function Timeline({user, post, url}){
             <div className='d-flex justify-content-center'>
                 <div className='mainTimelineContainer'>
                     <Row className='absoluteRow'>
-                        <Side/>
-                        <Col className='timelineCont flex-row col-12 col-lg-10'>
+                        <Col className='timelineCont flex-row'>
                             <br></br>
-                            <Row>
-                                <Col className='timelinePostCont col-9'>
-                                    <br></br>
-                                    <Container>
-                                        <Row>
-                                            <Link className='createButton' to='../timeline/forum'>Create Post</Link>
-                                        </Row>
-                                    </Container>
+                            <Row className='d-flex justify-content-center'>
+                                <Col className='timelinePostCont col-10'>
+                                    <h1>Search Results for "{search}"</h1>
                                     <br></br>
                                     <Post user={user} post={post} url={url}/>
                                 </Col>
-                                <Col className='suggestMainBox col-3 d-none d-lg-block'>
-                                    <br></br>
-                                    <Suggest/>
-                                </Col>
+
                             </Row>
                         </Col>
                     </Row>
@@ -48,4 +56,4 @@ function Timeline({user, post, url}){
     )
 }
 
-export default Timeline;
+export default Search;

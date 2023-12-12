@@ -61,11 +61,11 @@ function Login() {
                         <hr></hr>
                         <Form >
                             <Form.Group controlId="formUsername">
-                                <Form.Control as='input' className='usernameInput' type="email" value={email} placeholder='asdf' onChange={handleEmailChange}/>
+                                <Form.Control as='input' className='usernameInput' type="email" value={email} placeholder='Email' onChange={handleEmailChange}/>
                             </Form.Group>
                             <br></br>
                             <Form.Group controlId="formPassword">
-                                <Form.Control as='input' className='usernameInput' type="password" value={password} onChange={handlePasswordChange}/>
+                                <Form.Control as='input' className='usernameInput' type="password" value={password} placeholder='Password' onChange={handlePasswordChange}/>
                             </Form.Group>
                             <p className='errorMess' id={'errorText'}>Invalid parameters, make sure the email and password is correct.</p>
                             <hr></hr>

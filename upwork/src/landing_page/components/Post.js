@@ -42,8 +42,6 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
     const navigate = useNavigate();
     const [isUpvoted, setIsUpvoted] = useState(upvoted);
     const [liveVote, setLiveVote] = useState(vote);
-    const [createToggled, setCreateToggled] = useState(false);
-    const [deleteToggled, setDeleteToggled] = useState(false);
     const userUrl = '../timeline/u/' + username;
     let url = '../timeline/comments/' + id;
     let subUrl = '../timeline/r/' + subreddit;
@@ -51,7 +49,9 @@ function PostBlock({id, subreddit, subredditImage, username, title, content, dat
     upData.append('user_ID', user.user_ID);
     upData.append('post_ID', id);
     
-
+    
+    const [createToggled, setCreateToggled] = useState(false);
+    const [deleteToggled, setDeleteToggled] = useState(false);
     const csToggle = () => {
         console.log(createToggled);
         setCreateToggled(!createToggled);

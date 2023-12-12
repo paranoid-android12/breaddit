@@ -59,7 +59,7 @@ function User({userData, url}){
                     <p className='usercom_subredditName'>r/{comment.subreddit_name}</p>
                     <p className='usercom_commentPostTitle'>{comment.post_title}</p>
                 </div>
-                <div className='d-flex col'>
+                <div className='usercom_layer2 d-flex col'>
                     <p className='usercom_userPoster'>{uniqUser.username}</p>
                     <p className='usercom_repliedto'>commented to</p>
                     <p className='usercom_userFrom'>{comment.post_owner_username}</p>

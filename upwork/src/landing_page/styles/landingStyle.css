@@ -1,5 +1,6 @@
-body{
+body, html{
     color: white;
+    background-color: rgb(11,20,22);
 }
 
 #basic-nav-dropdown{
@@ -7,9 +8,13 @@ body{
 }
 
 .land_main{
+    position: absolute;
     padding-left: 50px;
     padding-right: 50px;
     background-color: #0A0A0A;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .land_nav{
@@ -18,15 +23,19 @@ body{
 }
 
 .land_logoCont{
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
     transition: 0.5s;
 }
 
 .land_logoCont:hover{
-    height: 630px;
-    width: 630px;
+    height: 530px;
+    width: 530px;
     transition: 0.5s;
+}
+.land_logo{
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .land_frontpage{
@@ -38,9 +47,6 @@ body{
 
 }
 
-.land_logo{
-    width: 100%;
-}
 
 .land_title{
     font-family: 'IBM Plex Sans', Arial, sans-serif;
@@ -51,7 +57,7 @@ body{
 }
 
 .land_mid{
-    padding-bottom: 110px;
+    padding-bottom: 120px;
     height: 87vh;
     /* background-color: blanchedalmond; */
 }
@@ -149,12 +155,6 @@ body{
 
 .searchInput::-webkit-search-cancel-button {
     -webkit-appearance: none;
-}
-
-
-::placeholder{
-    color: rgb(130,149,155);
-    font-size: 1rem;
 }
 
 .topNav{

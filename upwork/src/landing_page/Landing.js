@@ -9,7 +9,6 @@ function Landing(){
     const navigate = useNavigate();
     return(
     <div className='land_main'>
-
         <div className='land_nav d-flex col align-items-center justify-content-between'>
             <div className='d-flex col align-items-center'>
                 {/* <div className='land_logoCont'>
@@ -22,22 +21,24 @@ function Landing(){
             </div>
 
 
-            <h2 className='land_reg'>Login</h2>
-            <h2 className='land_reg'>Register</h2>
+            <h2 onClick={() => navigate('./login')} className='land_reg'>Login</h2>
+            <h2 onClick={() => navigate('./register')} className='land_reg'>Register</h2>
 
         </div>
-        <div className='land_mid d-flex col align-items-center justify-content-around'>
-            <div>
+        <Row className='land_mid d-flex col align-items-center justify-content-around'>
+            <Col className='col-12 col-xl-6'>
                 <h1 className='land_tag'>
                     <span style={{ color: 'white' }}>The </span>
                     <span style={{ color: 'rgb(255, 83, 20)' }}>front page</span>
                 </h1>
                 <h1 className='land_tag'>of the internet.</h1>
-            </div>
-            <div className='land_logoCont'>
+            </Col>
+            <Col className='col-5 d-flex justify-content-center'>
+                <div className='land_logoCont'>
                     <img onClick={() => navigate('./login')} className='land_logo' src='http://localhost:8080/upwork_server/breaddit_assets/landing_page_assets/bread.png'></img>
-            </div>
-        </div>
+                </div>
+            </Col>
+        </Row>
     </div>
     )
 }
