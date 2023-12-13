@@ -40,12 +40,12 @@ function Side(){
                         <img className='sideIcon' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/home.png'></img>
                         <p className='sideBarText text-white'>Home</p>
                     </li>
-                    <li onClick={() => navigate('../timeline')} className='sideContent nav-item d-flex col'>
+                    {/* <li onClick={() => navigate('../timeline')} className='sideContent nav-item d-flex col'>
                         <img className='sideIcon' src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/popular.png'></img>
                         <p className='sideBarText text-white'>Popular</p>
-                    </li>
+                    </li> */}
                     <AdminTab/>
-                    <hr></hr>
+                    {/* <hr></hr>
                     <li onClick={() => navigate('../timeline')} className='sideContent nav-item'>
                         <p className='sideBarText text-white'>About Breaddit</p>
                     </li>
@@ -54,7 +54,7 @@ function Side(){
                     </li>
                     <li onClick={() => navigate('../timeline')} className='sideContent nav-item'>
                         <p className='sideBarText text-white'>Settings</p>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </div>

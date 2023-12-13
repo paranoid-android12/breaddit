@@ -57,7 +57,7 @@ function Login() {
                 <Container className='mainLogBox'>
                     <Container className='mainContent'>
                         <h1>Log In</h1>
-                        <p>By continuing, you agree to our <a className='blue'>User Agreement</a> and acknowledge that you understand the <a className='blue'>Privacy Policy.</a></p>
+                        <p>By continuing, you agree to create this account in accordance to the internet cyberbullying policy.</p>
                         <hr></hr>
                         <Form >
                             <Form.Group controlId="formUsername">

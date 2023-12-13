@@ -241,8 +241,15 @@ function TopNav(){
         }
         else{
             document.body.style.overflow = '';
-        }
+        } 
     }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            // Execute the same logic as the onClick event
+            navigate('/timeline/search/' + search);
+        }
+    };
 
     if (location.pathname !== '/Login' && location.pathname !== '/register' && location.pathname !== '/') {
         return(
@@ -258,7 +265,7 @@ function TopNav(){
     
                         <form className='searchBar'>
                                 <img onClick={() => navigate('/timeline/search/' + search)} style={{scale: '45%'}} src='http://localhost:8080/upwork_server/breaddit_assets/timeline_assets/search_min.png'></img>
-                                <input onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Posts'></input>
+                                <input onKeyDown={handleKeyDown} onChange={handleSearchChange} className='searchInput' type="search" placeholder='Search Posts'></input>
                         </form>
         
                         <Dropdown show={isDropdownOpen} onToggle={handleDropdownToggle} className='d-none d-lg-block'>

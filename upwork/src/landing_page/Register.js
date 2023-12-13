@@ -16,6 +16,7 @@ function Register() {
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
     const [validPassword, setValidPassword] = useState(false);
+    const emptyThingy = document.getElementById('emptyError');
 
     function handleOtpChange(event){
         setOtp(event.target.value);
@@ -23,8 +24,9 @@ function Register() {
     
     function handleUsernameChange(event){
         setUsername(event.target.value);
+        emptyThingy.style.display = 'none';
+        const alphanumericRegex = /^[a-zA-Z0-9_]+$/;
 
-        const alphanumericRegex = /^[a-zA-Z0-9]+$/;
         const userExistText = document.getElementById('userExistText');
         userExistText.style.display = 'none'
         const userForm = document.getElementById('usernameForm');
@@ -45,7 +47,7 @@ function Register() {
 
     function handleEmailChange(event){
         setEmail(event.target.value);
-    
+        emptyThingy.style.display = 'none';
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         const emailExistText = document.getElementById('emailExistText');
         emailExistText.style.display = 'none';
@@ -69,7 +71,7 @@ function Register() {
         const alphanumericRegex = /^[a-zA-Z0-9]+$/;
         const passForm = document.getElementById('passForm');
         const errorText = document.getElementById('passLengthErr')
-        
+        emptyThingy.style.display = 'none';
     
         if(event.target.value.length < 8 && event.target.value.length > 0){
             passForm.style.outline = '3px solid rgb(255, 110, 128)';
@@ -113,14 +115,21 @@ function Register() {
         else if (response === 200){
             signUpForm.style.display = 'none';
             otpForm.style.display = 'flex';
-            console.log(username);
-            console.log(email);
-            console.log(password);
         }
     }
 
     async function handleSubmit(event){
         event.preventDefault();
+
+
+        if(username.length <= 0 || email.length <= 0 || password <= 0){
+            emptyThingy.style.display = 'block';
+            // alert("The given parameters are empty!");
+            return;
+        }
+        else{
+            emptyThingy.style.display = 'none';
+        }
 
         if(validUsername && validEmail && validPassword){
             let accountData = new FormData();
@@ -164,7 +173,7 @@ function Register() {
             <div className='window'>
                 <Container id={'signUpForm'} className='register_mainLogBox'>
                     <h1>Sign Up</h1>
-                    <p>By continuing, you agree to our <a className='blue'>User Agreement</a> and acknowledge that you understand the <a className='blue'>Privacy Policy.</a></p>
+                    <p>By continuing, you agree to create this account in accordance to the internet cyberbullying and privacy policy.</p>
                     <hr></hr>
                     <Form style={{padding: '0'}}>
                         <p style={{opacity: '60%', marginBottom: '5px', fontSize: '0.7rem', paddingLeft: '12px'}}>{username.length}/15</p>
@@ -186,6 +195,7 @@ function Register() {
                         </Form.Group>
                         <p className='errorMess' id={'passLengthErr'}>The password length must be 8 characters min.</p>
                         <hr></hr>
+                        <p className='errorMess' id={'emptyError'}>The given parameters are empty!</p>
                         <button onClick={(event) => handleSubmit(event)} className='mainLogin'>Submit</button>
                     </Form>
                 </Container>

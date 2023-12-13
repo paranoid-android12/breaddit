@@ -118,7 +118,7 @@ function Forum({url}){
             setName('');
             setTitle('');
             setContent('');
-            alert('Post has been successfully submitted!');
+            navigate('../timeline');
         })
         .catch(error => alert(error.message));
     }

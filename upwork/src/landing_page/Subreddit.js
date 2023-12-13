@@ -115,7 +115,7 @@ function PostContent({user, url}){
                                     <div className='sub_sidebar'>
                                         <p className='sub_mainDesc'>{subreddit} - all about {subreddit}</p>
                                         <p className='sub_minDesc'>{subredditInfo.description}</p>
-                                        <div className='d-flex col justify-content-around'>
+                                        {/* <div className='d-flex col justify-content-around'>
                                             <div>
                                                 <p className='sub_count'>23412</p>
                                                 <p className='sub_labelCount'>Subscribers</p>
@@ -128,7 +128,7 @@ function PostContent({user, url}){
                                                 <p className='sub_count'>23412</p>
                                                 <p className='sub_labelCount'>Subscribers</p>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>  
                                 </Col>
                             </Row>

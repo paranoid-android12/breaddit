@@ -44,7 +44,6 @@ function AdminView({user, post, url}){
         const followHook = () => {
             axios.get(url, {params: {'function': 'fetchUsers'}, withCredentials: true})
             .then(response => {
-                console.log(response.data);
                 setFollow(response.data);
             })
             .catch(error => console.log(error.message));
@@ -73,19 +72,6 @@ function AdminView({user, post, url}){
                         <Col className='timelineCont flex-row col-12 col-lg-10'>
                             <br></br>
                             <FollowIter/>
-                            {/* <Row>
-                                <Col className='timelinePostCont col-12'>
-                                    <br></br>
-                                    <Container>
-                                        <Row>
-                                            <Link className='createButton' to='../timeline/forum'>Create Post</Link>
-                                        </Row>
-                                    </Container>
-                                    <br></br>
-                                    <Post user={user} post={post} url={url}/>
-                                </Col>
-
-                            </Row> */}
                         </Col>
                     </Row>
                 </div>

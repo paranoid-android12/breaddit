@@ -17,7 +17,6 @@ function Search({user, url}){
     const [post, setPost] = useState([]);
     let {search} = useParams();
 
-    console.log(user.user_ID);
 
     const GetSearch = () => {
         axios.get(url, {params: {'function': 'fetchSearch', 'param': search, 'id': user.user_ID}, withCredentials: true})
@@ -28,9 +27,7 @@ function Search({user, url}){
         .catch(error => alert(error.message));
     }
 
-    useEffect(GetSearch, []);
-
-
+    useEffect(GetSearch, [post, search]);
 
     return(
         <div>
