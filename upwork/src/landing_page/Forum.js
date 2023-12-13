@@ -208,7 +208,7 @@ function Forum({url}){
                             <br></br>
                             <Form>
                                 <Form.Group className="mb-3" controlId="formBasicTitle">
-                                    <Form.Control as='input' className='titleInput' type="title" placeholder="Title" onChange={handleTitleChange}/>
+                                    <Form.Control maxLength={80} as='input' className='titleInput' type="title" placeholder="Title" onChange={handleTitleChange}/>
                                 </Form.Group>
                                 <Form.Group className="formUpload mb-3" controlId="formBasicImage" id='formUpload'>
                                     <div id='imageToUploadContainer'> 

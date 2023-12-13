@@ -15,7 +15,7 @@ function SuggestIter({name, uploads, src}){
                 </div>
                 <Row>
                     <p className='subredditName'>r/{name}</p>
-                    <p className='postCount'>{uploads} Uploads</p>
+                    {/* <p className='postCount'>{uploads} Uploads</p> */}
                 </Row>
             </Container>
             <br></br>

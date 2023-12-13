@@ -326,6 +326,7 @@ p{
     font-size: 1.2rem;
     font-weight: 700;
     font-family: 'IBM Plex Sans', Arial, sans-serif;
+    overflow-wrap: break-word;
 }
 
 .contentPost{
@@ -333,6 +334,7 @@ p{
     font-family: 'Noto Sans';
     font-weight: 400;
     max-width: 98%;
+    overflow-wrap: break-word;
 }
 
 .contentImage{

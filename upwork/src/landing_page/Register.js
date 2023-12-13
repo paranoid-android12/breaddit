@@ -16,7 +16,6 @@ function Register() {
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
     const [validPassword, setValidPassword] = useState(false);
-    const emptyThingy = document.getElementById('emptyError');
 
     function handleOtpChange(event){
         setOtp(event.target.value);
@@ -24,13 +23,14 @@ function Register() {
     
     function handleUsernameChange(event){
         setUsername(event.target.value);
-        emptyThingy.style.display = 'none';
         const alphanumericRegex = /^[a-zA-Z0-9_]+$/;
 
         const userExistText = document.getElementById('userExistText');
         userExistText.style.display = 'none'
         const userForm = document.getElementById('usernameForm');
         const errorText = document.getElementById('errorText')
+        const emptyThingy = document.getElementById('emptyError');
+        emptyThingy.style.display = 'none';
     
         if(!alphanumericRegex.test(event.target.value) && event.target.value.length > 0){
             userForm.style.outline = '3px solid rgb(255, 110, 128)';
@@ -47,12 +47,13 @@ function Register() {
 
     function handleEmailChange(event){
         setEmail(event.target.value);
-        emptyThingy.style.display = 'none';
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         const emailExistText = document.getElementById('emailExistText');
         emailExistText.style.display = 'none';
         const emailForm = document.getElementById('emailForm');
         const errorText = document.getElementById('emailSyntaxErr');
+        const emptyThingy = document.getElementById('emptyError');
+        emptyThingy.style.display = 'none';
 
         if(!emailRegex.test(event.target.value.toLowerCase()) && event.target.value.length > 0){
             setValidEmail(false);
@@ -71,6 +72,7 @@ function Register() {
         const alphanumericRegex = /^[a-zA-Z0-9]+$/;
         const passForm = document.getElementById('passForm');
         const errorText = document.getElementById('passLengthErr')
+        const emptyThingy = document.getElementById('emptyError');
         emptyThingy.style.display = 'none';
     
         if(event.target.value.length < 8 && event.target.value.length > 0){
@@ -120,8 +122,8 @@ function Register() {
 
     async function handleSubmit(event){
         event.preventDefault();
-
-
+        const emptyThingy = document.getElementById('emptyError');
+        emptyThingy.style.display = 'block';
         if(username.length <= 0 || email.length <= 0 || password <= 0){
             emptyThingy.style.display = 'block';
             // alert("The given parameters are empty!");

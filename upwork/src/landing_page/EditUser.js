@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function EditUser({user, togg, toggler, url}){
     const [userImage, setUserImage] = useState('');
     const [name, setName] = useState('');
+    const navigate = useNavigate();
 
     function handleNameChange(event){
         console.log(event.target.value);
@@ -74,6 +75,7 @@ function EditUser({user, togg, toggler, url}){
         await axios.post(url, uData, {withCredentials: true})
         .then(response => {
             console.log(response.data);
+            window.location.reload();
         })
         .catch(error => alert(error.message));
     }

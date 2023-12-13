@@ -161,7 +161,6 @@ function User({userData, url}){
                         </div>
                         <div>
                             <h3 className='ss_subName'>r/{sub.name}</h3>
-                            <p className='ss_subMemberCount'>12 Members</p>
                         </div>
                     </div>
                 </div>

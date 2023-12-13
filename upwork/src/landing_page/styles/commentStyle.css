@@ -69,6 +69,7 @@
     font-size: 0.9rem;
     margin: 0;
     font-family: 'IBM Plex Sans', Arial, sans-serif;
+    overflow-wrap: break-word;
 }
 
 .com_statPillVote{
